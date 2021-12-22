@@ -12,11 +12,14 @@ Currently, the prototype is able to track the latest block header in the beacon 
 ### Installation & Running
 ```
 git clone https://github.com/uink45/Beacon-Chain-Light-Client-Prototype.git
+cd Beaon-Chain-Light-Client-Prototype
 cd LightClientV2
 dotnet build
 dotnet run
 ```
 
+### Known Issues
+- When running the light client, sometimes it will display the following error message `Slot must be greater than ...`. The light client will continue to function after this error, as it will re-submit the query to fetch a block with the latest slot.
 
 
 
