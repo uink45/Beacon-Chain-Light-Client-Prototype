@@ -17,11 +17,11 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Types;
 using Nethermind.HashLib;
 
-namespace Nethermind.Core2.Crypto
+namespace Nethermind.Merkleization
 {
     [DebuggerStepThrough]
     public static class Sha256

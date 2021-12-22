@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Nethermind.Ssz;
 
 namespace Nethermind.Merkleization
 {

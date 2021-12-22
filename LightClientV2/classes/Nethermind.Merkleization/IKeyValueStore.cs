@@ -1,4 +1,4 @@
-﻿//  Copyright (c) 2018 Demerzel Solutions Limited
+//  Copyright (c) 2018 Demerzel Solutions Limited
 //  This file is part of the Nethermind library.
 // 
 //  The Nethermind library is free software: you can redistribute it and/or modify
@@ -14,29 +14,10 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with the Nethermind. If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using Microsoft.Extensions.Options;
-
-namespace Nethermind.Core2.Configuration
+namespace Nethermind.Merkleization
 {
-    public class StaticOptionsMonitor<T> : IOptionsMonitor<T>
-        where T : class, new()
+    public interface IKeyValueStore<in TKey, TValue>
     {
-        public StaticOptionsMonitor(T currentValue)
-        {
-            CurrentValue = currentValue;
-        }
-
-        public T CurrentValue { get; }
-
-        public T Get(string name)
-        {
-            return CurrentValue;
-        }
-
-        public IDisposable OnChange(Action<T, string> listener)
-        {
-            return EmptyDisposable.Instance;
-        }
+        byte[]? this[TKey key] { get; set; }
     }
 }

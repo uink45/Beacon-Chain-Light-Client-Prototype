@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Types;
-using Nethermind.Core2.Configuration;
 
 namespace Nethermind.Core2.Containers
 {

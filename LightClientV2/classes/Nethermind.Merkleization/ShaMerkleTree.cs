@@ -19,7 +19,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography;
 using Nethermind.Core2.Types;
-using Nethermind.Ssz;
 
 namespace Nethermind.Merkleization
 {

@@ -22,7 +22,6 @@ namespace LightClientV2
             time = new TimeParameters();
         }
 
-        
         public void ValidateCheckpoint(string checkpointRoot, LightClientUpdate update)
         {
             // Verify the response matches the requested root
@@ -124,7 +123,7 @@ namespace LightClientV2
             
             if(!(committeeParticipantsSum >= constants.MinSyncCommitteeParticipants))
             {
-                throw new Exception("Sync committee has not sufficient participants");
+                throw new Exception("Sync committee does not have sufficient participants");
             }
 
             BlsPublicKey[] publicKeys = utility.GetParticipantPubkeys(syncCommittee.PublicKeys, syncAggregate.SyncCommitteeBits);

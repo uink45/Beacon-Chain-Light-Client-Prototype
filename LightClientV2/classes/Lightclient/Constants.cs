@@ -3,35 +3,25 @@ namespace LightClientV2
 {
     public class Constants
     {
-        private int minSynCommitteeParticipants = 1;
+        public readonly int MinSyncCommitteeParticipants = 1;
 
-        private int finalizedRootGIndex = 105;
+        public readonly int FinalizedRootGIndex = 105;
 
-        private int finalizedRootDepth = 6;
+        public readonly int FinalizedRootDepth = 6;
 
-        private int finalizedRootIndex = 41;
+        public readonly int FinalizedRootIndex = 41;
 
-        private int nextSyncCommitteeGIndex = 55;
+        public readonly int NextSyncCommitteeGIndex = 55;
 
-        private int nextSyncCommitteeIndex = 23;
+        public readonly int NextSyncCommitteeIndex = 23;
 
-        private int nextSyncCommitteeDepth = 5;
+        public readonly int NextSyncCommitteeDepth = 5;
 
-        private int currentSyncCommitteeIndex = 22;
+        public readonly int CurrentSyncCommitteeIndex = 22;
 
-        private int currentSyncCommitteeDepth = 5;
+        public readonly int CurrentSyncCommitteeDepth = 5;
 
-        private int syncCommitteeSize = (2 << 9) / 2;
+        public readonly int SyncCommitteeSize = (2 << 9) / 2;
 
-        public int MinSyncCommitteeParticipants { get { return minSynCommitteeParticipants; } }
-        public int FinalizedRootGIndex { get { return finalizedRootGIndex; } }
-        public int FinalizedRootDepth { get { return finalizedRootDepth; } }
-        public int FinalizedRootIndex { get { return finalizedRootIndex; } }
-        public int NextSyncCommitteeGIndex { get { return nextSyncCommitteeGIndex; } }
-        public int NextSyncCommitteeIndex { get { return nextSyncCommitteeIndex; } }
-        public int NextSyncCommitteeDepth { get { return nextSyncCommitteeDepth; } }
-        public int SyncCommitteeSize { get { return syncCommitteeSize; } }
-        public int CurrentSyncCommitteeIndex { get { return currentSyncCommitteeIndex; } }
-        public int CurrentSyncCommitteeDepth { get { return currentSyncCommitteeDepth; } }
     }
 }

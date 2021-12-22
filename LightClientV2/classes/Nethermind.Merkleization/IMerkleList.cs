@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Types;
 
-namespace Nethermind.Core2
+namespace Nethermind.Merkleization
 {
     public interface IMerkleList
     {

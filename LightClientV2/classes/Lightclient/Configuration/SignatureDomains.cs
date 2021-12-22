@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Nethermind.Core2.Types;
 namespace LightClientV2
 {
@@ -37,6 +36,5 @@ namespace LightClientV2
             }
             return bytes;
         }
-
     }
 }
