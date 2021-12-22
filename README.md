@@ -12,7 +12,7 @@ Currently, the prototype is able to track the latest block header in the beacon 
 ### Installation & Running
 ```
 git clone https://github.com/uink45/Beacon-Chain-Light-Client-Prototype.git
-cd Beaon-Chain-Light-Client-Prototype
+cd Beacon-Chain-Light-Client-Prototype
 cd LightClientV2
 dotnet build
 dotnet run
