@@ -19,7 +19,7 @@ dotnet run
 ```
 
 ### Known Issues
-- When running the light client, sometimes it will display the following error message `Slot must be greater than ...`. The light client will continue to function after this error as it re send the query to retrieve a block at an updated slot.
+- When running the light client, sometimes it will display the following error message `Slot must be greater than ...`. The light client will continue to function after this error, as it will re-submit the query to fetch a block with the latest slot.
 
 
 
