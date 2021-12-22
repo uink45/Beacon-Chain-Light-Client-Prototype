@@ -75,9 +75,6 @@ namespace LightClientV2
           
             if (updatePeriod != finalizedPeriod & updatePeriod != newPeriod)
             {
-                Console.WriteLine("Finalized period: " + finalizedPeriod);
-                Console.WriteLine("Update period: " + updatePeriod);
-                Console.WriteLine("New period: " + newPeriod);
                 throw new ArgumentOutOfRangeException("Finalized Period", finalizedPeriod, $"Update skips a sync committee period.");
             }
 
