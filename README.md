@@ -11,9 +11,9 @@ Currently, the prototype can track the latest block header in the beacon chain. 
 
 ### Before Running
 To initialize and sync with the beacon chain, the light client uses Lodestar's API for fetching a snapshot. The snapshot contains the following information:
-- Block header,
-- Public keys of the validators part of the current sync committee,
-- Merkle branch proof of the committee. 
+- Block header
+- Public keys of the validators part of the current sync committee
+- Merkle branch proof of the committee
 If there is no snapshot available for a checkpoint root, the light client will fail to initialize. So before starting the light client, go to the [Lodestar Demo](https://light-client-demo.lodestar.casa/) and check if able to initialize from a trusted checkpoint root. If the Lodestar light client can sync without any errors, then the light client can be started.  
 
 ### Installation & Running
