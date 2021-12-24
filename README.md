@@ -6,7 +6,7 @@ This is a C# prototype implementation of the [Altair Minimal Light Client Specif
 Currently, the prototype can track the latest block header in the beacon chain. It achieves this by initializing from a trusted checkpoint root (using the Lodestar API) to know the current sync committee. It then verifies the header of the latest blocks by checking if the sync committee signature is valid and that enough validators had signed. 
 
 ### Requirements
-- .NET Core 5.0
+- .NET Core 5.0 or greater
 - Visual Studio 2019 or above
 
 ### Before Running
