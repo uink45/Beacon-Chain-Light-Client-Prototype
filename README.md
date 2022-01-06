@@ -26,16 +26,4 @@ dotnet run
 ```
 
 ### Known Issues
-<<<<<<< HEAD
 - When running the light client, sometimes it will display an error message `Error: Slot to process should be greater than current slot`. The light client will continue to function after this error, as it will re-submit the query to fetch a block with the latest slot.
-=======
-- When running the light client, sometimes it will display an error message `Error: Slot to process should be greater than current slot`. The light client will continue to function after this error, as it will re-submit the query to fetch a block with the latest slot.
-
-
-
-
-
-
-
-
->>>>>>> 54f7ab0c5e92f58f96fd2710ea90cc88c64294f3
