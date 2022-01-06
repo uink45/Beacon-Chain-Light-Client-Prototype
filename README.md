@@ -10,7 +10,7 @@ Currently, the prototype can track the latest block header in the beacon chain. 
 - Visual Studio 2019 or above
 
 ### Before Running
-To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar) that was created by [Chainsafe](https://github.com/ChainSafe). It can be started by using the instructions in the GitHub repository. Once the server has subscribed to gossip core topics and synced, follow the instructions below to initialie the light client.
+To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar) that was created by the [Chainsafe](https://github.com/ChainSafe) team. It can be started by using the instructions in the GitHub repository. Once the server has subscribed to gossip core topics and synced, follow the instructions below to initialie the light client.
 
 ### Installation & Running
 ```
