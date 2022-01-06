@@ -12,11 +12,6 @@ Currently, the prototype can track the latest block header in the beacon chain. 
 ### Before Running
 To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar) that was created by [Chainsafe](https://github.com/ChainSafe). It can be started by using the instructions in the GitHub repository. Once the server has subscribed to gossip core topics and synced, follow the instructions below to initialie the light client.
 
-The snapshot contains the following information:
-- Block header
-- Public keys of the validators part of the current sync committee
-- Merkle proof of the sync committee
-
 ### Installation & Running
 ```
 git clone https://github.com/uink45/Beacon-Chain-Light-Client-Prototype.git
