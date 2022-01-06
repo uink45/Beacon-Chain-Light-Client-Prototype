@@ -3,19 +3,19 @@
 This is a C# prototype implementation of the [Altair Minimal Light Client Specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/sync-protocol.md). 
 
 ### Functionality
-Currently, the prototype can track the latest block header in the beacon chain. It achieves this by initializing from a trusted checkpoint root (using the Lodestar API) to know the current sync committee. It then verifies the header of the latest blocks by checking if the sync committee signature is valid and that enough validators had signed. 
+Currently, the prototype can track the latest block header in the beacon chain. It achieves this by initializing from a trusted snapshot to know the current sync committee. After successfully initializing, it trustlessly verifies the latest block headers by checking if the sync committee signature is valid and that enough validators had signed. 
 
 ### Requirements
 - .NET Core 5.0 or greater
 - Visual Studio 2019 or above
 
 ### Before Running
-To initialize and sync with the beacon chain, the light client uses Lodestar's API for fetching a snapshot. The snapshot contains the following information:
+To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar) that was created by [Chainsafe](https://github.com/ChainSafe). It can be started by using the instructions in the GitHub repository. Once the server has subscribed to gossip core topics and synced, follow the instructions below to initialie the light client.
+
+The snapshot contains the following information:
 - Block header
 - Public keys of the validators part of the current sync committee
-- Merkle branch proof of the committee
-
-If there is no snapshot available for a checkpoint root, the light client will fail to initialize. So before starting the light client, go to the [Lodestar Demo](https://light-client-demo.lodestar.casa/) and check if able to initialize from a trusted checkpoint root. If the Lodestar light client can sync without any errors, then the light client can be started.  
+- Merkle proof of the sync committee
 
 ### Installation & Running
 ```
