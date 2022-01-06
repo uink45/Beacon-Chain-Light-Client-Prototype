@@ -69,7 +69,7 @@ namespace LightClientV2
                     contents.Add(content);
                     
                     LightClientUpdate update = Server.SerializeContent(contents);
-                    await Task.Delay(12000);
+                    await Task.Delay(11900);
                     if (update != null)
                     {
                         Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
