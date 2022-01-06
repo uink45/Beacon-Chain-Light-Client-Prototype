@@ -10,7 +10,7 @@ namespace LightClientV2
 {
     public class CryptoUtility
     {
-        public readonly BLS _bls;
+        private readonly BLS _bls;
         private static readonly HashAlgorithm s_hashAlgorithm = SHA256.Create();
         public Func<BLSParameters, BLS> SignatureAlgorithmFactory { get; set; } = blsParameters => BLS.Create(blsParameters);
 

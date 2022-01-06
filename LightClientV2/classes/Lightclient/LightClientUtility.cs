@@ -180,17 +180,6 @@ namespace LightClientV2
                              .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                              .ToArray());
         }
-
-        public BlsPublicKey[] ConvertListToBlsPubKeys(List<Datum> list, int length)
-        {
-            BlsPublicKey[] blsPublicKeys = InitializeArray<BlsPublicKey>(length-1);
-            for(int i = 0; i < list.Count; i++)
-            {
-                blsPublicKeys[i] = ConvertStringToBlsPubKey(list[i].validator.pubkey);
-            }
-            return blsPublicKeys;
-        }
-
         public Hash32 ConvertHexStringToHash(string hex)
         {
             hex = hex.Remove(0, 2);

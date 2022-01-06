@@ -10,26 +10,18 @@ namespace LightClientV2
     {
         public LightClientUtility utility;
         public LightClientStore storage;
-        public Root LatestRoot;
         public Constants constants;
         public TimeParameters time;
         public LightClientFunctions()
         {
             utility = new LightClientUtility();
             storage = new LightClientStore();
-            LatestRoot = Root.Zero;
             constants = new Constants();
             time = new TimeParameters();
         }
 
-        public void ValidateCheckpoint(string checkpointRoot, LightClientUpdate update)
+        public void ValidateCheckpoint(LightClientUpdate update)
         {
-            // Verify the response matches the requested root
-            if(update.AttestedHeader.HashTreeRoot().ToString() != checkpointRoot)
-            {
-                throw new ArgumentOutOfRangeException("Checkpoint Root", checkpointRoot, $"Checkpoint root does not match the requested header hash tree root.");
-            }
-
             // Verify the sync committee branch
             var isValid = utility.IsValidMerkleBranch(
                    update.NextSyncCommittee.HashTreeRoot(),
@@ -129,7 +121,6 @@ namespace LightClientV2
             BlsPublicKey[] publicKeys = utility.GetParticipantPubkeys(syncCommittee.PublicKeys, syncAggregate.SyncCommitteeBits);
             BlsPublicKey aggregatePublicKey = utility.Crypto.BlsAggregatePublicKeys(publicKeys);
             Domain domain = utility.ComputeDomain(new SignatureDomains().DomainSyncCommittee, update.ForkVersion, genesisValidatorsRoot);
-            
             Root signingRoot = Root.Zero;
             if(update.FinalizedHeader != null)
             {

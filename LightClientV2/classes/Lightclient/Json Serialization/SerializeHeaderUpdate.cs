@@ -1,19 +1,22 @@
 ﻿
 using Nethermind.Core2.Containers;
 using Nethermind.Core2.Types;
-
+using Newtonsoft.Json;
 namespace LightClientV2
 {
     public class SerializeHeaderUpdate
     {
         public LightClientUtility Utility;
         public BeaconBlockHeaderObject.Root Contents;
-        public RetrieveData Query;
 
         public SerializeHeaderUpdate()
         {
             Utility = new LightClientUtility();
-            Query = new RetrieveData();
+        }
+
+        public BeaconBlockHeaderObject.Root ParseBeaconBlockHeaderUpdate(string text)
+        {
+            return JsonConvert.DeserializeObject<BeaconBlockHeaderObject.Root>(text);
         }
 
         public SyncAggregate CreateSyncAggregate(string syncBits, string syncCommitteeSignature)

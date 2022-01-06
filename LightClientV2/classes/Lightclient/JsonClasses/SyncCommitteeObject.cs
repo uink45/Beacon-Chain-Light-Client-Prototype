@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LightClientV2
 {
-    public class Snapshot
+    public class SyncCommitteeObject
     {
+        //// Root myDeserializedClass = JsonConvert.DeserializeObject<SyncCommitteeObject.Root>(myJsonResponse); 
+
         public class Header
         {
             public string slot { get; set; }
@@ -13,22 +19,17 @@ namespace LightClientV2
             public string body_root { get; set; }
         }
 
-        public class CurrentSyncCommittee
-        {
-            public List<string> pubkeys { get; set; }
-            public string aggregate_pubkey { get; set; }
-        }
-
-        public class Datum
+        public class Data
         {
             public Header header { get; set; }
-            public CurrentSyncCommittee current_sync_committee { get; set; }
+            public List<string> pubkeys { get; set; }
+            public string aggregate_pubkey { get; set; }
             public List<string> current_sync_committee_branch { get; set; }
         }
 
         public class Root
         {
-            public List<Datum> data { get; set; }
+            public Data data { get; set; }
         }
     }
 }

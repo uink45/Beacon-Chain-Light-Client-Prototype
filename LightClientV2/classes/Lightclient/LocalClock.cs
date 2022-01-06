@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Nethermind.Core2.Types;
 
 namespace LightClientV2
 {
     public class LocalClock
     {
-        public ulong GenesisTime;
+        private readonly ulong GenesisTime;
 
         public LocalClock()
         {
@@ -21,8 +17,5 @@ namespace LightClientV2
             ulong diffInSeconds = timePassed / 1000 - GenesisTime;
             return new Slot((ulong)Math.Floor((decimal)(diffInSeconds / 12)));
         }
-
-
-
     }
 }

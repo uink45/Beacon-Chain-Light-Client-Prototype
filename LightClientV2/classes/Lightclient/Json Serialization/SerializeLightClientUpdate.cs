@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Containers;
 using Nethermind.Core2.Types;
+using Newtonsoft.Json;
 
 namespace LightClientV2
 {
     public class SerializeLightClientUpdate
     {
-        public LightClientUtility Utility;
-        public UpdateRoot Contents;
-        public RetrieveData Query;
-        public SerializeLightClientUpdate()
+        private LightClientUtility Utility;
+        private UpdateRoot Contents;
+
+        public SerializeLightClientUpdate(string text)
         {
             Utility = new LightClientUtility();
-            Query = new RetrieveData();
-            Contents = Query.ParseLightClientUpdate();
+            Contents = ParseLightClientUpdate(text);
+        }
+
+        public UpdateRoot ParseLightClientUpdate(string text)
+        {
+            return JsonConvert.DeserializeObject<UpdateRoot>(text); ;
         }
 
         public List<LightClientUpdate> InitializeUpdates()
@@ -121,10 +126,5 @@ namespace LightClientV2
         {
             return Utility.ConvertStringToForkVersion(fork_version);
         }
-
-
-
-
-
     }
 }

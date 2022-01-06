@@ -4,37 +4,16 @@ namespace LightClientV2
 {
     public class SignatureDomains
     {
-        public SignatureDomains()
-        {
-            DomainSyncCommittee = new DomainType(GetBytesFromPrefixedString("0x07000000"));
-            DomainSyncCommitteeSelectionProof = new DomainType(GetBytesFromPrefixedString("0x08000000"));
-            DomainContributionAndProof = new DomainType(GetBytesFromPrefixedString("0x09000000"));
-        }
+        public DomainType BeaconAttestor { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x01000000"));
+        public DomainType BeaconProposer { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x00000000"));
+        public DomainType Deposit { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x03000000"));
+        public DomainType Randao { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x02000000"));
+        public DomainType VoluntaryExit { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x04000000"));
+        public DomainType DomainSelectionProof { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x05000000"));
+        public DomainType DomainAggregateAndProof { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x06000000"));
+        public DomainType DomainSyncCommittee { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x07000000"));
+        public DomainType DomainSyncCommitteeSelectionProof { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x08000000"));
+        public DomainType DomainContributionAndProof { get; } = new DomainType(new LightClientUtility().StringToByteArray("0x09000000"));
 
-        public DomainType BeaconAttester { get; set; }
-        public DomainType BeaconProposer { get; set; }
-        public DomainType Deposit { get; set; }
-        public DomainType Randao { get; set; }
-        public DomainType VoluntaryExit { get; set; }
-        public DomainType DomainSyncCommittee { get; set; }
-        public DomainType DomainSyncCommitteeSelectionProof { get; set; }
-        public DomainType DomainContributionAndProof { get; set; }
-
-        public byte[] GetBytesFromPrefixedString(string hex)
-        {
-            if (string.IsNullOrWhiteSpace(hex))
-            {
-                return Array.Empty<byte>();
-            }
-
-            var bytes = new byte[(hex.Length - 2) / 2];
-            var hexIndex = 2;
-            for (var byteIndex = 0; byteIndex < bytes.Length; byteIndex++)
-            {
-                bytes[byteIndex] = Convert.ToByte(hex.Substring(hexIndex, 2), 16);
-                hexIndex += 2;
-            }
-            return bytes;
-        }
     }
 }

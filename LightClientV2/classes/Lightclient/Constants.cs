@@ -22,6 +22,5 @@ namespace LightClientV2
         public readonly int CurrentSyncCommitteeDepth = 5;
 
         public readonly int SyncCommitteeSize = (2 << 9) / 2;
-
     }
 }

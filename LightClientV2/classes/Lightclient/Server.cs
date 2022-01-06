@@ -11,62 +11,40 @@ namespace LightClientV2
     public class Server
     {
         private HttpClient client;
-        private string api;
         public static SerializeHeaderUpdate SerializeHeaderUpdate;
+        public static SerializeSyncCommittee Sync;
 
         public Server()
         {
             client = new HttpClient();
             SerializeHeaderUpdate = new SerializeHeaderUpdate();
-            api = "";
+            Sync = new SerializeSyncCommittee();
+
         }
 
-        public Server(string _api)
+        public async Task<LightClientUpdate> FetchFinalizedSnapshot()
         {
-            client = new HttpClient();
-            SerializeHeaderUpdate = new SerializeHeaderUpdate();
-            api = _api;
-        }
-
-        public string Api { get { return api; } set { api = value; } }
-
-        public async Task<string> InitializeFromCheckpoint()
-        {
-            string root = FetchLatestFinalizedChekpoint();
-            return await FetchSnapshot(root);
-        }
-
-        public string FetchLatestFinalizedChekpoint()
-        {
-            string url = "https://eth2-beacon-mainnet.infura.io/eth/v1/beacon/states/head/finality_checkpoints";
-            HttpMessageHandler handler = new HttpClientHandler()
+            string url = "http://127.0.0.1:9596/eth/v1/beacon/states/finalized/sync_committees";
+            try
             {
-            };
-
-            var httpClient = new HttpClient(handler)
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string result = await response.Content.ReadAsStringAsync();
+            
+                Sync.SerializeData(result);
+                return Sync.InitializeSnapshot();
+            }
+            catch (HttpRequestException e)
             {
-                BaseAddress = new Uri(url),
-                Timeout = new TimeSpan(0, 2, 0)
-            };
-
-            httpClient.DefaultRequestHeaders.Add("ContentType", "application/json");
-
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes("21qajKWbOdMuXWCCPEbxW1bVPrp:5e43bc9d09711d4f34b55077cdb3380a");
-            string val = System.Convert.ToBase64String(plainTextBytes);
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + val);
-
-            HttpResponseMessage response = httpClient.GetAsync(url).Result;
-            string content = string.Empty;
-            using (StreamReader stream = new StreamReader(response.Content.ReadAsStreamAsync().Result, System.Text.Encoding.GetEncoding(0)))
-            {
-                content = stream.ReadToEnd();
-            } 
-            return JObject.Parse(content)["data"]["finalized"]["root"].ToString();
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+            return null;
         }
 
-        public async Task<string> FetchSnapshot(string root)
+        public async Task<string> FetchValidators()
         {
-            string url = "https://mainnet.lodestar.casa/eth/v1/lightclient/snapshot/" + root;
+            string url = "http://127.0.0.1:9596/eth/v1/lightclient/snapshot/";
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             try
             {

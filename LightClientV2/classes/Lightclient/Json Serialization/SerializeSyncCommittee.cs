@@ -1,37 +1,36 @@
-﻿using System.Collections.Generic;
-using Nethermind.Core2.Crypto;
-using Nethermind.Core2.Containers;
+﻿using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Types;
+using Nethermind.Core2.Containers;
 using Newtonsoft.Json;
-
+using System.Collections.Generic;
 namespace LightClientV2
 {
-    public class SerializeSnapshot
+    public class SerializeSyncCommittee
     {
         public LightClientUtility Utility;
-        public Snapshot.Root Contents;
+        public SyncCommitteeObject.Root Contents;
 
-        public SerializeSnapshot()
+        public SerializeSyncCommittee()
         {
             Utility = new LightClientUtility();
         }
 
-        public Snapshot.Root ParseSnapshot(string text)
+        public void SerializeData(string text)
         {
-            return JsonConvert.DeserializeObject<Snapshot.Root>(text);
+            Contents = JsonConvert.DeserializeObject<SyncCommitteeObject.Root>(text);
         }
 
         public LightClientUpdate InitializeSnapshot()
         {
             LightClientUpdate update = new LightClientUpdate();
-            update.AttestedHeader = CreateHeader(Contents.data[0].header);
-            update.NextSyncCommittee = CreateNextSyncCommittee(Contents.data[0].current_sync_committee);
-            update.NextSyncCommitteeBranch = CreateNextSyncCommitteeBranch(Contents.data[0].current_sync_committee_branch);
+            update.AttestedHeader = CreateHeader(Contents.data.header);
+            update.NextSyncCommittee = CreateNextSyncCommittee(Contents.data.pubkeys, Contents.data.aggregate_pubkey);
+            update.NextSyncCommitteeBranch = CreateNextSyncCommitteeBranch(Contents.data.current_sync_committee_branch);
             return update;
         }
 
-        public BeaconBlockHeader CreateHeader(Snapshot.Header header)
-        {  
+        public BeaconBlockHeader CreateHeader(SyncCommitteeObject.Header header)
+        {
             return new BeaconBlockHeader(
                 new Slot(ulong.Parse(header.slot)),
                 new ValidatorIndex(ulong.Parse(header.proposer_index)),
@@ -41,9 +40,9 @@ namespace LightClientV2
                 );
         }
 
-        public SyncCommittee CreateNextSyncCommittee(Snapshot.CurrentSyncCommittee nextSync)
+        public SyncCommittee CreateNextSyncCommittee(List<string> publicKeys, string aggregatePublicKey)
         {
-            return new SyncCommittee(CreateBlsPublicKeys(nextSync.pubkeys), Utility.ConvertStringToBlsPubKey(nextSync.aggregate_pubkey));
+            return new SyncCommittee(CreateBlsPublicKeys(publicKeys), Utility.ConvertStringToBlsPubKey(aggregatePublicKey));
         }
 
         private BlsPublicKey[] CreateBlsPublicKeys(List<string> pubKeys)
@@ -65,6 +64,5 @@ namespace LightClientV2
             }
             return branches;
         }
-
     }
 }
