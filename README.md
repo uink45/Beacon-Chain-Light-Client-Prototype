@@ -1,6 +1,6 @@
 # Beacon Chain Light Client Prototype
 
-This is a C# prototype implementation of the [Altair Minimal Light Client Specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/sync-protocol.md). 
+This is a C# implementation of the [Altair Minimal Light Client Specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/sync-protocol.md). 
 
 ### Functionality
 Currently, the prototype can track the latest block header in the beacon chain. It achieves this by initializing from a trusted snapshot to know the current sync committee. The snapshot is verified by checking whether the current sync committee branch is valid. It then trustlessly verifies the upcoming block headers by checking if the sync committee signature is valid and that enough validators had signed. 
