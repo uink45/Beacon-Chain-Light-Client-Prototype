@@ -20,23 +20,22 @@ namespace LightClientV2
             time = new TimeParameters();
         }
 
-        public void ValidateCheckpoint(LightClientUpdate update)
+        public void ValidateCheckpoint(LightClientSnapshot snapshot)
         {
-            // Verify the sync committee branch
+            // Verify the current sync committee branch
             var isValid = utility.IsValidMerkleBranch(
-                   update.NextSyncCommittee.HashTreeRoot(),
-                   update.NextSyncCommitteeBranch,
+                   snapshot.CurrentSyncCommittee.HashTreeRoot(),
+                   snapshot.CurrentSyncCommitteeBranch,
                    constants.CurrentSyncCommitteeDepth,
                    (ulong)constants.CurrentSyncCommitteeIndex,
-                   update.AttestedHeader.StateRoot);
+                   snapshot.FinalizedHeader.StateRoot);
 
             if (!isValid)
             {
                 throw new Exception("Invalid next sync committee merkle branch");
             }
-            storage.BestValidUpdate = update;
-            storage.CurrentSyncCommittee = update.NextSyncCommittee;
-            storage.FinalizedHeader = update.AttestedHeader;
+            storage.CurrentSyncCommittee = snapshot.CurrentSyncCommittee;
+            storage.FinalizedHeader = snapshot.FinalizedHeader;
         }
 
         public void ProcessSlotForLightClientStore(LightClientStore store, Slot currentSlot)

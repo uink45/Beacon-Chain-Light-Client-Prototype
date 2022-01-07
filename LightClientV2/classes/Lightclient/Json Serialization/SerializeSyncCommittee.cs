@@ -20,13 +20,13 @@ namespace LightClientV2
             Contents = JsonConvert.DeserializeObject<SyncCommitteeObject.Root>(text);
         }
 
-        public LightClientUpdate InitializeSnapshot()
+        public LightClientSnapshot InitializeSnapshot()
         {
-            LightClientUpdate update = new LightClientUpdate();
-            update.AttestedHeader = CreateHeader(Contents.data.header);
-            update.NextSyncCommittee = CreateNextSyncCommittee(Contents.data.pubkeys, Contents.data.aggregate_pubkey);
-            update.NextSyncCommitteeBranch = CreateNextSyncCommitteeBranch(Contents.data.current_sync_committee_branch);
-            return update;
+            LightClientSnapshot snapshot = new LightClientSnapshot();
+            snapshot.FinalizedHeader = CreateHeader(Contents.data.header);
+            snapshot.CurrentSyncCommittee = CreateSyncCommittee(Contents.data.current_sync_committee_pubkeys, Contents.data.current_sync_committee_aggregate_pubkey);
+            snapshot.CurrentSyncCommitteeBranch = CreateSyncCommitteeBranch(Contents.data.current_sync_committee_branch);
+            return snapshot;
         }
 
         public BeaconBlockHeader CreateHeader(SyncCommitteeObject.Header header)
@@ -40,7 +40,7 @@ namespace LightClientV2
                 );
         }
 
-        public SyncCommittee CreateNextSyncCommittee(List<string> publicKeys, string aggregatePublicKey)
+        public SyncCommittee CreateSyncCommittee(List<string> publicKeys, string aggregatePublicKey)
         {
             return new SyncCommittee(CreateBlsPublicKeys(publicKeys), Utility.ConvertStringToBlsPubKey(aggregatePublicKey));
         }
@@ -55,7 +55,7 @@ namespace LightClientV2
             return publicKeys;
         }
 
-        private Root[] CreateNextSyncCommitteeBranch(List<string> next_sync_committee_branch)
+        private Root[] CreateSyncCommitteeBranch(List<string> next_sync_committee_branch)
         {
             Root[] branches = new Root[next_sync_committee_branch.Count];
             for (int i = 0; i < next_sync_committee_branch.Count; i++)

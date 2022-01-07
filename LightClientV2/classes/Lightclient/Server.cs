@@ -22,7 +22,7 @@ namespace LightClientV2
 
         }
 
-        public async Task<LightClientUpdate> FetchFinalizedSnapshot()
+        public async Task<LightClientSnapshot> FetchFinalizedSnapshot()
         {
             string url = "http://127.0.0.1:9596/eth/v1/beacon/states/finalized/sync_committees";
             try

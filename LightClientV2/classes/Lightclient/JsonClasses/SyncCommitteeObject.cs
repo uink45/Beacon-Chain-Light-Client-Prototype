@@ -8,7 +8,7 @@ namespace LightClientV2
 {
     public class SyncCommitteeObject
     {
-        //// Root myDeserializedClass = JsonConvert.DeserializeObject<SyncCommitteeObject.Root>(myJsonResponse); 
+        //// Root myDeserializedClass = JsonConvert.DeserializeObject<SyncCommitteeObject.Root>(myJsonResponse);  
 
         public class Header
         {
@@ -22,9 +22,12 @@ namespace LightClientV2
         public class Data
         {
             public Header header { get; set; }
-            public List<string> pubkeys { get; set; }
-            public string aggregate_pubkey { get; set; }
+            public List<string> current_sync_committee_pubkeys { get; set; }
+            public string current_sync_committee_aggregate_pubkey { get; set; }
             public List<string> current_sync_committee_branch { get; set; }
+            public List<string> next_sync_committee_pubkeys { get; set; }
+            public string next_sync_committee_aggregate_pubkey { get; set; }
+            public List<string> next_sync_committee_branch { get; set; }
         }
 
         public class Root

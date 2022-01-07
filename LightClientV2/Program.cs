@@ -37,17 +37,17 @@ namespace LightClientV2
         {
             Console.Clear();
             Console.WriteLine("Initiailizing From Finality Checkpoint Root...");
-            LightClientUpdate snapshot = await Server.FetchFinalizedSnapshot();
+            LightClientSnapshot snapshot = await Server.FetchFinalizedSnapshot();
             Client.ValidateCheckpoint(snapshot);
             Console.WriteLine("\nSuccessfully Initialized!");
             Console.WriteLine("\nCheckpoint Header");
             Console.WriteLine("======================");
-            Console.WriteLine("Slot - " + Client.storage.BestValidUpdate.AttestedHeader.Slot.ToString());
-            Console.WriteLine("Validator Index - " + Client.storage.BestValidUpdate.AttestedHeader.ValidatorIndex.ToString());
-            Console.WriteLine("Block Root - " + Client.storage.BestValidUpdate.AttestedHeader.HashTreeRoot().ToString());
-            Console.WriteLine("Parent Root - " + Client.storage.BestValidUpdate.AttestedHeader.ParentRoot.ToString());
-            Console.WriteLine("State Root - " + Client.storage.BestValidUpdate.AttestedHeader.StateRoot.ToString());
-            Console.WriteLine("Body Root - " + Client.storage.BestValidUpdate.AttestedHeader.BodyRoot.ToString());
+            Console.WriteLine("Slot - " + Client.storage.FinalizedHeader.Slot.ToString());
+            Console.WriteLine("Validator Index - " + Client.storage.FinalizedHeader.ValidatorIndex.ToString());
+            Console.WriteLine("Block Root - " + Client.storage.FinalizedHeader.HashTreeRoot().ToString());
+            Console.WriteLine("Parent Root - " + Client.storage.FinalizedHeader.ParentRoot.ToString());
+            Console.WriteLine("State Root - " + Client.storage.FinalizedHeader.StateRoot.ToString());
+            Console.WriteLine("Body Root - " + Client.storage.FinalizedHeader.BodyRoot.ToString());
         }
 
         public static async Task FetchUpdates()
