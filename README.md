@@ -14,7 +14,7 @@ To initialize and sync with the beacon chain, the light client requires a local 
 ### Installation & Running
 ```
 git clone https://github.com/uink45/Beacon-Chain-Light-Client-Prototype.git
-cd Beacon-Chain-Light-Client-Prototype/LightClientV2
+cd Beacon-Chain-Light-Client-Prototype
 dotnet build
 dotnet run
 ```
