@@ -36,7 +36,7 @@ namespace LightClientV2
         public static async Task InitializeLightClient()
         {
             Console.Clear();
-            Console.WriteLine("Initiailizing From Trusted Snapshot...");
+            Console.WriteLine("Initiailizing From Finality Checkpoint Root...");
             LightClientSnapshot snapshot = await Server.FetchFinalizedSnapshot();
             Client.ValidateCheckpoint(snapshot);
             Console.WriteLine("\nSuccessfully Initialized!");
