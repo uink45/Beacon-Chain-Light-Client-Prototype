@@ -9,7 +9,7 @@ Currently, the prototype can track the latest block header in the beacon chain. 
 - .NET Core 5.0 or greater ([Latest version available here](https://dotnet.microsoft.com/en-us/download))
 
 ### Before Running
-To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar), created by the [Chainsafe](https://github.com/ChainSafe) team. In the [Light-Client-Server](https://github.com/uink45/Light-Client-Server) repository, follow the instructions in the [README](https://github.com/uink45/Light-Client-Server/blob/main/README.md) file to start the server. After it has subscribed to gossip core topics and synced, follow the installation and running commands below to initialize the light client.
+To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar), created by the [Chainsafe](https://github.com/ChainSafe) team. In the [Light-Client-Server](https://github.com/uink45/Light-Client-Server) repository, follow the instructions in the [README](https://github.com/uink45/Light-Client-Server/blob/main/README.md) file to start the server. After it has subscribed to gossip core topics and reached `Synced` status, follow the installation and running commands below to initialize the light client.
 
 ### Installation & Running
 ```
