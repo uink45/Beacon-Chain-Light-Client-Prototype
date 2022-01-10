@@ -57,12 +57,12 @@ namespace LightClientV2
             {
                 try
                 {
+                    await Task.Delay(11900);
                     LightClientUpdate update = await Server.FetchHeader();
                     if (update != null)
                     {
                         Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
                         Client.ReadStorage();
-                        await Task.Delay(11900);
                     }
                 }
                 catch (Exception ex)
