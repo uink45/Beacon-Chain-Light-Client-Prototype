@@ -11,28 +11,29 @@ namespace LightClientV2
     public class Server
     {
         private HttpClient client;
-        public static SerializeHeaderUpdate SerializeHeaderUpdate;
-        public static SerializeSyncCommittee Sync;
+        public SerializeHeaderUpdate HeaderUpdate;
+        public SerializeSyncCommittee SyncSnapshot;
+        public SerializeHeader Header;
 
         public Server()
         {
             client = new HttpClient();
-            SerializeHeaderUpdate = new SerializeHeaderUpdate();
-            Sync = new SerializeSyncCommittee();
-
+            HeaderUpdate = new SerializeHeaderUpdate();
+            SyncSnapshot = new SerializeSyncCommittee();
+            Header = new SerializeHeader();
         }
 
         public async Task<LightClientSnapshot> FetchFinalizedSnapshot()
         {
-            string url = "http://127.0.0.1:9596/eth/v1/beacon/states/finalized/sync_committees";
+            string url = "http://127.0.0.1:9596/eth/v1/lightclient/finalized/snapshot";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string result = await response.Content.ReadAsStringAsync();
-            
-                Sync.SerializeData(result);
-                return Sync.InitializeSnapshot();
+
+                SyncSnapshot.SerializeData(result);
+                return SyncSnapshot.InitializeSnapshot();
             }
             catch (HttpRequestException e)
             {
@@ -42,19 +43,17 @@ namespace LightClientV2
             return null;
         }
 
-        public async Task<string> FetchValidators()
+        public async Task<LightClientUpdate> FetchHeader()
         {
-            string url = "http://127.0.0.1:9596/eth/v1/lightclient/snapshot/";
-            // Call asynchronous network methods in a try/catch block to handle exceptions.
+            string url = "http://127.0.0.1:9596/eth/v1/lightclient/head/header";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                // Above three lines can be replaced with new helper method below
-                // string responseBody = await client.GetStringAsync(uri);
+                string result = await response.Content.ReadAsStringAsync();
 
-                return responseBody;
+                Header.SerializeData(result);
+                return Header.InitializeHeader();
             }
             catch (HttpRequestException e)
             {
@@ -64,36 +63,23 @@ namespace LightClientV2
             return null;
         }
 
-        
-
-        public static LightClientUpdate SerializeContent(List<string> contents)
+        public async Task<LightClientUpdate> FetchLightClientUpdate()
         {
+            string url = "http://127.0.0.1:9596/eth/v1/lightclient/head/header_update";
             try
             {
-                if (contents != null)
-                {
-                    if (contents[0] != null)
-                    {
-                        LightClientUpdate update = new LightClientUpdate();
-                        string syncBits = JObject.Parse(contents[0])["data"]["message"]["body"]["sync_aggregate"]["sync_committee_bits"].ToString();
-                        string signature = JObject.Parse(contents[0])["data"]["message"]["body"]["sync_aggregate"]["sync_committee_signature"].ToString();
-                        update.SyncAggregate = SerializeHeaderUpdate.CreateSyncAggregate(syncBits, signature);
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string result = await response.Content.ReadAsStringAsync();
 
-                        string slot = JObject.Parse(contents[0])["data"]["message"]["slot"].ToString();
-                        string index = JObject.Parse(contents[0])["data"]["message"]["proposer_index"].ToString();
-                        string parentRoot = JObject.Parse(contents[0])["data"]["message"]["parent_root"].ToString();
-                        string stateRoot = JObject.Parse(contents[0])["data"]["message"]["state_root"].ToString();
-                        update.AttestedHeader = SerializeHeaderUpdate.CreateBeaconBlockHeader(slot, index, parentRoot, stateRoot, stateRoot);
-                        update.ForkVersion = SerializeHeaderUpdate.Utility.ConvertStringToForkVersion("0x01000000");
-                        return update;
-                    }
-                }
+                HeaderUpdate.SerializeData(result);
+                return HeaderUpdate.InitializeHeaderUpdate();
             }
-            catch
+            catch (HttpRequestException e)
             {
-                throw new Exception("\nError retrieving information from the requested API.");
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
             }
-            
             return null;
         }
     }   

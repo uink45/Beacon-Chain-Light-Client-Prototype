@@ -74,10 +74,5 @@ namespace LightClientV2
             return JsonConvert.DeserializeObject<Snapshot.Root>(text);
         }
 
-        public BeaconBlockHeaderObject.Root ParseBeaconBlockHeaderUpdate(string text)
-        {
-            return JsonConvert.DeserializeObject<BeaconBlockHeaderObject.Root>(text);
-        }
-
     }
 }

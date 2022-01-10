@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using Nethermind.Core2.Containers;
 using Nethermind.Core2.Types;
 using Newtonsoft.Json;
@@ -7,16 +7,36 @@ namespace LightClientV2
     public class SerializeHeaderUpdate
     {
         public LightClientUtility Utility;
-        public BeaconBlockHeaderObject.Root Contents;
+        public AltairBlock.Root Contents;
 
         public SerializeHeaderUpdate()
         {
             Utility = new LightClientUtility();
         }
 
-        public BeaconBlockHeaderObject.Root ParseBeaconBlockHeaderUpdate(string text)
+        public void SerializeData(string text)
         {
-            return JsonConvert.DeserializeObject<BeaconBlockHeaderObject.Root>(text);
+            Contents = JsonConvert.DeserializeObject<AltairBlock.Root>(text);
+        }
+
+        public LightClientUpdate InitializeHeaderUpdate()
+        {
+            LightClientUpdate update = new LightClientUpdate();
+            update.AttestedHeader = CreateHeader(Contents.data);
+            update.SyncAggregate = CreateSyncAggregate(Contents.data.message.body.sync_aggregate.sync_committee_bits, Contents.data.message.body.sync_aggregate.sync_committee_signature);
+            update.ForkVersion = Utility.ConvertStringToForkVersion("0x01000000");
+            return update;
+        }
+
+        public BeaconBlockHeader CreateHeader(AltairBlock.Data data)
+        {
+            return new BeaconBlockHeader(
+                new Slot(ulong.Parse(data.message.slot)),
+                new ValidatorIndex(ulong.Parse(data.message.proposer_index)),
+                Utility.ConvertHexStringToRoot(data.message.parent_root),
+                Utility.ConvertHexStringToRoot(data.message.state_root),
+                Utility.ConvertHexStringToRoot(data.beacon_block_root)
+                );
         }
 
         public SyncAggregate CreateSyncAggregate(string syncBits, string syncCommitteeSignature)
@@ -24,14 +44,6 @@ namespace LightClientV2
             return new SyncAggregate(Utility.StringToBitArray(syncBits), Utility.ConvertStringToBlsSignature(syncCommitteeSignature));
         }
 
-        public BeaconBlockHeader CreateBeaconBlockHeader(string slot, string validatorIndex, string parentRoot, string stateRoot, string bodyRoot)
-        {
-            return new BeaconBlockHeader(
-                new Slot(ulong.Parse(slot)),
-                new ValidatorIndex(ulong.Parse(validatorIndex)),
-                Utility.ConvertHexStringToRoot(parentRoot),
-                Utility.ConvertHexStringToRoot(stateRoot),
-                Utility.ConvertHexStringToRoot(bodyRoot));
-        }
+        
     }
 }

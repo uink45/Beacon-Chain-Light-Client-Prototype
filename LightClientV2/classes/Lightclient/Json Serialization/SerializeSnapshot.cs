@@ -16,9 +16,9 @@ namespace LightClientV2
             Utility = new LightClientUtility();
         }
 
-        public Snapshot.Root ParseSnapshot(string text)
+        public void ParseSnapshot(string text)
         {
-            return JsonConvert.DeserializeObject<Snapshot.Root>(text);
+            Contents = JsonConvert.DeserializeObject<Snapshot.Root>(text);
         }
 
         public LightClientUpdate InitializeSnapshot()

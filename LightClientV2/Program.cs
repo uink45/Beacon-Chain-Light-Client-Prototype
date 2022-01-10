@@ -53,27 +53,16 @@ namespace LightClientV2
         public static async Task FetchUpdates()
         {
             Console.WriteLine("\nStarted Tracking Header...");
-            HttpClient client = new HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(180);
-            string url = $"http://127.0.0.1:9596/eth/v2/beacon/blocks/head";
             while (true)
             {
                 try
                 {
-                    List<string> contents = new List<string>();
-                    string content = string.Empty;
-                    using (var streamReader = new StreamReader(await client.GetStreamAsync(url)))
-                    {
-                        content = streamReader.ReadToEnd();
-                    }
-                    contents.Add(content);
-                    
-                    LightClientUpdate update = Server.SerializeContent(contents);
-                    await Task.Delay(11900);
+                    LightClientUpdate update = await Server.FetchHeader();
                     if (update != null)
                     {
                         Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
                         Client.ReadStorage();
+                        await Task.Delay(11900);
                     }
                 }
                 catch (Exception ex)

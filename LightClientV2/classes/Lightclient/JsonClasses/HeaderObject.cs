@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LightClientV2
 {
-    public class SyncCommitteeObject
+    public class HeaderObject
     {
-        public class Header
+        public class AttestedHeader
         {
             public string slot { get; set; }
             public string proposer_index { get; set; }
@@ -17,15 +17,17 @@ namespace LightClientV2
             public string body_root { get; set; }
         }
 
+        public class SyncAggregate
+        {
+            public string sync_committee_bits { get; set; }
+            public string sync_committee_signature { get; set; }
+        }
+
         public class Data
         {
-            public Header header { get; set; }
-            public List<string> current_sync_committee_pubkeys { get; set; }
-            public string current_sync_committee_aggregate_pubkey { get; set; }
-            public List<string> current_sync_committee_branch { get; set; }
-            public List<string> next_sync_committee_pubkeys { get; set; }
-            public string next_sync_committee_aggregate_pubkey { get; set; }
-            public List<string> next_sync_committee_branch { get; set; }
+            public AttestedHeader attested_header { get; set; }
+            public SyncAggregate sync_aggregate { get; set; }
+            public string fork_version { get; set; }
         }
 
         public class Root
