@@ -26,18 +26,18 @@ namespace LightClientV2
             LightClientUpdate update = new LightClientUpdate();
             update.AttestedHeader = CreateHeader(Contents.data);
             update.SyncAggregate = CreateSyncAggregate(Contents.data.sync_aggregate.sync_committee_bits, Contents.data.sync_aggregate.sync_committee_signature);
-            update.ForkVersion = Utility.ConvertStringToForkVersion(Contents.data.fork_version);
+            update.ForkVersion = Utility.ConvertStringToForkVersion("0x01000000");
             return update;
         }
 
         public BeaconBlockHeader CreateHeader(HeaderObject.Data data)
         {
             return new BeaconBlockHeader(
-                new Slot(ulong.Parse(data.attested_header.slot)),
-                new ValidatorIndex(ulong.Parse(data.attested_header.proposer_index)),
-                Utility.ConvertHexStringToRoot(data.attested_header.parent_root),
-                Utility.ConvertHexStringToRoot(data.attested_header.state_root),
-                Utility.ConvertHexStringToRoot(data.attested_header.body_root)
+                new Slot(ulong.Parse(data.header.slot)),
+                new ValidatorIndex(ulong.Parse(data.header.proposer_index)),
+                Utility.ConvertHexStringToRoot(data.header.parent_root),
+                Utility.ConvertHexStringToRoot(data.header.state_root),
+                Utility.ConvertHexStringToRoot(data.header.body_root)
                 );
         }
 

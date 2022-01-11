@@ -8,7 +8,13 @@ namespace LightClientV2
 {
     public class HeaderObject
     {
-        public class AttestedHeader
+        public class SyncAggregate
+        {
+            public string sync_committee_bits { get; set; }
+            public string sync_committee_signature { get; set; }
+        }
+
+        public class Header
         {
             public string slot { get; set; }
             public string proposer_index { get; set; }
@@ -17,17 +23,10 @@ namespace LightClientV2
             public string body_root { get; set; }
         }
 
-        public class SyncAggregate
-        {
-            public string sync_committee_bits { get; set; }
-            public string sync_committee_signature { get; set; }
-        }
-
         public class Data
         {
-            public AttestedHeader attested_header { get; set; }
             public SyncAggregate sync_aggregate { get; set; }
-            public string fork_version { get; set; }
+            public Header header { get; set; }
         }
 
         public class Root

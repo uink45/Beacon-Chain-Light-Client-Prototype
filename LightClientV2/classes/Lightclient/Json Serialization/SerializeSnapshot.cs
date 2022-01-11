@@ -16,18 +16,18 @@ namespace LightClientV2
             Utility = new LightClientUtility();
         }
 
-        public void ParseSnapshot(string text)
+        public void SerializeData(string text)
         {
             Contents = JsonConvert.DeserializeObject<Snapshot.Root>(text);
         }
 
-        public LightClientUpdate InitializeSnapshot()
+        public LightClientSnapshot InitializeSnapshot()
         {
-            LightClientUpdate update = new LightClientUpdate();
-            update.AttestedHeader = CreateHeader(Contents.data[0].header);
-            update.NextSyncCommittee = CreateNextSyncCommittee(Contents.data[0].current_sync_committee);
-            update.NextSyncCommitteeBranch = CreateNextSyncCommitteeBranch(Contents.data[0].current_sync_committee_branch);
-            return update;
+            LightClientSnapshot snapshot = new LightClientSnapshot();
+            snapshot.FinalizedHeader = CreateHeader(Contents.data.header);
+            snapshot.CurrentSyncCommittee = CreateNextSyncCommittee(Contents.data.current_sync_committee);
+            snapshot.CurrentSyncCommitteeBranch = CreateNextSyncCommitteeBranch(Contents.data.current_sync_committee_branch);
+            return snapshot;
         }
 
         public BeaconBlockHeader CreateHeader(Snapshot.Header header)

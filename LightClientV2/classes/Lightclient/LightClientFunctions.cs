@@ -127,7 +127,7 @@ namespace LightClientV2
             }
             else
             {
-                signingRoot = utility.ComputeSigningRoot(update.AttestedHeader.ParentRoot, domain); 
+                signingRoot = utility.ComputeSigningRoot(update.AttestedHeader.HashTreeRoot(), domain); 
             }
 
             var Valid = utility.Crypto.BlsVerify(aggregatePublicKey, signingRoot, syncAggregate.SyncCommitteeSignature);

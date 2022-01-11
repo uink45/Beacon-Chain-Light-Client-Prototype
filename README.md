@@ -3,13 +3,18 @@
 This is a C# implementation of the [Altair Minimal Light Client Specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/sync-protocol.md). 
 
 ### Functionality
-Currently, the prototype can track the latest block header in the beacon chain. It achieves this by initializing from a trusted snapshot to know the current sync committee. The snapshot is verified by checking whether the current sync committee branch is valid. It then trustlessly verifies the upcoming block headers by checking if the sync committee signature is valid and that enough validators had signed. 
+Currently, the prototype can track the latest block header in the beacon chain. It achieves this by initializing from a trusted snapshot to know the current sync committee. The snapshot is verified by checking whether the current sync committee branch is valid. It then trustlessly verifies the upcoming block headers by checking if the sync committee signature is valid and enough validators had signed. 
 
 ### Requirements
 - .NET Core 5.0 or greater ([Latest version available here](https://dotnet.microsoft.com/en-us/download))
 
 ### Before Running
-To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. This server is a modified version of the [Lodestar Beacon Chain Client](https://github.com/ChainSafe/lodestar), created by the [Chainsafe](https://github.com/ChainSafe) team. In the [Light-Client-Server](https://github.com/uink45/Light-Client-Server) repository, follow the instructions in the [README](https://github.com/uink45/Light-Client-Server/blob/main/README.md) file to start the server. After it has subscribed to gossip core topics and reached `Synced` status, follow the installation and running commands below to initialize the light client.
+To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. The server is the [Lodestar Beacon-chain client](https://github.com/ChainSafe/lodestar), created by the [Chainsafe](https://github.com/ChainSafe) team. Its installation and building instructions are available  in their [documentation](https://chainsafe.github.io/lodestar/installation/). When successfully installed and built, run it using the following command:
+```
+node --trace-deprecation --max-old-space-size=6144 packages/cli/bin/lodestar beacon --eth1.enabled false --network mainnet --weakSubjectivityServerUrl https://21qajKWbOdMuXWCCPEbxW1bVPrp:5e43bc9d09711d4f34b55077cdb3380a@eth2-beacon-mainnet.infura.io --weakSubjectivitySyncLatest true --api.rest.api "*"
+```
+
+After it has subscribed to gossip core topics and reached `Synced` status, follow the commands below to initialize the light client.
 
 ### Installation & Running
 ```
@@ -19,5 +24,10 @@ dotnet build
 dotnet run
 ```
 
-### Known Issues
-- When running the light client, sometimes it will display an error message `Error: Slot to process should be greater than current slot`. The light client will continue to function after this error, as it will re-submit the query to fetch a block with the latest slot.
+### Troubleshooting
+#### Light client
+- `Error: Slot to process should be greater than current slot`: This error occurs when the light client receives an older block from the server. It will continue to function, as it will re-submit the query to fetch a more recent block.
+
+#### Lodestar Beacon-chain client
+- If the beacon-chain client is initialized from a weak subjectivity checkpoint, it will start displayng the error message `error: Error onSyncAggregate message=finalityHeader not available` multiple times. This is because the according block has not downloaded in the DB. After the client has subscribed to gossip core topics and `Synced`, this will not occur anymore.
+- Recently, a new feature was implemented in the beacon chain client, known as backfill syncing. It is currently in early stages and will also display error messages. These errors can be ignored for now as the client will continue to function.

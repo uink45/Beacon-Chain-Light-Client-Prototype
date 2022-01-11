@@ -16,7 +16,8 @@ namespace LightClientV2
         public static LightClientFunctions Client;
         public static LightClientUtility Utility;
         public static LocalClock Clock;
-        public static Server Server; 
+        public static Server Server;
+        public static bool SyncCommitteeUpdated;
 
         public static void InitializeObjects()
         {
@@ -24,6 +25,7 @@ namespace LightClientV2
             Utility = new LightClientUtility();
             Clock = new LocalClock();
             Server = new Server();
+            SyncCommitteeUpdated = false;
         }
 
         public static async Task Main(string[] args)
@@ -36,7 +38,7 @@ namespace LightClientV2
         public static async Task InitializeLightClient()
         {
             Console.Clear();
-            Console.WriteLine("Initiailizing From Trusted Snapshot...");
+            Console.WriteLine("Initializing From Trusted Snapshot...");
             LightClientSnapshot snapshot = await Server.FetchFinalizedSnapshot();
             Client.ValidateCheckpoint(snapshot);
             Console.WriteLine("\nSuccessfully Initialized!");
@@ -64,12 +66,30 @@ namespace LightClientV2
                         Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
                         Client.ReadStorage();
                     }
+                    //if ((ulong)Clock.EpochsInPeriod() == 255 & SyncCommitteeUpdated == false)
+                    //{
+                    //    LightClientUpdate update = await Server.FetchLightClientUpdate();
+                    //    if (update != null)
+                    //    {
+                    //        Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
+                    //        Client.ReadStorage();
+                    //        SyncCommitteeUpdated = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if ((ulong)Clock.EpochsInPeriod() == 1 & SyncCommitteeUpdated == true)
+                    //    {
+                    //        SyncCommitteeUpdated = false;
+                    //    }
+                    //}
                 }
                 catch (Exception ex)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"\nError: {ex.Message}");
                 }
+
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
