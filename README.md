@@ -30,4 +30,4 @@ dotnet run
 
 #### Lodestar Beacon-chain client
 - If the beacon-chain client is initialized from a weak subjectivity checkpoint, it will start displayng the error message `error: Error onSyncAggregate message=finalityHeader not available` multiple times. This is because the according block has not downloaded in the DB. After the client has subscribed to gossip core topics and `Synced`, this will not occur anymore.
-- Recently, a new feature was implemented in the beacon chain client, known as backfill syncing. These errors can be ignored as the client will continue to function.
+- Recently, a new feature was implemented in the beacon chain client, known as backfill syncing, which will also start displaying errors. These can be ignored as the client will continue to function.
