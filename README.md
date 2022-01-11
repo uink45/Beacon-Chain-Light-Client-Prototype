@@ -29,5 +29,5 @@ dotnet run
 - `Error: Slot to process should be greater than current slot`: This error occurs when the light client receives an older block from the server. It will continue to function, as it will re-submit the query to fetch a more recent block.
 
 #### Lodestar Beacon-chain client
-- If the beacon-chain client is initialized from a weak subjectivity checkpoint, it will start displayng the error message `error: Error onSyncAggregate message=finalityHeader not available` multiple times. This is because the according block has not downloaded in the DB. After the client has subscribed to gossip core topics and `Synced`, this will not occur anymore.
+- If the beacon-chain client is initialized from a weak subjectivity checkpoint, it may start displayng the error message `error: Error onSyncAggregate message=finalityHeader not available` multiple times. This is because the according block has not downloaded in the DB. After the client has subscribed to gossip core topics and `Synced`, this will not occur anymore.
 - Recently, a new feature was implemented in the beacon chain client, known as backfill syncing, which will also start displaying errors. These can be ignored as the client will continue to function.
