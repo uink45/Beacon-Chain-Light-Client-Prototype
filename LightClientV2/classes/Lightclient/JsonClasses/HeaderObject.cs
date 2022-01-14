@@ -14,7 +14,7 @@ namespace LightClientV2
             public string sync_committee_signature { get; set; }
         }
 
-        public class Header
+        public class AttestedHeader
         {
             public string slot { get; set; }
             public string proposer_index { get; set; }
@@ -26,7 +26,7 @@ namespace LightClientV2
         public class Data
         {
             public SyncAggregate sync_aggregate { get; set; }
-            public Header header { get; set; }
+            public AttestedHeader attested_header { get; set; }
         }
 
         public class Root

@@ -33,11 +33,11 @@ namespace LightClientV2
         public BeaconBlockHeader CreateHeader(HeaderObject.Data data)
         {
             return new BeaconBlockHeader(
-                new Slot(ulong.Parse(data.header.slot)),
-                new ValidatorIndex(ulong.Parse(data.header.proposer_index)),
-                Utility.ConvertHexStringToRoot(data.header.parent_root),
-                Utility.ConvertHexStringToRoot(data.header.state_root),
-                Utility.ConvertHexStringToRoot(data.header.body_root)
+                new Slot(ulong.Parse(data.attested_header.slot)),
+                new ValidatorIndex(ulong.Parse(data.attested_header.proposer_index)),
+                Utility.ConvertHexStringToRoot(data.attested_header.parent_root),
+                Utility.ConvertHexStringToRoot(data.attested_header.state_root),
+                Utility.ConvertHexStringToRoot(data.attested_header.body_root)
                 );
         }
 

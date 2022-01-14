@@ -8,28 +8,35 @@ namespace LightClientV2
         private readonly ulong GenesisTime;
         private readonly ulong SlotsPerEpoch;
         private readonly ulong EpochsPerSyncCommitteePeriod;
+        private readonly ulong AltairForkEpoch;
 
         public LocalClock()
         {
             GenesisTime = 1606824023;
             SlotsPerEpoch = 32;
             EpochsPerSyncCommitteePeriod = 256;
+            AltairForkEpoch = 74260;
         }
-        public Slot GetCurrentSlot()
+        public Slot CurrentSlot()
         {
             ulong timePassed = (ulong)DateTime.Now.Subtract(DateTime.MinValue.AddYears(1969)).TotalMilliseconds;
             ulong diffInSeconds = (timePassed / 1000) - GenesisTime;
             return new Slot(((ulong)Math.Floor((decimal)(diffInSeconds / 12))) - 3000);
         }
 
-        public Epoch GetCurrentEpoch()
+        public Epoch CurrentEpoch()
         {
-            return new Epoch((ulong)GetCurrentSlot() / SlotsPerEpoch);
+            return new Epoch(CurrentSlot() / SlotsPerEpoch);
         }
 
         public Epoch EpochsInPeriod()
         {
-            return new Epoch((ulong)GetCurrentEpoch() % EpochsPerSyncCommitteePeriod);
+            return new Epoch(CurrentEpoch() % EpochsPerSyncCommitteePeriod);
+        }
+
+        public ulong ComputeSyncPeriodAtEpoch()
+        {
+            return (ulong)((Math.Abs((decimal)(CurrentEpoch() - AltairForkEpoch)) / EpochsPerSyncCommitteePeriod));
         }
     }
 }

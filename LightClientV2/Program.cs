@@ -17,7 +17,7 @@ namespace LightClientV2
         public static LightClientUtility Utility;
         public static LocalClock Clock;
         public static Server Server;
-        public static bool SyncCommitteeUpdated;
+        public static bool NextSyncCommitteeReady;
 
         public static void InitializeObjects()
         {
@@ -25,12 +25,13 @@ namespace LightClientV2
             Utility = new LightClientUtility();
             Clock = new LocalClock();
             Server = new Server();
-            SyncCommitteeUpdated = false;
+            NextSyncCommitteeReady = false;
         }
 
         public static async Task Main(string[] args)
         {
             InitializeObjects();
+            CheckSyncPeriod();
             await InitializeLightClient();
             await FetchUpdates();
         }
@@ -59,30 +60,25 @@ namespace LightClientV2
             {
                 try
                 {
-                    await Task.Delay(11900);
-                    LightClientUpdate update = await Server.FetchHeader();
-                    if (update != null)
+                    await Task.Delay(11900);                   
+                    if (NextSyncCommitteeReady & CheckSyncPeriod())
                     {
-                        Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
-                        Client.ReadStorage();
+                        LightClientUpdate update = await Server.FetchLightClientUpdate();
+                        if (update != null)
+                        {
+                            Client.ProcessLightClientUpdate(Client.storage, update, Clock.CurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
+                            Client.ReadStorage();
+                        }
                     }
-                    //if ((ulong)Clock.EpochsInPeriod() == 255 & SyncCommitteeUpdated == false)
-                    //{
-                    //    LightClientUpdate update = await Server.FetchLightClientUpdate();
-                    //    if (update != null)
-                    //    {
-                    //        Client.ProcessLightClientUpdate(Client.storage, update, Clock.GetCurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
-                    //        Client.ReadStorage();
-                    //        SyncCommitteeUpdated = true;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if ((ulong)Clock.EpochsInPeriod() == 1 & SyncCommitteeUpdated == true)
-                    //    {
-                    //        SyncCommitteeUpdated = false;
-                    //    }
-                    //}
+                    else
+                    {
+                        LightClientUpdate update = await Server.FetchHeader();
+                        if (update != null)
+                        {
+                            Client.ProcessLightClientUpdate(Client.storage, update, Clock.CurrentSlot(), Utility.ConvertHexStringToRoot("0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95"));
+                            Client.ReadStorage();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -92,6 +88,20 @@ namespace LightClientV2
 
                 Console.ForegroundColor = ConsoleColor.White;
             }
+        }
+
+        public static bool CheckSyncPeriod()
+        {
+            if (Clock.EpochsInPeriod() == 255 & !NextSyncCommitteeReady)
+            {
+                NextSyncCommitteeReady = true;
+                return true;
+            }
+            else if(Clock.EpochsInPeriod() > 255 & NextSyncCommitteeReady)
+            {
+                NextSyncCommitteeReady = false;
+            }
+            return false;
         }
     }
 }
