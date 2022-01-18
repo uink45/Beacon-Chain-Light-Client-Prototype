@@ -38,5 +38,10 @@ namespace LightClientV2
         {
             return (ulong)((Math.Abs((decimal)(CurrentEpoch() - AltairForkEpoch)) / EpochsPerSyncCommitteePeriod));
         }
+
+        public ulong SyncPeriodAtEpoch()
+        {
+            return (ulong)(CurrentEpoch() / EpochsPerSyncCommitteePeriod);
+        }
     }
 }

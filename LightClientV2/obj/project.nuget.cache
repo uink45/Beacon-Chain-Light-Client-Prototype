@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rhYbqJJKjElLN6lvkCF5pwnjimLzW059DRjFC04yNvPcu42RfMamtkmmz0O4I63FeGFdhye110Ep2wNujAZedA==",
+  "dgSpecHash": "H06p1AOvaIkQdW6nJ1cvuSFyqB2wMobmypiWtu+lr2aVYZ7whE6qPVsGBXQrlG9B4h85/h1cSocgkw1l7kZkCg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Networking\\Typescript Implementation Networking\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
+  "projectFilePath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

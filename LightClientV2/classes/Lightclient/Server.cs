@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.IO;
-using Nethermind.Core2.Crypto;
 using Newtonsoft.Json.Linq;
 
 namespace LightClientV2
@@ -11,21 +8,25 @@ namespace LightClientV2
     public class Server
     {
         private HttpClient client;
-        public SerializeHeaderUpdate HeaderUpdate;
-        public SerializeSnapshot SyncSnapshot;
-        public SerializeHeader Header;
+        private SerializeLightClientUpdate headerUpdate;
+        private SerializeSnapshot syncSnapshot;
+        private SerializeHeader header;
+        private Logging logs;
 
         public Server()
         {
             client = new HttpClient();
-            HeaderUpdate = new SerializeHeaderUpdate();
-            SyncSnapshot = new SerializeSnapshot();
-            Header = new SerializeHeader();
+            headerUpdate = new SerializeLightClientUpdate();
+            syncSnapshot = new SerializeSnapshot();
+            header = new SerializeHeader();
+            logs = new Logging();
         }
+
 
         public async Task<string> FetchCheckpointRoot()
         {
             string url = "http://127.0.0.1:9596/eth/v1/beacon/states/head/finality_checkpoints";
+            logs.SelectLogsType("Info", 0, url.Remove(22, 46));
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -33,30 +34,30 @@ namespace LightClientV2
                 string result = await response.Content.ReadAsStringAsync();
                 return JObject.Parse(result)["data"]["finalized"]["root"].ToString();
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message: {0} ", e.Message);
+                logs.SelectLogsType("Error", 0, e.Message);
+                await Task.Delay(15000);
             }
             return null;
         }
  
-        public async Task<LightClientSnapshot> FetchFinalizedSnapshot()
+        public async Task<LightClientSnapshot> FetchFinalizedSnapshot(string checkpointRoot)
         {
-            string url = "http://127.0.0.1:9596/eth/v1/lightclient/snapshot/" + await FetchCheckpointRoot();
+            string url = "http://127.0.0.1:9596/eth/v1/lightclient/snapshot/" + checkpointRoot;
+            logs.SelectLogsType("Info", 1, checkpointRoot);
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string result = await response.Content.ReadAsStringAsync();
-
-                SyncSnapshot.SerializeData(result);
-                return SyncSnapshot.InitializeSnapshot();
+                syncSnapshot.SerializeData(result);
+                return syncSnapshot.InitializeSnapshot();
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                logs.SelectLogsType("Error", 0, e.Message);
+                await Task.Delay(10000);
             }
             return null;
         }
@@ -70,33 +71,31 @@ namespace LightClientV2
                 response.EnsureSuccessStatusCode();
                 string result = await response.Content.ReadAsStringAsync();
 
-                Header.SerializeData(result);
-                return Header.InitializeHeader();
+                header.SerializeData(result);
+                return header.InitializeHeader();
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                logs.SelectLogsType("Error", 0, e.Message);
             }
             return null;
         }
 
-        public async Task<LightClientUpdate> FetchLightClientUpdate()
+        public async Task<LightClientUpdate> FetchLightClientUpdate(string syncPeriod)
         {
-            string url = "http://127.0.0.1:9596/eth/v1/lightclient/head/header_update";
+            string url = "http://127.0.0.1:9596/eth/v1/lightclient/committee_updates?from=" + syncPeriod + "&to=" + syncPeriod;
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string result = await response.Content.ReadAsStringAsync();
 
-                HeaderUpdate.SerializeData(result);
-                return HeaderUpdate.InitializeHeaderUpdate();
+                headerUpdate.SerializeData(result);
+                return headerUpdate.InitializeLightClientUpdate();
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                logs.SelectLogsType("Error", 0, e.Message);
             }
             return null;
         }

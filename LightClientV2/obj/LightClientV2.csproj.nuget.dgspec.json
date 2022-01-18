@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Networking\\Typescript Implementation Networking\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj": {}
+    "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Networking\\Typescript Implementation Networking\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj": {
+    "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Networking\\Typescript Implementation Networking\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
+        "projectUniqueName": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
         "projectName": "LightClientV2",
-        "projectPath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Networking\\Typescript Implementation Networking\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
+        "projectPath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
         "packagesPath": "C:\\Users\\multi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Networking\\Typescript Implementation Networking\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\obj\\",
+        "outputPath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\multi\\AppData\\Roaming\\NuGet\\NuGet.Config",

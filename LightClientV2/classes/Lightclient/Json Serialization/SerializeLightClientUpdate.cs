@@ -10,38 +10,32 @@ namespace LightClientV2
     public class SerializeLightClientUpdate
     {
         private LightClientUtility Utility;
-        private UpdateRoot Contents;
+        private LightClientUpdateObject.Root Contents;
 
-        public SerializeLightClientUpdate(string text)
+        public SerializeLightClientUpdate()
         {
             Utility = new LightClientUtility();
-            Contents = ParseLightClientUpdate(text);
         }
 
-        public UpdateRoot ParseLightClientUpdate(string text)
+        public void SerializeData(string text)
         {
-            return JsonConvert.DeserializeObject<UpdateRoot>(text); ;
+            Contents = JsonConvert.DeserializeObject<LightClientUpdateObject.Root>(text); ;
         }
 
-        public List<LightClientUpdate> InitializeUpdates()
+        public LightClientUpdate InitializeLightClientUpdate()
         {
-            List<LightClientUpdate> updates = new List<LightClientUpdate>();
-            for (int i = 0; i < Contents.data.Count; i++)
-            {
-                updates.Add(
-                    ClientUpdate(Contents.data[i].header, Contents.data[i].next_sync_committee,
-                    Contents.data[i].next_sync_committee_branch,
-                    Contents.data[i].finality_header,
-                    Contents.data[i].finality_branch,
-                    Contents.data[i].sync_committee_bits,
-                    Contents.data[i].sync_committee_signature,
-                    Contents.data[i].fork_version));
-            }
-            return updates;
+            return ClientUpdate(Contents.data[0].attested_header, 
+                    Contents.data[0].next_sync_committee,
+                    Contents.data[0].next_sync_committee_branch,
+                    Contents.data[0].finalized_header,
+                    Contents.data[0].finality_branch,
+                    Contents.data[0].sync_committee_aggregate.sync_committee_bits,
+                    Contents.data[0].sync_committee_aggregate.sync_committee_signature,
+                    Contents.data[0].fork_version);
         }
 
-        private LightClientUpdate ClientUpdate(Header header, NextSyncCommittee nextSync, List<string> next_sync_committee_branch,
-            FinalityHeader finality_header, List<string> finality_branch, string sync_committee_bits, string sync_committee_signature, string fork_version)
+        private LightClientUpdate ClientUpdate(LightClientUpdateObject.AttestedHeader header, LightClientUpdateObject.NextSyncCommittee nextSync, List<string> next_sync_committee_branch,
+            LightClientUpdateObject.FinalizedHeader finality_header, List<string> finality_branch, string sync_committee_bits, string sync_committee_signature, string fork_version)
         {
             LightClientUpdate update = new LightClientUpdate(
                 CreateHeader(header),
@@ -55,7 +49,7 @@ namespace LightClientV2
             return update;
         }
 
-        private BeaconBlockHeader CreateHeader(Header header)
+        private BeaconBlockHeader CreateHeader(LightClientUpdateObject.AttestedHeader header)
         {
             return new BeaconBlockHeader(
                 new Slot(ulong.Parse(header.slot)),
@@ -66,7 +60,7 @@ namespace LightClientV2
                 );
         }
 
-        public SyncCommittee CreateNextSyncCommittee(NextSyncCommittee nextSync)
+        public SyncCommittee CreateNextSyncCommittee(LightClientUpdateObject.NextSyncCommittee nextSync)
         {
             return new SyncCommittee(CreateBlsPublicKeys(nextSync.pubkeys), Utility.ConvertStringToBlsPubKey(nextSync.aggregate_pubkey));
         }
@@ -91,7 +85,7 @@ namespace LightClientV2
             return branches;
         }
 
-        private BeaconBlockHeader CreateFinalityHeader(FinalityHeader finality_header)
+        private BeaconBlockHeader CreateFinalityHeader(LightClientUpdateObject.FinalizedHeader finality_header)
         {
             return new BeaconBlockHeader(
                 new Slot(ulong.Parse(finality_header.slot)),

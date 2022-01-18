@@ -55,7 +55,8 @@ namespace LightClientV2
         public void ValidateLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
         {
             BeaconBlockHeader activeHeader = GetActiveHeader(update);
-            if(!(currentSlot >= activeHeader.Slot & activeHeader.Slot > store.FinalizedHeader.Slot)){
+            if (!(currentSlot >= activeHeader.Slot & activeHeader.Slot > store.FinalizedHeader.Slot))
+            {
                 throw new ArgumentOutOfRangeException(nameof(activeHeader.Slot), activeHeader.Slot, $"Slot to process should be greater than current slot {currentSlot}");
             }
 
@@ -120,15 +121,8 @@ namespace LightClientV2
             BlsPublicKey[] publicKeys = utility.GetParticipantPubkeys(syncCommittee.PublicKeys, syncAggregate.SyncCommitteeBits);
             BlsPublicKey aggregatePublicKey = utility.Crypto.BlsAggregatePublicKeys(publicKeys);
             Domain domain = utility.ComputeDomain(new SignatureDomains().DomainSyncCommittee, update.ForkVersion, genesisValidatorsRoot);
-            Root signingRoot = Root.Zero;
-            if(update.FinalizedHeader != null)
-            {
-                signingRoot = utility.ComputeSigningRoot(update.FinalizedHeader.HashTreeRoot(), domain);
-            }
-            else
-            {
-                signingRoot = utility.ComputeSigningRoot(update.AttestedHeader.HashTreeRoot(), domain); 
-            }
+            Root signingRoot = utility.ComputeSigningRoot(update.AttestedHeader.HashTreeRoot(), domain); 
+            
 
             var Valid = utility.Crypto.BlsVerify(aggregatePublicKey, signingRoot, syncAggregate.SyncCommitteeSignature);
 
