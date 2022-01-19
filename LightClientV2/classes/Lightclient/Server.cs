@@ -57,7 +57,7 @@ namespace LightClientV2
             catch (Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(10000);
+                await Task.Delay(15000);
             }
             return null;
         }
@@ -77,6 +77,7 @@ namespace LightClientV2
             catch (HttpRequestException e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
+                await Task.Delay(5000);
             }
             return null;
         }
@@ -96,6 +97,7 @@ namespace LightClientV2
             catch (HttpRequestException e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
+                await Task.Delay(5000);
             }
             return null;
         }
