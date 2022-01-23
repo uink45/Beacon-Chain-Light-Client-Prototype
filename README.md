@@ -26,7 +26,7 @@ dotnet run
 
 ### Troubleshooting
 #### Light client
-- `Error: Slot to process should be greater than current slot`- This error occurs when the light client receives an older block from the server. It will continue to function, as it will re-submit the query to fetch a more recent block.
+- `Error: Slot to process should be greater than current slot`. This error occurs when the light client receives an older block from the server. It will continue to function, as it will re-submit the query to fetch a more recent block.
 
 #### Lodestar Beacon-chain client
 - If the beacon-chain client is initialized from a weak subjectivity checkpoint, it may start displaying multiple errors related to the finality header and backfill syncing. These errors are harmless and will be suppressed by the Chainsafe team (progress can be tracked [here](https://github.com/ChainSafe/lodestar/issues/3605)).
