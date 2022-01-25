@@ -5,6 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>LightClientV2</RootNamespace>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,5 +31,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="lib\libbls384_256.so" Link="libbls384_256.so" Pack="true" PackagePath="runtimes\linux-x64\native">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>		
+    </None>
+  </ItemGroup>	
 </Project>
