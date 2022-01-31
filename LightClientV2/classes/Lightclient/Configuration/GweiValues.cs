@@ -1,6 +1,11 @@
 ﻿using Nethermind.Core2.Types;
+
 namespace LightClientV2
 {
+    /// <summary>
+    /// Gwei values for beacon chain as defined in
+    /// https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md.
+    /// </summary>
     public class GweiValues
     {
         public Gwei EffectiveBalanceIncrement { get; set; }

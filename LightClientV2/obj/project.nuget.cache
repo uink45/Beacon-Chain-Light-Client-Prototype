@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rKHxxcr/wYHfsb3viybSGMYXuy7od2cyNLX89MWmi8TVa7UNOjkfW5DaiaO4LG2jRIA6uVkcVDTFpA7X3DtBQg==",
+  "dgSpecHash": "iBtNQRdo15+xgXXEG0HByCYu/Ui7TCOpEJFvfdm28aLiveuAF+255sbFgEeBs0ic1yrgjinulnNEFIfmYP0OWA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\multi\\Documents\\GitHub\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
+  "projectFilePath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
@@ -30,6 +30,7 @@
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\6.0.0\\microsoft.extensions.options.configurationextensions.6.0.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\multi\\.nuget\\packages\\spectre.console\\0.43.0\\spectre.console.0.43.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",

@@ -407,6 +407,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Spectre.Console/0.43.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Spectre.Console.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Spectre.Console.dll": {}
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -1089,6 +1098,24 @@
         "packageIcon.png"
       ]
     },
+    "Spectre.Console/0.43.0": {
+      "sha512": "TyfzVxx3jHr1FeeI9Z6Jn6QTnP7KduV14dn9GTYc0v/t2h4L6WJ0Kc2DOnOJUlGBQ/qXK4P+HITIR/JTHcKYLg==",
+      "type": "package",
+      "path": "spectre.console/0.43.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/Spectre.Console.dll",
+        "lib/net5.0/Spectre.Console.xml",
+        "lib/net6.0/Spectre.Console.dll",
+        "lib/net6.0/Spectre.Console.xml",
+        "lib/netstandard2.0/Spectre.Console.dll",
+        "lib/netstandard2.0/Spectre.Console.xml",
+        "small-logo.png",
+        "spectre.console.0.43.0.nupkg.sha512",
+        "spectre.console.nuspec"
+      ]
+    },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "sha512": "frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
       "type": "package",
@@ -1257,7 +1284,8 @@
       "Microsoft.Extensions.Hosting >= 6.0.0",
       "Microsoft.Extensions.Logging >= 6.0.0",
       "Microsoft.Extensions.Options >= 6.0.0",
-      "Newtonsoft.Json >= 13.0.1"
+      "Newtonsoft.Json >= 13.0.1",
+      "Spectre.Console >= 0.43.0"
     ]
   },
   "packageFolders": {
@@ -1266,11 +1294,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\multi\\Documents\\GitHub\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
+      "projectUniqueName": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
       "projectName": "LightClientV2",
-      "projectPath": "C:\\Users\\multi\\Documents\\GitHub\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
+      "projectPath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\LightClientV2.csproj",
       "packagesPath": "C:\\Users\\multi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\multi\\Documents\\GitHub\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\obj\\",
+      "outputPath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\LightClientV2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\multi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1314,6 +1342,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
+          },
+          "Spectre.Console": {
+            "target": "Package",
+            "version": "[0.43.0, )"
           }
         },
         "imports": [
