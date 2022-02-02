@@ -19,7 +19,7 @@ After it has subscribed to gossip core topics and reached `Synced` status, follo
 ### Installation & Running
 ```
 git clone https://github.com/uink45/Beacon-Chain-Light-Client-Prototype.git
-cd Beacon-Chain-Light-Client-Prototype/LightClientV2
+cd Beacon-Chain-Light-Client-Prototype/Lantern
 dotnet build
 dotnet run
 ```
