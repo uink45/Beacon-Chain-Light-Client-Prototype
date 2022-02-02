@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Spectre.Console" Version="0.43.0" />
+  </ItemGroup>
+ <ItemGroup>
+    <None Include="lib\bls384_256.dll" Link="bls384_256.dll" Pack="true" PackagePath="runtimes\win-x64\native">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\mclbn256.dll" Link="mclbn256.dll" Pack="true" PackagePath="runtimes\win-x64\native">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\libbls384_256.so" Link="libbls384_256.so" Pack="true" PackagePath="runtimes\linux-x64\native">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>		
+    </None>
+  </ItemGroup>	
+</Project>

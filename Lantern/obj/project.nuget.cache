@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "IC2QRKAvhxMfpNjEwkEXjidHUNWU0MIIUMu+5YArDoQ2VTotRpRQLa0EF7jNl78H1ln6khjnPrxWWoqh3aEn4A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Lantern\\Lantern\\Lantern.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\multi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\multi\\.nuget\\packages\\spectre.console\\0.43.0\\spectre.console.0.43.0.nupkg.sha512"
+  ],
+  "logs": []
+}
