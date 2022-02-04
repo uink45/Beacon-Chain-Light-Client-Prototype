@@ -180,25 +180,31 @@ namespace Lantern
             Logs.SelectLogsType("Info", 3, null);
             while (Running)
             {
-                await Task.Delay(12000);
-                if (NextSyncCommitteeReady & CheckSyncPeriod())
+                try
                 {
-                    LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateRemainingSyncPeriod(Settings.Network).ToString());
-                    if (update != null)
+                    await Task.Delay(12000);
+                    if (NextSyncCommitteeReady & CheckSyncPeriod())
                     {
-                        Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                        Logs.PrintClientLogs(update);
+                        LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateRemainingSyncPeriod(Settings.Network).ToString());
+                        if (update != null)
+                        {
+                            Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
+                            Logs.PrintClientLogs(update);
+                        }
+                    }
+                    else
+                    {
+                        LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
+                        if (update != null)
+                        {
+                            Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
+                            Logs.PrintClientLogs(update);
+                        }
                     }
                 }
-                else
+                catch (Exception e)
                 {
-                    LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
-                    if (update != null)
-                    {
-                        Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                        Logs.PrintClientLogs(update);
-                    }
-                }
+                }          
             }
         }
 

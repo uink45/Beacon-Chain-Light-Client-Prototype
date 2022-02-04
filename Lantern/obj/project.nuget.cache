@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IC2QRKAvhxMfpNjEwkEXjidHUNWU0MIIUMu+5YArDoQ2VTotRpRQLa0EF7jNl78H1ln6khjnPrxWWoqh3aEn4A==",
+  "dgSpecHash": "jHyhsziRs+luBvofDHKp2dHAxwgmp7mOsuR4Q4wp9og/LApuZcqZ/KpP1hK8G/Y9HmdPzVOFKvQQt8B6r1n94Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Lantern\\Lantern\\Lantern.csproj",
+  "projectFilePath": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\Lantern.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\multi\\.nuget\\packages\\litedb\\5.0.11\\litedb.5.0.11.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\spectre.console\\0.43.0\\spectre.console.0.43.0.nupkg.sha512"
   ],

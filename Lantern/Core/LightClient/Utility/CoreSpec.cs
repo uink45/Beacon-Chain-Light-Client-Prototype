@@ -41,7 +41,7 @@ namespace Lantern
             }
             storage.CurrentSyncCommittee = snapshot.CurrentSyncCommittee;
             storage.FinalizedHeader = snapshot.FinalizedHeader;
-            data.StoreData(storage);
+            data.StoreData(storage.FinalizedHeader);
         }
 
         public void ProcessSlotForLightClientStore(LightClientStore store, Slot currentSlot)
@@ -64,7 +64,8 @@ namespace Lantern
 
             if (!(currentSlot >= activeHeader.Slot & activeHeader.Slot > store.FinalizedHeader.Slot))
             {
-                logging.SelectLogsType("Warn", 0, $"Received a block (at slot {activeHeader.Slot}) that is older than the stored block ({store.FinalizedHeader.Slot}).");
+                logging.SelectLogsType("Warn", 0, $"The server sent a known block (at slot {activeHeader.Slot}). Retrying...");
+                throw new Exception();
             }
 
             Epoch finalizedPeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(store.FinalizedHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
@@ -150,6 +151,7 @@ namespace Lantern
             }
             store.FinalizedHeader = activeHeader;
             storage = store;
+            data.StoreData(storage.FinalizedHeader);
         }
 
         public void ProcessLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
@@ -170,14 +172,14 @@ namespace Lantern
             if(updateSyncCommitteeBits > GetSafetyThreshold(store) & update.AttestedHeader.Slot > store.OptimisticHeader.Slot)
             {
                 store.OptimisticHeader = update.AttestedHeader;
+                data.StoreData(storage.OptimisticHeader);
             }
 
             if(((updateSyncCommitteeBits * 3) >= update.SyncAggregate.SyncCommitteeBits.Length * 2) & (update.FinalizedHeader != new BeaconBlockHeader(Root.Zero) || update.FinalizedHeader != null))
             {
                 ApplyLightClientUpdate(store, update);
                 store.BestValidUpdate = new LightClientUpdate();
-            }
-            data.StoreData(storage);
+            }         
         }
 
         public int GetSafetyThreshold(LightClientStore store)

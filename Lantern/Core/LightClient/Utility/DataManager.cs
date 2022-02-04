@@ -1,49 +1,34 @@
-﻿using System.IO;
-using Newtonsoft.Json;
+﻿using LiteDB;
+using System;
+using Nethermind.Core2.Types;
+using Nethermind.Core2.Containers;
+using Nethermind.Core2.Crypto;
 
 namespace Lantern
 {
     public class DataManager
     {
-        private string path = "Storage";
-        private string fileName = "chain_data.txt";
-        public DataManager()
-        {
-            FileInfo fi = new FileInfo(path + @"\" + fileName);
-            DirectoryInfo di = new DirectoryInfo(path);
-            if (!di.Exists)
-            {
-                di.Create();
-            }
 
-            if (!fi.Exists)
+        public void StoreData(BeaconBlockHeader container)
+        {
+            using(var db = new LiteDatabase(@"Storage\chain_data.db"))
             {
-                fi.Create().Dispose();
+                var headers = db.GetCollection<HeaderDB>("headers");
+                var header = Stringify(container);
+                headers.Insert(header);
             }
         }
 
-        public void StoreData(LightClientStore container)
+        private HeaderDB Stringify(BeaconBlockHeader container)
         {
-            using (FileStream aFile = new FileStream(path + @"\" + fileName, FileMode.Append, FileAccess.Write))
-
-            using (StreamWriter sw = new StreamWriter(aFile))
-            {
-                var data = JsonConvert.SerializeObject(Stringify(container));
-                sw.WriteLine(data);
-            }
-        }
-
-        public StoreObject.FinalizedHeader Stringify(LightClientStore container)
-        {
-            StoreObject.FinalizedHeader finalizedHeader = new StoreObject.FinalizedHeader();
-            finalizedHeader.slot = container.FinalizedHeader.Slot.ToString();
-            finalizedHeader.proposer_index = container.FinalizedHeader.ValidatorIndex.ToString();
-            finalizedHeader.block_root = container.FinalizedHeader.HashTreeRoot().ToString();
-            finalizedHeader.parent_root = container.FinalizedHeader.ParentRoot.ToString();
-            finalizedHeader.state_root = container.FinalizedHeader.StateRoot.ToString();
-            finalizedHeader.body_root = container.FinalizedHeader.BodyRoot.ToString();
-
-            return finalizedHeader;
+            HeaderDB header = new HeaderDB();
+            header.slot = container.Slot.ToString();
+            header.proposer_index = container.ValidatorIndex.ToString();
+            header.block_root = container.HashTreeRoot().ToString();
+            header.parent_root = container.ParentRoot.ToString();
+            header.state_root = container.StateRoot.ToString();
+            header.body_root = container.BodyRoot.ToString();
+            return header;
         }
     }
 }
