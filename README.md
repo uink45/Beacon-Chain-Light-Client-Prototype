@@ -24,9 +24,9 @@ dotnet build
 dotnet run
 ```
 ### API Routes
-The light client currently supports one API route that returns a list of all the stored block headers:
+The light client currently supports one API route that returns a stored header corresponding to the state id (slot number or "head"):
 ```
-https://localhost:5001/eth/lightclient/header
+https://localhost:5001/api/lightclient/header/{state_id}
 ```
 ### Troubleshooting
 #### Lodestar Beacon-chain client
