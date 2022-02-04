@@ -11,7 +11,7 @@ namespace Lantern.Controllers
         [HttpGet("{slot:int}")]
         public string GetHeader(int slot)
         {
-            using(var db = new LiteDatabase(@"Storage\chain_data.db"))
+            using(var db = new LiteDatabase(@"chain_data.db"))
             {
                 var headers = db.GetCollection<HeaderDB>("headers");
                 var header = headers.Find(x => x.slot == slot.ToString());
