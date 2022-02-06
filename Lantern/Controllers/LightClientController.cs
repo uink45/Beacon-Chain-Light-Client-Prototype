@@ -24,7 +24,7 @@ namespace Lantern.Controllers
         [Route("head")]
         public string GetLatestHeader()
         {
-            using (var db = new LiteDatabase(@"Storage\chain_data.db"))
+            using (var db = new LiteDatabase(@"chain_data.db"))
             {
                 var headers = db.GetCollection<HeaderDB>("headers");
                 var header = headers.FindById(headers.Count());
