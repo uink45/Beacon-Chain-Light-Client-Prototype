@@ -8,9 +8,49 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Lantern
 build_property.RootNamespace = Lantern
-build_property.ProjectDir = C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Beacon-Chain-Light-Client-Prototype\Lantern\
+build_property.ProjectDir = C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Beacon-Chain-Light-Client-Prototype\Lantern
+build_property.MSBuildProjectDirectory = C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Pages/Settings.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0dGluZ3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-3bcdep9uu6
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-e1asuo4nv7
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/multi/Documents/Mycelium/Research/Light Client/Implementation/Lantern/Lantern/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

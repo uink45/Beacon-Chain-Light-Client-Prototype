@@ -6,22 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-
+using LiteDB;
 
 namespace Lantern
 {
     public class Program
     {
-        private static ConsoleInterface UserInterface = new ConsoleInterface();
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().RunAsync();
-            while (true)
-            {
-                UserInterface.DisplayInformation();
-                await UserInterface.MainMenu();
-            }
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

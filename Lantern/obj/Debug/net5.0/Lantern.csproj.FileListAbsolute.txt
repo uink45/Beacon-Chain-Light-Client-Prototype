@@ -1,6 +1,0 @@
-C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\obj\Debug\net5.0\Lantern.csproj.AssemblyReference.cache
-C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\obj\Debug\net5.0\Lantern.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\obj\Debug\net5.0\Lantern.AssemblyInfoInputs.cache
-C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\obj\Debug\net5.0\Lantern.AssemblyInfo.cs
-C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\obj\Debug\net5.0\Lantern.csproj.CoreCompileInputs.cache
-C:\Users\multi\Documents\Mycelium\Research\Light Client\Implementation\Lantern\Lantern\obj\Debug\net5.0\Lantern.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+<!DOCTYPE html>
+
+<div class="page">
+    <MudThemeProvider/>
+            <MudDialogProvider/>
+            <MudSnackbarProvider/>
+    <div>
+        <NavMenu />
+    </div>
+
+    <div class="main">
+        <div>
+            <form action="https://github.com/uink45/Beacon-Chain-Light-Client-Prototype"  target="_blank">
+                <button class="hoverable" style="position: fixed; right: 35px; top: 30px; border-radius: 7px; font-family: 'Open Sans', sans-serif; font-size: 130%; padding: 12px 15px; border: 1px solid #100735; z-index: 1;">GitHub Repository</button>
+            </form>
+            
+        </div>
+
+        <div>
+            @Body
+        </div>
+
+        <div>
+            
+        </div>
+    </div>
+
+   
+</div>

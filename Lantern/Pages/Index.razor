@@ -1,0 +1,112 @@
+﻿@page "/"
+@inject LightClientService Client
+
+
+@if (!hidden)
+{      
+        <div class="acrylic1 appear"></div>
+    
+    <div class="bar appear">  
+         <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">Slot: 
+             
+             <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.Slot</mark>
+             </p>
+         <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">Epoch:
+
+            <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Header.Slot)</mark>
+             </p> 
+        <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">State root:
+
+            <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.StateRoot</mark>
+             </p>
+        <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">Body root:
+
+            <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.BodyRoot</mark>
+             </p>
+
+        <MudProgressLinear Rounded="true" Size="Size.Large" Max="130" Value="@Value" style="background: none; height: 7px; width: 693px; top:10px; " Color="Color.Default"/>
+        </div>
+
+    
+}
+<div style="position: fixed; top: 6%; left: 38%; display: flex;" >
+    <h1 style="font-family: 'Paytone One'; color:#140841; font-size: 600%; flex: 1;" class="display-1">Lantern.</h1>
+    <p style=" margin-left: -330px; margin-top: 110px; color:#140841; flex: 10; font-family: 'Open Sans', sans-serif; font-size: 160%; font-weight: normal;">Consensus Layer Light Client</p>
+    <button class="hoverable" type="button" style=" left: -195px; margin-top: 170px; flex: 1; font-size: 120%; font-family: 'Open Sans', sans-serif; border-radius: 7px; border: 1px solid #140841; padding: 12px 15px; " @onclick="async () => await Launch()" >Launch</button>
+    <p style="font-family:'Open Sans', sans-serif; font-size: 155%; position: fixed; left: 30px; top: 30px; font-weight: bold; color:#140841; ">Status: 
+        <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@status</mark>
+    </p>
+</div>
+
+@code {
+    public string status = "Offline";
+    public bool hidden = true;
+    public bool ready = true;
+    public int Value { get; set; }
+    bool _disposed;
+    public void Dispose() => _disposed = true;
+    private MudTheme Theme = new MudTheme();
+    public LightClientUtility Utility = new LightClientUtility();
+    public BeaconBlockHeader Header = BeaconBlockHeader.Zero;
+
+    public async Task Launch()
+    {
+        hidden = false;
+        Client.Launch();
+        status = "Online";
+        if (ready)
+        {
+            SimulateProgress();
+        }
+        
+    }
+
+    public async void SimulateProgress()
+    {
+        Value = 0;
+
+        do
+        {
+            if (_disposed)
+            {
+                return;
+            }
+            UpdateHeader();
+            StateHasChanged();
+            await Task.Delay(1000);
+            Value += 10;
+
+        } while (Value < 140);
+
+        SimulateProgress();
+    }
+
+    public void UpdateHeader()
+    {
+        using(var db = new LiteDatabase($"chain_data.db")){
+            var headers = db.GetCollection<HeaderDB>("headers");
+            var header = headers.FindById(headers.Count());
+
+            if(header != null)
+            {
+                Header = Objectify(header);
+            }
+        }
+    }
+
+    public BeaconBlockHeader Objectify(HeaderDB header)
+    {
+        return new BeaconBlockHeader(
+            new Slot(ulong.Parse(header.slot)),
+            new ValidatorIndex(ulong.Parse(header.proposer_index)),
+            Utility.ConvertHexStringToRoot(header.parent_root),
+            Utility.ConvertHexStringToRoot(header.state_root),
+            Utility.ConvertHexStringToRoot(header.body_root)
+        );
+    }
+
+}
+
+
+
+
