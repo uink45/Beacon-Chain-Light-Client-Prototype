@@ -150,6 +150,10 @@ namespace Lantern
                 store.NextSyncCommittee = update.NextSyncCommittee;
             }
             store.FinalizedHeader = activeHeader;
+            if (store.FinalizedHeader.Slot > store.OptimisticHeader.Slot)
+            {
+                store.OptimisticHeader = store.FinalizedHeader;
+            }
             storage = store;
             data.StoreData(storage.FinalizedHeader);
         }
