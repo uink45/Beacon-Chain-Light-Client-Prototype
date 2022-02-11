@@ -1,5 +1,5 @@
-# Beacon Chain Light Client Prototype
-
+## Lantern. 
+#### Consensus Layer Light Client
 This is a C# implementation of the [Altair Minimal Light Client Specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/sync-protocol.md). 
 
 ### Functionality
@@ -23,8 +23,9 @@ cd Beacon-Chain-Light-Client-Prototype/Lantern
 dotnet build
 dotnet run
 ```
+After running the commands above, head to https://localhost:5001/.
 ### API Routes
-The light client currently supports one API route that returns a stored header corresponding to the state id (slot number or "head"):
+The light client currently supports one route that returns a stored header corresponding to the state id (slot number or "head"):
 ```
 https://localhost:5001/api/lightclient/header/{state_id}
 ```
