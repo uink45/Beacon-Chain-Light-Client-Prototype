@@ -40,7 +40,7 @@ namespace Lantern
             catch (Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(15000);
+                await Task.Delay(5000);
             }
             return null;
         }
@@ -65,7 +65,7 @@ namespace Lantern
             catch(Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(15000);
+                await Task.Delay(5000);
             }
             return null;       
         }
@@ -89,7 +89,7 @@ namespace Lantern
             catch (Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(15000);
+                await Task.Delay(5000);
             }
             return null;         
         }

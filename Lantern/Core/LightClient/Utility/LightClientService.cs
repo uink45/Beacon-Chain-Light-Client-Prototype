@@ -58,7 +58,7 @@ namespace Lantern
             {
                 try
                 {
-                    await Task.Delay(12000);
+                    
                     if (NextSyncCommitteeReady & CheckSyncPeriod())
                     {
                         LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateRemainingSyncPeriod(Settings.Network).ToString());
@@ -77,9 +77,11 @@ namespace Lantern
                             Logs.PrintClientLogs(update);
                         }
                     }
+                    await Task.Delay(12000);
                 }
                 catch (Exception e)
                 {
+                    await Task.Delay(5000);
                 }
             }
         }
