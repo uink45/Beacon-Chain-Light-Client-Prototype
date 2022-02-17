@@ -1,5 +1,4 @@
-## Lantern. 
-### Consensus Layer Light Client
+## Lantern. Consensus Layer Light Client
 This is a C# implementation of the [Altair Minimal Light Client Specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/sync-protocol.md). 
 
 ### Functionality
