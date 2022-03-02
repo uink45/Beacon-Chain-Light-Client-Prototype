@@ -195,7 +195,6 @@ C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern
 C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\scopedcss\bundle\Lantern.styles.css
 C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\scopedcss\projectbundle\Lantern.bundle.scp.css
 C:\Users\multi\Documents\Mihir Files\Beacon-Chain-Light-Client-Prototype\Lantern\obj\Debug\net6.0\Lantern.csproj.CopyComplete

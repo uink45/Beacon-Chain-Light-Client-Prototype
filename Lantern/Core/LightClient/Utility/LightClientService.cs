@@ -7,7 +7,6 @@ namespace Lantern
     {
         public CoreSpec Client;
         private Settings Settings;
-        public string Arguments;
         public string Status;
         public Server Server;
         private Logging Logs;
@@ -19,7 +18,6 @@ namespace Lantern
         {
             Client = new CoreSpec();
             Settings = new Settings(server);
-            Arguments = "0";
             Clock = new Clock();
             Status = "Started";
             Logs = new Logging();
@@ -32,12 +30,12 @@ namespace Lantern
             InitialiseObjects(server);
             CheckSyncPeriod();
             await InitializeLightClient();
-            await FetchUpdates();
         }
 
         public async Task InitializeLightClient()
         {
             Logs.SelectLogsType("Info", 4, Settings.LightClientApiUrl);
+            Status = "Syncing";
             while (Running)
             {
                 string checkpointRoot = await Server.FetchCheckpointRoot(Settings.ServerUrl);
@@ -49,36 +47,24 @@ namespace Lantern
                         Client.ValidateCheckpoint(snapshot);
                         Logs.SelectLogsType("Info", 2, null);
                         Logs.PrintSnapshot(snapshot);
+                        Logs.SelectLogsType("Info", 3, null);
+                        Status = "Synced";
                         break;
                     }
                 }
             }
+            
         }
 
         public async Task FetchUpdates()
         {
-            Logs.SelectLogsType("Info", 3, null);
-            Status = "Synced";
-            while (Running)
+            int slot = (int)Clock.CalculateSlot(Settings.Network) - 2;
+            LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network, slot.ToString());
+            if (update != null)
             {
-                try
-                {
-                    await Task.Delay(12000);
-                    int slot = (int)Clock.CalculateSlot(Settings.Network) - 2;
-                    LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network, slot.ToString());
-                    if (update != null)
-                    {
-                        Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                        Logs.PrintClientLogs(update);
-                    }
-                    
-
-                }
-                catch (Exception e)
-                {
-                    
-                }
-            }
+                Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
+                Logs.PrintClientLogs(update);
+            }                  
         }
 
 

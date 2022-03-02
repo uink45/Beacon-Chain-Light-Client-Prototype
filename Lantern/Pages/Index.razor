@@ -1,41 +1,37 @@
 ﻿@page "/"
 @inject LightClientService Client
 
-
-
-
     <h1 style="margin-top: 15vh; text-align: center; font-family: 'Paytone One'; color:#140841; font-size: 4.5rem;">Lantern.</h1>
     <p style=" color:#140841; text-align: center;font-family: 'Open Sans', sans-serif; font-size: 160%; font-weight: normal;">Consensus Layer Light Client</p>
     <button class="hoverable" style="top: 10px; margin:0 auto; display: block;font-size: 120%; font-family: 'Open Sans', sans-serif; border-radius: 7px; border: 1px solid #140841; padding: 12px 15px; " @onclick="async () => await Launch()" >Launch</button>
-
-    
+ 
     <div>
         <input style="font-family: 'Open Sans', sans-serif; font-size: 140%; font-weight: normal;color: white; position: fixed; top: 4vmin; left: 4vmin;width: 35vmin; height: 2.5rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;" placeholder="Beacon Node API Url" @bind="nodeAPIUrl"/>
     </div>
-    @if (!stats)
+    @if (showDashboard)
 {
     @if (showProofs)
     {
         <div style=" background: rgba(0, 0, 0, 0.3);width: 60vw; padding: 21vh; margin: 50px auto; display: block;border-radius: 7px; height: 700px;">
                 <div class="bar appear" style="position: absolute; left: 35%; top: 46%; filter: blur(15px);">  
                  <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip;" >Slot: 
-                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Header.Slot</mark>
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Client.Client.storage.OptimisticHeader.Slot</mark>
                    </p>
 
                 <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip; ">Epoch:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Header.Slot)</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Client.Client.storage.OptimisticHeader.Slot)</mark>
                    </p> 
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">State root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Header.StateRoot</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Client.Client.storage.OptimisticHeader.StateRoot.ToString()</mark>
                    </p>
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Body root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.BodyRoot</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.Client.storage.OptimisticHeader.BodyRoot.ToString()</mark>
                    </p>
 
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
-                   <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="Client.Arguments"/>
+                   <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="validatorIndex"/>
                    </p>
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip; position: relative;top: 3px;">Validator balance:
                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
@@ -60,23 +56,23 @@
         <div style=" background: rgba(0, 0, 0, 0.3);width: 37vw; padding: 21vh; margin: 50px auto; display: block;border-radius: 7px; height: 450px; ">
                 <div class="bar appear" style="position: absolute; left: 35%; top: 46%;">  
                  <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip;" >Slot: 
-                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Header.Slot</mark>
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Client.Client.storage.OptimisticHeader.Slot</mark>
                    </p>
 
                 <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip; ">Epoch:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Header.Slot)</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Client.Client.storage.OptimisticHeader.Slot)</mark>
                    </p> 
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">State root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Header.StateRoot</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Client.Client.storage.OptimisticHeader.StateRoot.ToString()</mark>
                    </p>
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Body root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.BodyRoot</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.Client.storage.OptimisticHeader.BodyRoot.ToString()</mark>
                    </p>
 
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
-                   <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="Client.Arguments"/>
+                   <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="validatorIndex" placeholder="(e.g. 34233)"/>
                    </p>
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip; position: relative;top: 3px;">Validator balance:
                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
@@ -84,7 +80,7 @@
                    </p>
                    
 
-                <MudProgressLinear Rounded="true" Size="Size.Large" Max="130" Value="@Value" style="background: none; height: 10px; width: 30vw; top: 20px;  " Color="Color.Default"/>
+                <MudProgressLinear Rounded="true" Size="Size.Large" Max="120" Value="@Value" style="background: none; height: 10px; width: 30vw; top: 20px;  " Color="Color.Default"/>
             </div> 
         </div>
     }
@@ -95,66 +91,51 @@
  
 
 @code {
-    public string nodeAPIUrl {get; set;}
-    public bool stats = true;
-    public bool showProofs = false;
     public int Value { get; set; }
-    bool _disposed;
-    public void Dispose() => _disposed = true;
+    public string nodeAPIUrl {get; set;}
+    public string validatorIndex { get; set; }
+    public bool showDashboard = false;
+    public bool showProofs = false;
     private MudTheme Theme = new MudTheme();
     public LightClientUtility Utility = new LightClientUtility();
-    public BeaconBlockHeader Header = BeaconBlockHeader.Zero;
     public LightClientProofs Proofs = new LightClientProofs();
 
     public async Task Launch()
     {
-
         if(nodeAPIUrl != null)
         {
-            stats = false;
-            Client.Launch(nodeAPIUrl);
+            showDashboard = true;
+            await Client.Launch(nodeAPIUrl);
         }
-        UpdateHeader();
-        if (Client.Status == "Started")
-        {
-            SimulateProgress();
-        }
-
+        SimulateProgress();
     }
 
     public async void SimulateProgress()
     {
-        Value = 0;
-
-        do
+        if(Client.Status == "Synced")
         {
-            if (_disposed)
-            {
-                return;
+            Value = 0;
+            while(Value < 130)
+            {        
+                
+                await Task.Delay(1000);
+                FetchProofs();
+                StateHasChanged();
+                Value += 10;
+                if(Value == 130)
+                {
+                    Value = 0;
+                    await Client.FetchUpdates();
+                }            
             }
-            UpdateHeader();
-            await FetchProofs();
-            StateHasChanged();
-            await Task.Delay(1000);
-            Value += 10;
-
-        } while (Value < 140);
-
+        }
+        else
+        {
+            await Task.Delay(3000);
+        }
         SimulateProgress();
     }
 
-    public void UpdateHeader()
-    {
-        using(var db = new LiteDatabase($"chain_data.db")){
-            var headers = db.GetCollection<HeaderDB>("headers");
-            var header = headers.FindById(headers.Count());
-
-            if(header != null)
-            {
-                Header = Objectify(header);
-            }
-        }
-    }
 
     public void ShowProofs()
     {
@@ -166,31 +147,22 @@
         {
             showProofs = true;
         }
-     
+
     }
 
     public async Task FetchProofs()
     {
-        if (Client.Status == "Synced" & Client.Arguments.All(char.IsDigit))
+        if (Client.Status == "Synced" & validatorIndex != null)
         {
-            Proofs = await Client.Server.FetchProofs(nodeAPIUrl, "head", Client.Arguments);
+            if (validatorIndex.All(char.IsDigit))
+            {
+                Proofs = await Client.Server.FetchProofs(nodeAPIUrl, "head", validatorIndex);
+            }    
         }
         else
         {
-            Proofs = new LightClientProofs();
             Proofs.Balance = 0;
         }
-    }
-
-    public BeaconBlockHeader Objectify(HeaderDB header)
-    {
-        return new BeaconBlockHeader(
-            new Slot(ulong.Parse(header.slot)),
-            new ValidatorIndex(ulong.Parse(header.proposer_index)),
-            Utility.ConvertHexStringToRoot(header.parent_root),
-            Utility.ConvertHexStringToRoot(header.state_root),
-            Utility.ConvertHexStringToRoot(header.body_root)
-        );
     }
 
 }

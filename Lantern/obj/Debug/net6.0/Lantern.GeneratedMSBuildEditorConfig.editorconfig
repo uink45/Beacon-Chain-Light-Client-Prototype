@@ -19,16 +19,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Pages/Settings.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0dGluZ3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Shared/SurveyPrompt.razor]
@@ -42,10 +34,6 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-3bcdep9uu6
-
-[C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-e1asuo4nv7
 
 [C:/Users/multi/Documents/Mihir Files/Beacon-Chain-Light-Client-Prototype/Lantern/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
