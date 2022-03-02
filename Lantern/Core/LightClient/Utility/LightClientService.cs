@@ -1,31 +1,35 @@
 ﻿using System.Threading.Tasks;
 using System;
-
+using System.Linq;
 namespace Lantern
 {
     public class LightClientService
     {
-        private CoreSpec Client;
+        public CoreSpec Client;
         private Settings Settings;
-        private Server Server;
+        public string Arguments;
+        public string Status;
+        public Server Server;
         private Logging Logs;
         private Clock Clock;
         private bool NextSyncCommitteeReady;
         private bool Running;
 
-        public void InitialiseObjects()
+        public void InitialiseObjects(string server)
         {
             Client = new CoreSpec();
-            Settings = new Settings();
+            Settings = new Settings(server);
+            Arguments = "0";
             Clock = new Clock();
+            Status = "Started";
             Logs = new Logging();
             Server = new Server();
             NextSyncCommitteeReady = false;
             Running = true;
         }
-        public async Task Launch()
+        public async Task Launch(string server)
         {
-            InitialiseObjects();
+            InitialiseObjects(server);
             CheckSyncPeriod();
             await InitializeLightClient();
             await FetchUpdates();
@@ -54,37 +58,29 @@ namespace Lantern
         public async Task FetchUpdates()
         {
             Logs.SelectLogsType("Info", 3, null);
+            Status = "Synced";
             while (Running)
             {
                 try
                 {
-                    
-                    if (NextSyncCommitteeReady & CheckSyncPeriod())
-                    {
-                        LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateRemainingSyncPeriod(Settings.Network).ToString());
-                        if (update != null)
-                        {
-                            Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                            Logs.PrintClientLogs(update);
-                        }
-                    }
-                    else
-                    {
-                        LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
-                        if (update != null)
-                        {
-                            Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                            Logs.PrintClientLogs(update);
-                        }
-                    }
                     await Task.Delay(12000);
+                    int slot = (int)Clock.CalculateSlot(Settings.Network) - 2;
+                    LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network, slot.ToString());
+                    if (update != null)
+                    {
+                        Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
+                        Logs.PrintClientLogs(update);
+                    }
+                    
+
                 }
                 catch (Exception e)
                 {
-                    await Task.Delay(5000);
+                    
                 }
             }
         }
+
 
         public bool CheckSyncPeriod()
         {

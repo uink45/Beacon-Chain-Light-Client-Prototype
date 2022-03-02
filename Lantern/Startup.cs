@@ -29,7 +29,7 @@ namespace Lantern
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<LightClientService>();
-            services.AddControllers();
+            //services.AddControllers();
             services.AddMudServices();
         }
 
@@ -55,7 +55,7 @@ namespace Lantern
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
-                endpoints.MapControllers();
+               // endpoints.MapControllers();
             });
         }
     }

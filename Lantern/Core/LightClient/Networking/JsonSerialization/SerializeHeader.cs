@@ -3,6 +3,7 @@ using Nethermind.Core2.Types;
 using Nethermind.Core2.Containers;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System;
 
 namespace Lantern
 {

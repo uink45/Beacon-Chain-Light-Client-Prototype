@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Lantern",
+    "\\Lantern\\Core",
+    "\\Lantern\\Core\\LightClient",
+    "\\Lantern\\Core\\LightClient\\Configuration",
+    "\\Lantern\\Core\\LightClient\\Utility",
+    "\\Lantern\\Pages"
+  ],
+  "SelectedNode": "\\Lantern.sln",
+  "PreviewInSolutionExplorer": false
+}

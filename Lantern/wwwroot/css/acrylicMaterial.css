@@ -12,7 +12,7 @@ body, .acrylic1::before {
 }
 
 .acrylic1::before {
-    filter: blur(10px);
+    filter: blur(50px);
     content: "";
     position: absolute;
     left: -10px;

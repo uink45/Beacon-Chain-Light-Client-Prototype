@@ -11,7 +11,6 @@ namespace Lantern
 
         public void StoreData(BeaconBlockHeader container)
         {
-            Console.WriteLine("Inserted");
             using(var db = new LiteDatabase(@"chain_data.db"))
             {
                 var headers = db.GetCollection<HeaderDB>("headers");

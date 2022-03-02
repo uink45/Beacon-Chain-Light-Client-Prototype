@@ -10,9 +10,9 @@ namespace Lantern
         private string lightClientApiUrl;
         private int network;
         
-        public Settings()
+        public Settings(string server)
         {
-            serverUrl = "http://127.0.0.1:9596";
+            serverUrl = server;
             lightClientApiUrl = "http://localhost:5001";
             network = 0;
         }

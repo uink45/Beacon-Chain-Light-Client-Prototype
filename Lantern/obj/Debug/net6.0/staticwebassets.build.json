@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Yvcu5/ZPbtm5DV2Dop3tCThO1o8QuKcXyQXtWxyUO+s=",
+  "Hash": "Xn6Vr+kg14k0xJcGIaJ5+m/1rLIYU9t4BqRSIRAuRjY=",
   "Source": "Lantern",
   "BasePath": "_content/Lantern",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "Lantern\\wwwroot",
       "Source": "Lantern",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "Pattern": "**"
     }
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "C:\\Users\\multi\\.nuget\\packages\\mudblazor\\6.0.6\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Lantern.styles.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Lantern.styles.css",
       "SourceId": "Lantern",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "Lantern.styles.css",
       "AssetKind": "All",
@@ -65,13 +65,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Lantern.styles.css"
+      "OriginalItemSpec": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Lantern.styles.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Lantern.bundle.scp.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Lantern.bundle.scp.css",
       "SourceId": "Lantern",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "Lantern.bundle.scp.css",
       "AssetKind": "All",
@@ -82,13 +82,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Lantern.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Lantern.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\background.png",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\background.png",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "background.png",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\background.png"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\acrylic.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\acrylic.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/acrylic.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\acrylic.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\acrylicMaterial.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\acrylicMaterial.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/acrylicMaterial.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\acrylicMaterial.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.css.map",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.min.css",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\panels.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\panels.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/panels.css",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\css\\panels.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\progressbar.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\progressbar.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/progressbar.css",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\css\\progressbar.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\css\\site.css",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\favicon.ico",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -935,10 +935,27 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\GitHub-Mark-120px-plus.png",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "BasePath": "_content/Lantern",
+      "RelativePath": "GitHub-Mark-120px-plus.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\GitHub-Mark-120px-plus.png"
+    },
+    {
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.js",
+      "SourceId": "Lantern",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -952,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.js.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -969,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.min.js",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -986,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -1003,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.js",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -1020,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.js.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -1037,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.min.js",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -1054,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.esm.min.js.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -1071,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.js",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.js",
       "AssetKind": "All",
@@ -1088,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.js.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.js.map",
       "AssetKind": "All",
@@ -1105,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.min.js",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1122,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\js\\bootstrap.min.js.map",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1139,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\src\\example.js",
+      "Identity": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\src\\example.js",
       "SourceId": "Lantern",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\multi\\Documents\\Mycelium\\Research\\Light Client\\Implementation\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\wwwroot\\",
       "BasePath": "_content/Lantern",
       "RelativePath": "src/example.js",
       "AssetKind": "All",

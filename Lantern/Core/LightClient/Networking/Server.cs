@@ -11,6 +11,7 @@ namespace Lantern
         private SerializeLightClientUpdate headerUpdate;
         private SerializeSnapshot syncSnapshot;
         private SerializeHeader header;
+        private SerializeProofs proofs;
         private Logging logs;
 
         public Server()
@@ -19,6 +20,7 @@ namespace Lantern
             headerUpdate = new SerializeLightClientUpdate();
             syncSnapshot = new SerializeSnapshot();
             header = new SerializeHeader();
+            proofs = new SerializeProofs();
             logs = new Logging();
         }
 
@@ -40,7 +42,7 @@ namespace Lantern
             catch (Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(5000);
+                await Task.Delay(1000);
             }
             return null;
         }
@@ -65,7 +67,7 @@ namespace Lantern
             catch(Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(5000);
+                await Task.Delay(1000);
             }
             return null;       
         }
@@ -74,22 +76,21 @@ namespace Lantern
         /// Fetches the light client header object
         /// from the REST API server.
         /// </summary>
-        public async Task<LightClientUpdate> FetchHeader(string serverUrl, int network)
+        public async Task<LightClientUpdate> FetchHeader(string serverUrl, int network, string slot)
         {
-            string url = serverUrl + "/eth/v1/lightclient/head_update/";
+            string url = serverUrl + "/eth/v1/lightclient/head_update_by_slot/" + slot;
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string result = await response.Content.ReadAsStringAsync();
-
                 header.SerializeData(result);
                 return header.InitializeHeader(network);
             }
             catch (Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(5000);
+                await Task.Delay(1000);
             }
             return null;         
         }
@@ -113,9 +114,32 @@ namespace Lantern
             catch(Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(5000);
+                await Task.Delay(1000);
             }
             return null;    
+        }
+
+        /// <summary>
+        /// Fetches the light client update object
+        /// from the REST API server.
+        /// </summary>
+        public async Task<LightClientProofs> FetchProofs(string serverUrl, string stateRoot, string validatorIndex)
+        {
+            string url = serverUrl + "/eth/v1/lightclient/proof/" + stateRoot + "?paths=%5B%22balances%22%2C" + validatorIndex + "%5D";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string result = await response.Content.ReadAsStringAsync();
+                proofs.SerializeData(result);
+                return proofs.InitializeProofs();
+            }
+            catch (Exception e)
+            {
+                logs.SelectLogsType("Error", 0, e.Message);
+                await Task.Delay(1000);
+            }
+            return null;
         }
     }   
 }

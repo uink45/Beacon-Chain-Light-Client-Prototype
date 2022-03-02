@@ -49,6 +49,9 @@ namespace Lantern
                 case 4:
                     Console.WriteLine("Running light client server at: " + message);
                     break;
+                case 5:
+                    Console.WriteLine("Fetching proofs from server: " + message);
+                    break;
             }
         }
 

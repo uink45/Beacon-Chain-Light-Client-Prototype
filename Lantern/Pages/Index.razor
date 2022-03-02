@@ -2,63 +2,124 @@
 @inject LightClientService Client
 
 
-@if (!hidden)
-{      
-        <div class="acrylic1 appear"></div>
+
+
+    <h1 style="margin-top: 15vh; text-align: center; font-family: 'Paytone One'; color:#140841; font-size: 4.5rem;">Lantern.</h1>
+    <p style=" color:#140841; text-align: center;font-family: 'Open Sans', sans-serif; font-size: 160%; font-weight: normal;">Consensus Layer Light Client</p>
+    <button class="hoverable" style="top: 10px; margin:0 auto; display: block;font-size: 120%; font-family: 'Open Sans', sans-serif; border-radius: 7px; border: 1px solid #140841; padding: 12px 15px; " @onclick="async () => await Launch()" >Launch</button>
+
     
-    <div class="bar appear">  
-         <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">Slot: 
+    <div>
+        <input style="font-family: 'Open Sans', sans-serif; font-size: 140%; font-weight: normal;color: white; position: fixed; top: 4vmin; left: 4vmin;width: 35vmin; height: 2.5rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;" placeholder="Beacon Node API Url" @bind="nodeAPIUrl"/>
+    </div>
+    @if (!stats)
+{
+    @if (showProofs)
+    {
+        <div style=" background: rgba(0, 0, 0, 0.3);width: 60vw; padding: 21vh; margin: 50px auto; display: block;border-radius: 7px; height: 700px;">
+                <div class="bar appear" style="position: absolute; left: 35%; top: 46%; filter: blur(15px);">  
+                 <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip;" >Slot: 
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Header.Slot</mark>
+                   </p>
+
+                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip; ">Epoch:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Header.Slot)</mark>
+                   </p> 
+
+               <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">State root:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Header.StateRoot</mark>
+                   </p>
+
+               <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Body root:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.BodyRoot</mark>
+                   </p>
+
+                   <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
+                   <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="Client.Arguments"/>
+                   </p>
+                   <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip; position: relative;top: 3px;">Validator balance:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
+                   </p>
+                   
+
+                <MudProgressLinear Rounded="true" Size="Size.Large" Max="130" Value="@Value" style="background: none; height: 10px; width: 30vw; top: 20px;  " Color="Color.Default"/>
+            </div> 
+            <button style="margin-left: 21vw; top: -17vh; background-color:black; opacity: 0.4; color:white; font-family: 'Open Sans', sans-serif;color: white;font-size: 100%; height: 40px;width: 10vh; border-radius: 20px;  "@onclick="ShowProofs">Close Proof</button>
+            <div style="margin-top: -50px;">
+                <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 140%; overflow: scroll;">Offsets: @string.Join(", ", Proofs.Offsets) </p>
+           
+             <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 140%;overflow: scroll; width: 40vw;">Leaves:  </p>
+             <textarea style="background: none; color: white; font-family: 'Open Sans', sans-serif;border: none; width: 30vw; height: 100px; resize: both; z-index: 3;"> @string.Join(", ", Proofs.Leaves)</textarea></div>
+            
              
-             <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.Slot</mark>
-             </p>
-         <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">Epoch:
-
-            <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Header.Slot)</mark>
-             </p> 
-        <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">State root:
-
-            <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.StateRoot</mark>
-             </p>
-        <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold;">Body root:
-
-            <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.BodyRoot</mark>
-             </p>
-
-        <MudProgressLinear Rounded="true" Size="Size.Large" Max="130" Value="@Value" style="background: none; height: 7px; width: 693px; top:10px; " Color="Color.Default"/>
         </div>
+  
+    }
+    else
+    {
+        <div style=" background: rgba(0, 0, 0, 0.3);width: 37vw; padding: 21vh; margin: 50px auto; display: block;border-radius: 7px; height: 450px; ">
+                <div class="bar appear" style="position: absolute; left: 35%; top: 46%;">  
+                 <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip;" >Slot: 
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Header.Slot</mark>
+                   </p>
+
+                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip; ">Epoch:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Header.Slot)</mark>
+                   </p> 
+
+               <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">State root:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Header.StateRoot</mark>
+                   </p>
+
+               <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Body root:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Header.BodyRoot</mark>
+                   </p>
+
+                   <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
+                   <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="Client.Arguments"/>
+                   </p>
+                   <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip; position: relative;top: 3px;">Validator balance:
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
+                   <button style="position: relative; top: 0px; background-color:black; opacity: 0.4; color:white; font-size: 90%; padding: 10px;right: -10px; width: 9.5vh; border-radius: 20px;  "@onclick="ShowProofs">View Proof</button>
+                   </p>
+                   
+
+                <MudProgressLinear Rounded="true" Size="Size.Large" Max="130" Value="@Value" style="background: none; height: 10px; width: 30vw; top: 20px;  " Color="Color.Default"/>
+            </div> 
+        </div>
+    }
 
     
 }
-<div style="position: fixed; top: 6%; left: 38%; display: flex;" >
-    <h1 style="font-family: 'Paytone One'; color:#140841; font-size: 600%; flex: 1;" class="display-1">Lantern.</h1>
-    <p style=" margin-left: -330px; margin-top: 110px; color:#140841; flex: 10; font-family: 'Open Sans', sans-serif; font-size: 160%; font-weight: normal;">Consensus Layer Light Client</p>
-    <button class="hoverable" type="button" style=" left: -195px; margin-top: 170px; flex: 1; font-size: 120%; font-family: 'Open Sans', sans-serif; border-radius: 7px; border: 1px solid #140841; padding: 12px 15px; " @onclick="async () => await Launch()" >Launch</button>
-    <p style="font-family:'Open Sans', sans-serif; font-size: 155%; position: fixed; left: 30px; top: 30px; font-weight: bold; color:#140841; ">Status: 
-        <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@status</mark>
-    </p>
-</div>
+
+ 
 
 @code {
-    public string status = "Offline";
-    public bool hidden = true;
-    public bool ready = true;
+    public string nodeAPIUrl {get; set;}
+    public bool stats = true;
+    public bool showProofs = false;
     public int Value { get; set; }
     bool _disposed;
     public void Dispose() => _disposed = true;
     private MudTheme Theme = new MudTheme();
     public LightClientUtility Utility = new LightClientUtility();
     public BeaconBlockHeader Header = BeaconBlockHeader.Zero;
+    public LightClientProofs Proofs = new LightClientProofs();
 
     public async Task Launch()
     {
-        hidden = false;
-        Client.Launch();
-        status = "Online";
-        if (ready)
+
+        if(nodeAPIUrl != null)
+        {
+            stats = false;
+            Client.Launch(nodeAPIUrl);
+        }
+        UpdateHeader();
+        if (Client.Status == "Started")
         {
             SimulateProgress();
         }
-        
+
     }
 
     public async void SimulateProgress()
@@ -72,6 +133,7 @@
                 return;
             }
             UpdateHeader();
+            await FetchProofs();
             StateHasChanged();
             await Task.Delay(1000);
             Value += 10;
@@ -91,6 +153,32 @@
             {
                 Header = Objectify(header);
             }
+        }
+    }
+
+    public void ShowProofs()
+    {
+        if (showProofs)
+        {
+            showProofs = false;
+        }
+        else
+        {
+            showProofs = true;
+        }
+     
+    }
+
+    public async Task FetchProofs()
+    {
+        if (Client.Status == "Synced" & Client.Arguments.All(char.IsDigit))
+        {
+            Proofs = await Client.Server.FetchProofs(nodeAPIUrl, "head", Client.Arguments);
+        }
+        else
+        {
+            Proofs = new LightClientProofs();
+            Proofs.Balance = 0;
         }
     }
 
