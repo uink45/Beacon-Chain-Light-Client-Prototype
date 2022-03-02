@@ -19,9 +19,10 @@ namespace Lantern
         /// </summary>
         public Slot CalculateSlot(int network)
         {
-            ulong timePassed = (ulong)DateTime.Now.Subtract(DateTime.MinValue.AddYears(1969)).TotalMilliseconds;
+            ulong timePassed = (ulong)DateTime.UtcNow.Subtract(DateTime.MinValue.AddYears(1969)).TotalMilliseconds;
+
             ulong diffInSeconds = (timePassed / 1000) - GenesisTime[network];
-            return new Slot(((ulong)Math.Floor((decimal)(diffInSeconds / 12))) - 3000);
+            return new Slot(((ulong)Math.Floor((decimal)(diffInSeconds / 12))));
         }
 
         /// <summary>
