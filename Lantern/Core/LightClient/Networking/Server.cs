@@ -31,7 +31,7 @@ namespace Lantern
         public async Task<string> FetchCheckpointRoot(string serverUrl)
         {
             string url = serverUrl + "/eth/v1/beacon/states/head/finality_checkpoints";
-            logs.SelectLogsType("Info", 0, url.Remove(22, 46));
+            logs.SelectLogsType("Info", 0, url);
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -76,7 +76,7 @@ namespace Lantern
         /// Fetches the light client header object
         /// from the REST API server.
         /// </summary>
-        public async Task<LightClientUpdate> FetchHeader(string serverUrl, int network, string slot)
+        public async Task<LightClientUpdate> FetchHeaderAtSlot(string serverUrl, int network, string slot)
         {
             string url = serverUrl + "/eth/v1/lightclient/head_update_by_slot/" + slot;
             try
@@ -93,6 +93,29 @@ namespace Lantern
                 await Task.Delay(1000);
             }
             return null;         
+        }
+
+        /// <summary>
+        /// Fetches the light client header object
+        /// from the REST API server.
+        /// </summary>
+        public async Task<LightClientUpdate> FetchHeader(string serverUrl, int network)
+        {
+            string url = serverUrl + "/eth/v1/lightclient/head_update/";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string result = await response.Content.ReadAsStringAsync();
+                header.SerializeData(result);
+                return header.InitializeHeader(network);
+            }
+            catch (Exception e)
+            {
+                logs.SelectLogsType("Error", 0, e.Message);
+                await Task.Delay(1000);
+            }
+            return null;
         }
 
         /// <summary>

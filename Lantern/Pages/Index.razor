@@ -116,8 +116,7 @@
         {
             Value = 0;
             while(Value < 130)
-            {        
-                
+            {                        
                 await Task.Delay(1000);
                 FetchProofs();
                 StateHasChanged();
@@ -125,7 +124,7 @@
                 if(Value == 130)
                 {
                     Value = 0;
-                    await Client.FetchUpdates();
+                    await Client.FetchHeaderUpdate();
                 }            
             }
         }

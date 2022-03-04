@@ -28,7 +28,7 @@ namespace Lantern
             public string body_root { get; set; }
         }
 
-        public class SyncCommitteeAggregate
+        public class SyncAggregate
         {
             public string sync_committee_bits { get; set; }
             public string sync_committee_signature { get; set; }
@@ -41,7 +41,7 @@ namespace Lantern
             public List<string> next_sync_committee_branch { get; set; }
             public FinalizedHeader finalized_header { get; set; }
             public List<string> finality_branch { get; set; }
-            public SyncCommitteeAggregate sync_committee_aggregate { get; set; }
+            public SyncAggregate sync_aggregate { get; set; }
             public string fork_version { get; set; }
         }
 

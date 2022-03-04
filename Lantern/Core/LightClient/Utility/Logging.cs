@@ -35,7 +35,7 @@ namespace Lantern
             switch (log)
             {
                 case 0:                             
-                    Console.WriteLine("Fetching latest checkpoint root from: " + message);
+                    Console.WriteLine("Fetching latest checkpoint root at endpoint: " + message);
                     break;
                 case 1:
                     Console.WriteLine("Initialising from latest checkpoint root: " + message);
@@ -51,6 +51,9 @@ namespace Lantern
                     break;
                 case 5:
                     Console.WriteLine("Fetching proofs from server: " + message);
+                    break;
+                case 6:
+                    Console.WriteLine("Fetching light client update for sync period: " + message);
                     break;
             }
         }

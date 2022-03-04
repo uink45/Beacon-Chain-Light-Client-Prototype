@@ -1,42 +1,41 @@
 ﻿using System.Threading.Tasks;
 using System;
-using System.Linq;
 namespace Lantern
 {
     public class LightClientService
     {
         public CoreSpec Client;
         private Settings Settings;
+        public ulong NextSyncCommitteePeriod;
         public string Status;
         public Server Server;
         private Logging Logs;
         private Clock Clock;
-        private bool NextSyncCommitteeReady;
-        private bool Running;
 
         public void InitialiseObjects(string server)
         {
-            Client = new CoreSpec();
             Settings = new Settings(server);
+            Client = new CoreSpec(Settings); 
             Clock = new Clock();
             Status = "Started";
             Logs = new Logging();
             Server = new Server();
-            NextSyncCommitteeReady = false;
-            Running = true;
+            NextSyncCommitteePeriod = Clock.CalculateSyncPeriod(Settings.Network) + 1;
         }
         public async Task Launch(string server)
-        {
+        {            
             InitialiseObjects(server);
-            CheckSyncPeriod();
             await InitializeLightClient();
+            await FetchNextSyncCommitteeUpdate();
         }
+
+ 
 
         public async Task InitializeLightClient()
         {
             Logs.SelectLogsType("Info", 4, Settings.LightClientApiUrl);
             Status = "Syncing";
-            while (Running)
+            while (true)
             {
                 string checkpointRoot = await Server.FetchCheckpointRoot(Settings.ServerUrl);
                 if (checkpointRoot != null)
@@ -56,10 +55,42 @@ namespace Lantern
             
         }
 
-        public async Task FetchUpdates()
+        public async Task FetchNextSyncCommitteeUpdate()
         {
-            int slot = (int)Clock.CalculateSlot(Settings.Network) - 2;
-            LightClientUpdate update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network, slot.ToString());
+            Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+            LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+            while (true)
+            {
+                if (update != null)
+                {
+                    Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
+                    Logs.PrintClientLogs(update);
+                    break;
+                }
+            }            
+        }
+
+        public async Task FetchHeaderUpdate()
+        {            
+            LightClientUpdate update;
+            if (CheckSyncPeriod())
+            {
+                Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+                update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+            }
+            else
+            {
+                if (IsLatestOptimisticHeader())
+                {
+                    int slotToRequest = (int)Client.storage.OptimisticHeader.Slot + 1;
+                    update = await Server.FetchHeaderAtSlot(Settings.ServerUrl, Settings.Network, slotToRequest.ToString());
+                }
+                else
+                {
+                    update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
+                }
+                
+            }            
             if (update != null)
             {
                 Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
@@ -70,17 +101,25 @@ namespace Lantern
 
         public bool CheckSyncPeriod()
         {
-            if (Clock.CalculateEpochsInSyncPeriod(0) == 255 & !NextSyncCommitteeReady)
+            if(Clock.CalculateSyncPeriod(Settings.Network) == NextSyncCommitteePeriod)
             {
-                NextSyncCommitteeReady = true;
+                NextSyncCommitteePeriod = NextSyncCommitteePeriod + 1;
                 return true;
-            }
-            else if (Clock.CalculateEpochsInSyncPeriod(0) > 255 & NextSyncCommitteeReady)
-            {
-                NextSyncCommitteeReady = false;
             }
             return false;
         }
 
+
+        public bool IsLatestOptimisticHeader()
+        {
+            int slot = (int)Clock.CalculateSlot(Settings.Network);
+            int expectedSlot = (int)Client.storage.OptimisticHeader.Slot + 1;
+
+            if(slot != expectedSlot)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

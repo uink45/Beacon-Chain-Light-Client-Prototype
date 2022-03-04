@@ -3,7 +3,7 @@ using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Containers;
 using Nethermind.Core2.Types;
 using Newtonsoft.Json;
-
+using System;
 namespace Lantern
 {
     public class SerializeSnapshot
@@ -53,6 +53,7 @@ namespace Lantern
             {
                 publicKeys[i] = Utility.ConvertStringToBlsPubKey(pubKeys[i]);
             }
+
             return publicKeys;
         }
 

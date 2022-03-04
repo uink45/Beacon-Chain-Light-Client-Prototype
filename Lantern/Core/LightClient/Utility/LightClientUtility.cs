@@ -104,21 +104,23 @@ namespace Lantern
             var value = leaf;
             for (var testDepth = 0; testDepth < depth; testDepth++)
             {
-                var branchValue = branch[testDepth];
-                var indexAtDepth = index / ((ulong)1 << testDepth);
+                var indexAtDepth = Math.Floor(index / Math.Pow(2, testDepth));
+
                 if (indexAtDepth % 2 == 0)
                 {
                     // Branch on right
-                    value = Crypto.Hash(value, branchValue);
+                    value = Crypto.Hash(value, branch[testDepth]);
+                   
                 }
                 else
                 {
                     // Branch on left
-                    value = Crypto.Hash(branchValue, value);
+                    value = Crypto.Hash(branch[testDepth], value);
                 }
             }
             return value.Equals(root);
         }
+
 
         public BlsPublicKey[] GetParticipantPubkeys(BlsPublicKey[] publicKeys, BitArray syncCommitteeBits)
         {
@@ -127,12 +129,12 @@ namespace Lantern
             for (int i = 0; i < syncCommitteeBits.Count; i++)
             {
                 if (syncCommitteeBits[i])
-                {
+                {                    
                     _publicKeys[index] = BlsPublicKey.Zero;
                     _publicKeys[index] = publicKeys[i];
                     index++;
                 }              
-            }        
+            }
             return _publicKeys;
         }
 

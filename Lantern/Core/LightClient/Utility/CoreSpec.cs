@@ -9,15 +9,19 @@ namespace Lantern
     public class CoreSpec
     {
         public LightClientUtility utility;
+        public Clock clock;
         public LightClientStore storage;
+        public Settings settings;
         public DataManager data;
         public Constants constants;
         public TimeParameters time;
         public Logging logging;
 
-        public CoreSpec()
+        public CoreSpec(Settings _settings)
         {
             utility = new LightClientUtility();
+            settings = _settings;
+            clock = new Clock();
             storage = new LightClientStore();
             data = new DataManager();
             constants = new Constants();
@@ -37,11 +41,18 @@ namespace Lantern
 
             if (!isValid)
             {
-                throw new Exception("Invalid next sync committee merkle branch");
+                Console.WriteLine("Invalid Snapshot");
+                throw new Exception("Invalid current sync committee merkle branch");
             }
             storage.CurrentSyncCommittee = snapshot.CurrentSyncCommittee;
             storage.FinalizedHeader = snapshot.FinalizedHeader;
             data.StoreData(storage.FinalizedHeader);
+        }
+
+        public void VerifyProofs(LightClientProofs proofs, Root stateRoot)
+        {
+            
+            
         }
 
         public void ProcessSlotForLightClientStore(LightClientStore store, Slot currentSlot)
@@ -62,33 +73,30 @@ namespace Lantern
         {
             BeaconBlockHeader activeHeader = GetActiveHeader(update);
 
-            if (!(currentSlot >= activeHeader.Slot & activeHeader.Slot > store.FinalizedHeader.Slot))
-            {
+            if(!(currentSlot >= activeHeader.Slot & currentSlot >= store.FinalizedHeader.Slot)){
                 logging.SelectLogsType("Warn", 0, $"The server sent a known block (at slot {activeHeader.Slot}). Retrying...");
-                throw new Exception();
             }
 
             Epoch finalizedPeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(store.FinalizedHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
             Epoch updatePeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(activeHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
             Epoch newPeriod = finalizedPeriod + new Epoch(1);
-          
+
             if (updatePeriod != finalizedPeriod & updatePeriod != newPeriod)
             {
                 throw new ArgumentOutOfRangeException("Finalized Period", finalizedPeriod, $"Update skips a sync committee period.");
             }
-
-            if(update.FinalizedHeader == new BeaconBlockHeader(Root.Zero) || update.FinalizedHeader == null)
+            if(update.FinalizedHeader == BeaconBlockHeader.Zero)
             {
                 utility.assertZeroHashes(update.FinalityBranch, constants.FinalizedRootDepth, "finalityBranches");
             }
             else
             {
                 var isValid = utility.IsValidMerkleBranch(
-                    update.AttestedHeader.HashTreeRoot(), 
+                    update.FinalizedHeader.HashTreeRoot(), 
                     update.FinalityBranch,
                     constants.FinalizedRootDepth,
                     (ulong)constants.FinalizedRootIndex,
-                    update.FinalizedHeader.StateRoot);
+                    update.AttestedHeader.StateRoot);
 
                 if (!isValid)
                 {
@@ -97,27 +105,43 @@ namespace Lantern
             }
             
             SyncCommittee syncCommittee;
-            if(updatePeriod == finalizedPeriod)
+            if(store.NextSyncCommittee == null)
             {
                 syncCommittee = store.CurrentSyncCommittee;
-                utility.assertZeroHashes(update.NextSyncCommitteeBranch, constants.NextSyncCommitteeDepth, "nextSyncCommitteeBranch");
-            }
-            else
-            {
-                syncCommittee = store.NextSyncCommittee;
                 var isValid = utility.IsValidMerkleBranch(
                     update.NextSyncCommittee.HashTreeRoot(),
                     update.NextSyncCommitteeBranch,
                     constants.NextSyncCommitteeDepth,
                     (ulong)constants.NextSyncCommitteeIndex,
-                    update.AttestedHeader.StateRoot);
-
+                    activeHeader.StateRoot);
                 if (!isValid)
                 {
                     throw new Exception("Invalid next sync committee merkle branch");
                 }
             }
-
+            else
+            {
+                if (updatePeriod == finalizedPeriod)
+                {
+                    syncCommittee = store.CurrentSyncCommittee;
+                    utility.assertZeroHashes(update.NextSyncCommitteeBranch, constants.NextSyncCommitteeDepth, "nextSyncCommitteeBranch");
+                }
+                else
+                {
+                    syncCommittee = storage.NextSyncCommittee;
+                    var isValid = utility.IsValidMerkleBranch(
+                        update.NextSyncCommittee.HashTreeRoot(),
+                        update.NextSyncCommitteeBranch,
+                        constants.NextSyncCommitteeDepth,
+                        (ulong)constants.NextSyncCommitteeIndex,
+                        activeHeader.StateRoot);
+                    if (!isValid)
+                    {
+                        throw new Exception("Invalid next sync committee merkle branch");
+                    }
+                }
+            }
+       
             SyncAggregate syncAggregate = update.SyncAggregate;
             int committeeParticipantsSum = syncAggregate.SyncCommitteeBits.Cast<bool>().Count(l => l);
             
@@ -144,7 +168,11 @@ namespace Lantern
             BeaconBlockHeader activeHeader = GetActiveHeader(update);
             Epoch finalizedPeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(store.FinalizedHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
             Epoch updatePeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(activeHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
-            if (updatePeriod == (finalizedPeriod + new Epoch(1)))
+            if(store.NextSyncCommittee == null)
+            {
+                store.NextSyncCommittee = update.NextSyncCommittee;
+            }
+            else if (updatePeriod == (finalizedPeriod + new Epoch(1)))
             {
                 store.CurrentSyncCommittee = store.NextSyncCommittee;
                 store.NextSyncCommittee = update.NextSyncCommittee;
@@ -193,7 +221,7 @@ namespace Lantern
 
         public BeaconBlockHeader GetActiveHeader(LightClientUpdate update)
         {
-            if(update.FinalizedHeader != null)
+            if(update.FinalizedHeader != BeaconBlockHeader.Zero)
             {
                 return update.FinalizedHeader;
             }

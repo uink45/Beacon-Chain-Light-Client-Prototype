@@ -9,7 +9,6 @@ namespace Lantern
     public class Clock
     {
         private readonly ulong EpochsPerSyncCommitteePeriod = 256;
-        private readonly ulong AltairForkEpoch = 74260;
         private readonly ulong SlotsPerEpoch = 32;
         private ulong[] GenesisTime = { 1606824023, 1616508000 };
 
@@ -20,7 +19,6 @@ namespace Lantern
         public Slot CalculateSlot(int network)
         {
             ulong timePassed = (ulong)DateTime.UtcNow.Subtract(DateTime.MinValue.AddYears(1969)).TotalMilliseconds;
-
             ulong diffInSeconds = (timePassed / 1000) - GenesisTime[network];
             return new Slot(((ulong)Math.Floor((decimal)(diffInSeconds / 12))));
         }
@@ -34,27 +32,28 @@ namespace Lantern
             return new Epoch(CalculateSlot(network) / SlotsPerEpoch);
         }
 
-
-        // FIX THE FOLLOWING SUMMARIES
-
-        /// <summary>
-        /// Calculates the number of epochs 
-        /// that have passed in the current
-        /// sync period. 
-        /// </summary>
-        public Epoch CalculateEpochsInSyncPeriod(int network)
+        public Epoch CalculateEpochAtSlot(ulong slot, int network)
         {
-            return new Epoch(CalculateEpoch(network) % EpochsPerSyncCommitteePeriod);
+            return new Epoch(slot / SlotsPerEpoch);
+        }
+
+        public ulong CalculateSyncPeriodAtEpoch(ulong epoch)
+        {
+            return epoch / EpochsPerSyncCommitteePeriod;
         }
 
         public ulong CalculateSyncPeriod(int network)
         {
-            return (ulong)((Math.Abs((decimal)(CalculateEpoch(network) - AltairForkEpoch)) / EpochsPerSyncCommitteePeriod));
+            return CalculateEpoch(network) / EpochsPerSyncCommitteePeriod;
         }
 
-        public ulong CalculateRemainingSyncPeriod(int network)
+        public Epoch CalculateRemainingEpochs(int network)
         {
-            return CalculateEpoch(network) / EpochsPerSyncCommitteePeriod;
+            decimal currentSyncPeriod = (decimal)((ulong)CalculateEpoch(network)) / EpochsPerSyncCommitteePeriod;
+            decimal nextSyncPeriod = ((CalculateEpoch(network) / EpochsPerSyncCommitteePeriod) + 1);
+            decimal difference = nextSyncPeriod - currentSyncPeriod;
+            decimal final = difference * EpochsPerSyncCommitteePeriod;
+            return new Epoch((ulong)final);
         }
     }
 }

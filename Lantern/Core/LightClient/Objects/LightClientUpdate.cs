@@ -20,7 +20,7 @@ namespace Lantern
             nextSyncCommittee = new SyncCommittee();
             nextSyncCommitteeBranch = InitializeArray<Root>(4);
             finalityBranch = InitializeArray<Root>(5);
-            finalizedHeader = null;
+            finalizedHeader = BeaconBlockHeader.Zero;
             syncAggregate = new SyncAggregate();
             forkVersion = ForkVersion.Zero;
         }

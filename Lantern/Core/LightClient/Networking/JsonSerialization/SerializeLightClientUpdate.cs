@@ -4,6 +4,7 @@ using Nethermind.Core2.Crypto;
 using Nethermind.Core2.Containers;
 using Nethermind.Core2.Types;
 using Newtonsoft.Json;
+using System;
 
 namespace Lantern
 {
@@ -29,8 +30,8 @@ namespace Lantern
                     Contents.data[0].next_sync_committee_branch,
                     Contents.data[0].finalized_header,
                     Contents.data[0].finality_branch,
-                    Contents.data[0].sync_committee_aggregate.sync_committee_bits,
-                    Contents.data[0].sync_committee_aggregate.sync_committee_signature,
+                    Contents.data[0].sync_aggregate.sync_committee_bits,
+                    Contents.data[0].sync_aggregate.sync_committee_signature,
                     Contents.data[0].fork_version);
         }
 
@@ -65,16 +66,6 @@ namespace Lantern
             return new SyncCommittee(CreateBlsPublicKeys(nextSync.pubkeys), Utility.ConvertStringToBlsPubKey(nextSync.aggregate_pubkey));
         }
 
-        private BlsPublicKey[] CreateBlsPublicKeys(List<string> pubKeys)
-        {
-            BlsPublicKey[] publicKeys = new BlsPublicKey[Utility.Constant.SyncCommitteeSize];
-            for (int i = 0; i < pubKeys.Count; i++)
-            {
-                publicKeys[i] = Utility.ConvertStringToBlsPubKey(pubKeys[i]);
-            }
-            return publicKeys;
-        }
-
         private Root[] CreateNextSyncCommitteeBranch(List<string> next_sync_committee_branch)
         {
             Root[] branches = new Root[next_sync_committee_branch.Count];
@@ -94,6 +85,16 @@ namespace Lantern
                 Utility.ConvertHexStringToRoot(finality_header.state_root),
                 Utility.ConvertHexStringToRoot(finality_header.body_root)
                 );
+        }
+
+        private BlsPublicKey[] CreateBlsPublicKeys(List<string> pubKeys)
+        {
+            BlsPublicKey[] publicKeys = new BlsPublicKey[Utility.Constant.SyncCommitteeSize];
+            for (int i = 0; i < pubKeys.Count; i++)
+            {
+                publicKeys[i] = Utility.ConvertStringToBlsPubKey(pubKeys[i]);
+            }
+            return publicKeys;
         }
 
         private Root[] CreateFinalityBranch(List<string> finality_branch)

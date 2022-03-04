@@ -19,7 +19,7 @@ namespace Lantern
         {
             finalizedHeader = new BeaconBlockHeader(Root.Zero);
             currentSyncCommittee = new SyncCommittee();
-            nextSyncCommittee = new SyncCommittee();
+            nextSyncCommittee = null;
             bestValidUpdate = new LightClientUpdate();
             proofs = new LightClientProofs();
             optimisticHeader = new BeaconBlockHeader(Root.Zero);
