@@ -27,7 +27,3 @@ dotnet build
 dotnet run
 ```
 After running the commands above, head to https://localhost:5001/.
-
-### Troubleshooting
-#### Lodestar Beacon-chain client
-- If the beacon-chain client is initialized from a weak subjectivity checkpoint, it may start displaying multiple errors related to the finality header and backfill syncing. These errors are harmless and will be suppressed by the Chainsafe team (progress can be tracked [here](https://github.com/ChainSafe/lodestar/issues/3605)).
