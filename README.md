@@ -7,9 +7,13 @@ Currently, the prototype can track the latest block header in the beacon chain. 
 ### Requirements
 - .NET Core 5.0 or greater ([Latest version available here](https://dotnet.microsoft.com/en-us/download))
 - Node.js ([Available here](https://nodejs.org/en/download/))
+- 
 ### Before Running
-To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. The server is the [Lodestar Beacon-chain client](https://github.com/ChainSafe/lodestar), created by the [Chainsafe](https://github.com/ChainSafe) team. Its installation and building instructions are available  in their [documentation](https://chainsafe.github.io/lodestar/installation/). When successfully installed and built, run it using the following command:
+To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. The server is a modified version of the Lodestar beacon chain client, available for download in the [Light-Client-Server](https://github.com/uink45/Light-Client-Server) repository. Enter the following commands in the command prompt to initilialise the server: 
+
 ```
+yarn install
+yarn run build
 node --trace-deprecation --max-old-space-size=6144 packages/cli/bin/lodestar beacon --eth1.enabled false --network mainnet --weakSubjectivityServerUrl https://21qajKWbOdMuXWCCPEbxW1bVPrp:5e43bc9d09711d4f34b55077cdb3380a@eth2-beacon-mainnet.infura.io --weakSubjectivitySyncLatest true --api.rest.api "lightclient" "beacon"
 ```
 
