@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "usXJ6AnH3DlDTxlcYGG6XpUD2eZfcOWkOEZP33Y92gOKC2gjXwgGO4RFaOVUc10X4ICMMAnxv+qP5wqKPoYwFA==",
+  "dgSpecHash": "VWr7o/rgd20tQ9FTL3cPqDePkuj1cYid257xX3lM/b30mCxK7bD6ns6Ay3ayGRjyjmR4ek2/rgR9dlm/2YubOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\multi\\Documents\\Mihir Files\\Beacon-Chain-Light-Client-Prototype\\Lantern\\Lantern.csproj",
+  "projectFilePath": "C:\\Users\\multi\\Documents\\GitHub\\Beacon-Chain-Light-Client-Prototype\\Lantern\\Lantern.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\multi\\.nuget\\packages\\litedb\\5.0.11\\litedb.5.0.11.nupkg.sha512",
     "C:\\Users\\multi\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.1\\microsoft.aspnetcore.authorization.6.0.1.nupkg.sha512",
