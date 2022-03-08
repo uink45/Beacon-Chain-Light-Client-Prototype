@@ -12,7 +12,6 @@ To initialize and sync with the beacon chain, the light client requires a local 
 
 ```
 yarn install
-yarn run build
 node --trace-deprecation --max-old-space-size=6144 packages/cli/bin/lodestar beacon --eth1.enabled false --network mainnet --weakSubjectivityServerUrl https://21qajKWbOdMuXWCCPEbxW1bVPrp:5e43bc9d09711d4f34b55077cdb3380a@eth2-beacon-mainnet.infura.io --weakSubjectivitySyncLatest true --api.rest.api "lightclient" "beacon"
 ```
 
