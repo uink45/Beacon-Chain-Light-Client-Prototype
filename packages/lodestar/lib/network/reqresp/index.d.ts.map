@@ -1,1 +1,0 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/network/reqresp/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,EAAE,eAAe,EAAC,MAAM,WAAW,CAAC;AACnD,OAAO,EAAC,eAAe,EAAE,kBAAkB,EAAC,MAAM,YAAY,CAAC;AAC/D,cAAc,aAAa,CAAC;AAC5B,OAAO,EAAC,qBAAqB,EAAC,MAAM,SAAS,CAAC;AAC9C,OAAO,EAAC,QAAQ,IAAI,eAAe,EAAE,MAAM,IAAI,aAAa,EAAC,MAAM,SAAS,CAAC"}

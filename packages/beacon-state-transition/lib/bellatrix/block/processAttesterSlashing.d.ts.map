@@ -1,1 +1,0 @@
-{"version":3,"file":"processAttesterSlashing.d.ts","sourceRoot":"","sources":["../../../src/bellatrix/block/processAttesterSlashing.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,MAAM,EAAC,MAAM,2BAA2B,CAAC;AAEjD,OAAO,EAAC,0BAA0B,EAA4B,MAAM,aAAa,CAAC;AAGlF,wBAAgB,uBAAuB,CACrC,KAAK,EAAE,0BAA0B,EACjC,gBAAgB,EAAE,MAAM,CAAC,gBAAgB,EACzC,gBAAgB,UAAO,GACtB,IAAI,CAON"}

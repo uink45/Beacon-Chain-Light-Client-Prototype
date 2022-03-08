@@ -1,1 +1,0 @@
-{"version":3,"file":"errors.js","sourceRoot":"","sources":["../../../src/util/queue/errors.ts"],"names":[],"mappings":";;;AAAA,8DAAwD;AAExD,IAAY,cAGX;AAHD,WAAY,cAAc;IACxB,6DAA2C,CAAA;IAC3C,mEAAiD,CAAA;AACnD,CAAC,EAHW,cAAc,GAAd,sBAAc,KAAd,sBAAc,QAGzB;AAID,MAAa,UAAW,SAAQ,8BAAiC;IAC/D,YAAY,IAAwB;QAClC,KAAK,CAAC,IAAI,CAAC,CAAC;IACd,CAAC;CACF;AAJD,gCAIC"}

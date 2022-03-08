@@ -1,1 +1,0 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/genesisConfig/index.ts"],"names":[],"mappings":"AACA,OAAO,EAAiC,IAAI,EAAqB,MAAM,2BAA2B,CAAC;AAEnG,OAAO,EAAC,gBAAgB,EAAC,MAAM,iBAAiB,CAAC;AACjD,OAAO,EAAgB,cAAc,EAAC,MAAM,SAAS,CAAC;AACtD,OAAO,EAAC,kBAAkB,EAAC,MAAM,SAAS,CAAC;AAE3C,wBAAgB,oBAAoB,CAAC,eAAe,EAAE,gBAAgB,EAAE,qBAAqB,EAAE,IAAI,GAAG,cAAc,CAkEnH"}

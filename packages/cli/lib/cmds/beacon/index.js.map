@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/cmds/beacon/index.ts"],"names":[],"mappings":";;;AAEA,uCAAqD;AACrD,uCAAwC;AAE3B,QAAA,MAAM,GAA0C;IAC3D,OAAO,EAAE,QAAQ;IACjB,QAAQ,EAAE,yBAAyB;IACnC,QAAQ,EAAE;QACR;YACE,OAAO,EAAE,yBAAyB;YAClC,WAAW,EAAE,2DAA2D;SACzE;KACF;IACD,OAAO,EAAE,uBAAgD;IACzD,OAAO,EAAE,uBAAa;CACvB,CAAC"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"aggregator.d.ts","sourceRoot":"","sources":["../../src/util/aggregator.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,YAAY,EAAC,MAAM,2BAA2B,CAAC;AAWvD,wBAAgB,yBAAyB,CAAC,cAAc,EAAE,YAAY,GAAG,OAAO,CAM/E;AAED,wBAAgB,+BAA+B,CAAC,eAAe,EAAE,MAAM,EAAE,aAAa,EAAE,YAAY,GAAG,OAAO,CAG7G;AAED;;;;GAIG;AACH,wBAAgB,qBAAqB,CAAC,GAAG,EAAE,YAAY,EAAE,MAAM,EAAE,MAAM,GAAG,OAAO,CAEhF"}

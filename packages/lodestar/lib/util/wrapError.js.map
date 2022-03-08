@@ -1,1 +1,0 @@
-{"version":3,"file":"wrapError.js","sourceRoot":"","sources":["../../src/util/wrapError.ts"],"names":[],"mappings":";;;AAEA;;;;;;;;;;;;GAYG;AACI,KAAK,UAAU,SAAS,CAAI,OAAmB;IACpD,IAAI;QACF,OAAO,EAAC,GAAG,EAAE,IAAI,EAAE,MAAM,EAAE,MAAM,OAAO,EAAC,CAAC;KAC3C;IAAC,OAAO,GAAG,EAAE;QACZ,OAAO,EAAC,GAAG,EAAE,GAAY,EAAC,CAAC;KAC5B;AACH,CAAC;AAND,8BAMC"}

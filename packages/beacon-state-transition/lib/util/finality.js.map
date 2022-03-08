@@ -1,1 +1,0 @@
-{"version":3,"file":"finality.js","sourceRoot":"","sources":["../../src/util/finality.ts"],"names":[],"mappings":";;;AAAA,gEAA4E;AAG5E,SAAgB,gBAAgB,CAAC,KAAgC;IAC/D,OAAO,KAAK,CAAC,iBAAiB,CAAC,KAAK,GAAG,KAAK,CAAC,mBAAmB,CAAC,KAAK,CAAC;AACzE,CAAC;AAFD,4CAEC;AAED;;;;;GAKG;AACH,SAAgB,kBAAkB,CAAC,KAAgC;IACjE,OAAO,gBAAgB,CAAC,KAAK,CAAC,GAAG,kDAAgC,CAAC;AACpE,CAAC;AAFD,gDAEC"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"proposerSlashing.d.ts","sourceRoot":"","sources":["../../../src/chain/validation/proposerSlashing.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,MAAM,EAAW,MAAM,6CAA6C,CAAC;AAC7E,OAAO,EAAC,YAAY,EAAC,MAAM,IAAI,CAAC;AAIhC,wBAAsB,8BAA8B,CAClD,KAAK,EAAE,YAAY,EACnB,gBAAgB,EAAE,MAAM,CAAC,gBAAgB,GACxC,OAAO,CAAC,IAAI,CAAC,CA6Bf"}

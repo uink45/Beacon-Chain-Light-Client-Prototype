@@ -1,1 +1,0 @@
-{"version":3,"file":"bellatrix.d.ts","sourceRoot":"","sources":["../../src/interface/bellatrix.ts"],"names":[],"mappings":"AACA,oBAAY,eAAe,GAAG;IAC5B,qCAAqC,EAAE,MAAM,CAAC;IAC9C,uCAAuC,EAAE,MAAM,CAAC;IAChD,0CAA0C,EAAE,MAAM,CAAC;IACnD,yBAAyB,EAAE,MAAM,CAAC;IAClC,4BAA4B,EAAE,MAAM,CAAC;IACrC,oBAAoB,EAAE,MAAM,CAAC;IAC7B,oBAAoB,EAAE,MAAM,CAAC;CAC9B,CAAC"}

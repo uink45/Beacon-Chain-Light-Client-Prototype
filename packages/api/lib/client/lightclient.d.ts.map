@@ -1,1 +1,0 @@
-{"version":3,"file":"lightclient.d.ts","sourceRoot":"","sources":["../../src/client/lightclient.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,gBAAgB,EAAC,MAAM,4BAA4B,CAAC;AAE5D,OAAO,EAAC,WAAW,EAAqD,MAAM,SAAS,CAAC;AACxF,OAAO,EAAC,GAAG,EAA0D,MAAM,uBAAuB,CAAC;AAEnG;;GAEG;AACH,wBAAgB,SAAS,CAAC,OAAO,EAAE,gBAAgB,EAAE,UAAU,EAAE,WAAW,GAAG,GAAG,CAkBjF"}

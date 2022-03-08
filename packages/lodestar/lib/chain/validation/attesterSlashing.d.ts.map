@@ -1,1 +1,0 @@
-{"version":3,"file":"attesterSlashing.d.ts","sourceRoot":"","sources":["../../../src/chain/validation/attesterSlashing.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,MAAM,EAAwC,MAAM,6CAA6C,CAAC;AAC1G,OAAO,EAAC,YAAY,EAAC,MAAM,IAAI,CAAC;AAIhC,wBAAsB,8BAA8B,CAClD,KAAK,EAAE,YAAY,EACnB,gBAAgB,EAAE,MAAM,CAAC,gBAAgB,GACxC,OAAO,CAAC,IAAI,CAAC,CAgCf"}

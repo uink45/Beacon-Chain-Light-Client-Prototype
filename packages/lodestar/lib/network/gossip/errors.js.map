@@ -1,1 +1,0 @@
-{"version":3,"file":"errors.js","sourceRoot":"","sources":["../../../src/network/gossip/errors.ts"],"names":[],"mappings":";;;AAAA,MAAa,qBAAsB,SAAQ,KAAK;IAE9C,YAAY,IAAY,EAAE,OAAgB;QACxC,KAAK,CAAC,OAAO,CAAC,CAAC;QACf,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACnB,CAAC;CACF;AAND,sDAMC"}

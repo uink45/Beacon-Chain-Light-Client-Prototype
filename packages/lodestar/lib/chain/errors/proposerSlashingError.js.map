@@ -1,1 +1,0 @@
-{"version":3,"file":"proposerSlashingError.js","sourceRoot":"","sources":["../../../src/chain/errors/proposerSlashingError.ts"],"names":[],"mappings":";;;AAAA,yDAAqD;AAErD,IAAY,yBAGX;AAHD,WAAY,yBAAyB;IACnC,sFAAyD,CAAA;IACzD,wEAA2C,CAAA;AAC7C,CAAC,EAHW,yBAAyB,GAAzB,iCAAyB,KAAzB,iCAAyB,QAGpC;AAKD,MAAa,qBAAsB,SAAQ,oCAA4C;CAAG;AAA1F,sDAA0F"}

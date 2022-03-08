@@ -1,1 +1,0 @@
-{"version":3,"file":"beacon.js","sourceRoot":"","sources":["../../src/server/beacon.ts"],"names":[],"mappings":";;;AACA,mCAA2D;AAC3D,6CAA8F;AAE9F,SAAgB,SAAS,CAAC,MAAwB,EAAE,GAAQ;IAC1D,sDAAsD;IACtD,OAAO,IAAA,4BAAoB,EAAgB,EAAC,UAAU,EAAV,mBAAU,EAAE,cAAc,EAAd,uBAAc,EAAE,iBAAiB,EAAjB,0BAAiB,EAAC,EAAE,MAAM,EAAE,GAAG,CAAC,CAAC;AAC3G,CAAC;AAHD,8BAGC"}

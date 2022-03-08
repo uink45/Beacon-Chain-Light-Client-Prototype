@@ -1,1 +1,0 @@
-{"version":3,"file":"lockfile.js","sourceRoot":"","sources":["../../src/util/lockfile.ts"],"names":[],"mappings":";;;AAKA,IAAI,QAAQ,GAAoB,IAAI,CAAC;AAErC;;;;GAIG;AACH,SAAgB,WAAW;IACzB,qGAAqG;IACrG,IAAI,CAAC,QAAQ;QAAE,QAAQ,GAAG,OAAO,CAAC,UAAU,CAAa,CAAC;IAC1D,OAAO,QAAQ,CAAC;AAClB,CAAC;AAJD,kCAIC"}

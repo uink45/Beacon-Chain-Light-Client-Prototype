@@ -1,1 +1,0 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/api/impl/beacon/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,MAAM,EAAC,MAAM,yBAAyB,CAAC;AAE/C,OAAO,EAAC,UAAU,EAAC,MAAM,UAAU,CAAC;AAKpC,wBAAgB,YAAY,CAC1B,OAAO,EAAE,IAAI,CAAC,UAAU,EAAE,OAAO,GAAG,QAAQ,GAAG,QAAQ,GAAG,SAAS,GAAG,SAAS,GAAG,IAAI,CAAC,GACtF,MAAM,CAAC,MAAM,CAAC,GAAG,CAuBnB"}

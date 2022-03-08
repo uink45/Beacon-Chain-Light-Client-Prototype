@@ -1,1 +1,0 @@
-{"version":3,"file":"processParticipationRecordUpdates.js","sourceRoot":"","sources":["../../../src/phase0/epoch/processParticipationRecordUpdates.ts"],"names":[],"mappings":";;;AAIA;;;GAGG;AACH,SAAgB,iCAAiC,CAAC,KAA8B;IAC9E,6CAA6C;IAC7C,KAAK,CAAC,yBAAyB,GAAG,KAAK,CAAC,wBAAwB,CAAC;IACjE,KAAK,CAAC,wBAAwB,GAAI,EAAqE,CAAC;AAC1G,CAAC;AAJD,8EAIC"}
