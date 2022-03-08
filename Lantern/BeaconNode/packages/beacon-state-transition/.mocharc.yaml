@@ -1,0 +1,6 @@
+colors: true
+require:
+  - ts-node/register
+  - ./test/setup.ts
+timeout: 5000
+exit: true
