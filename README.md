@@ -8,7 +8,7 @@ Currently, the prototype can track the latest block header in the beacon chain. 
 - .NET Core 5.0 or greater ([Latest version available here](https://dotnet.microsoft.com/en-us/download))
 - Node.js ([Available here](https://nodejs.org/en/download/))
 ### Before Running
-To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. The server is a modified version of the Lodestar beacon chain client, available for download in the [Light-Client-Server](https://github.com/uink45/Light-Client-Server) repository. Enter the following commands in the command prompt to initilialise the server: 
+To initialize and sync with the beacon chain, the light client requires a local server to send REST-API requests. The server is a modified version of the Lodestar beacon chain client, available to download from the [Light-Client-Server](https://github.com/uink45/Light-Client-Server) repository. Enter the following commands in the command prompt to initilialise the server: 
 
 ```
 yarn install
