@@ -148,6 +148,7 @@ namespace Lantern
         /// </summary>
         public async Task<LightClientProofs> FetchProofs(string serverUrl, string stateRoot, string validatorIndex)
         {
+
             string url = serverUrl + "/eth/v1/lightclient/proof/" + stateRoot + "?paths=%5B%22balances%22%2C" + validatorIndex + "%5D";
             try
             {

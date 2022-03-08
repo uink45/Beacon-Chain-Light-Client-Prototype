@@ -1,6 +1,4 @@
 ﻿using Nethermind.Core2.Crypto;
-using Nethermind.Core2.Types;
-using Nethermind.Core2.Containers;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
@@ -25,19 +23,20 @@ namespace Lantern
         public LightClientProofs InitializeProofs()
         {
             LightClientProofs proofs = new LightClientProofs();
-            proofs.Offsets = Contents.proofs.offsets;
-            proofs.Leaves = CreateLeaves(Contents.proofs.leaves);
+            proofs.Leaf = Utility.ConvertHexStringToRoot(Contents.stringLeaf);
+            proofs.Proof = CreateLeaves(Contents.proof);
+            proofs.Gindex = ulong.Parse(Contents.index);
             proofs.Balance = Contents.value;
             return proofs;
         }
 
 
-        public List<Root> CreateLeaves(List<string> leaves)
+        public List<Root> CreateLeaves(List<string> proof)
         {
             List<Root> result = new List<Root>();
-            for(int i = 0; i < leaves.Count; i++)
+            for(int i = 0; i < proof.Count; i++)
             {
-                result.Add(Utility.ConvertHexStringToRoot(leaves[i]));
+                result.Add(Utility.ConvertHexStringToRoot(proof[i]));
             }
             return result;
         }

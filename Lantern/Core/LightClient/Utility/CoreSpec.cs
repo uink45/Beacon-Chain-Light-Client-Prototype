@@ -49,10 +49,9 @@ namespace Lantern
             data.StoreData(storage.FinalizedHeader);
         }
 
-        public void VerifyProofs(LightClientProofs proofs, Root stateRoot)
+        public bool VerifyProofs(LightClientProofs proofs, Root stateRoot)
         {
-            
-            
+            return utility.IsValidMerkleBranch(proofs.Leaf, proofs.Proof.ToArray(), (int)(Math.Floor((double)(Math.Log2(proofs.Gindex)))), proofs.Gindex, stateRoot);            
         }
 
         public void ProcessSlotForLightClientStore(LightClientStore store, Slot currentSlot)

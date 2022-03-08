@@ -4,16 +4,11 @@ namespace Lantern
 {
     public class ProofsObject
     {
-        public class Proofs
-        {
-            public string type { get; set; }
-            public List<int> offsets { get; set; }
-            public List<string> leaves { get; set; }
-        }
-
         public class Root
         {
-            public Proofs proofs { get; set; }
+            public string stringLeaf { get; set; }
+            public List<string> proof { get; set; }
+            public string index { get; set; }
             public long value { get; set; }
         }
     }

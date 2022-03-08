@@ -16,5 +16,8 @@ namespace Lantern
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        //  Console.WriteLine(IsValidProof(proof[2], branches, 44, 24189255811072, hashTreeRoot));
+
     }
 }

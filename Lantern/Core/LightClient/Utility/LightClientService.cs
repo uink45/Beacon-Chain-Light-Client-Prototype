@@ -27,6 +27,7 @@ namespace Lantern
             InitialiseObjects(server);
             await InitializeLightClient();
             await FetchNextSyncCommitteeUpdate();
+            await FetchHeaderUpdate();
         }
 
  
@@ -46,8 +47,7 @@ namespace Lantern
                         Client.ValidateCheckpoint(snapshot);
                         Logs.SelectLogsType("Info", 2, null);
                         Logs.PrintSnapshot(snapshot);
-                        Logs.SelectLogsType("Info", 3, null);
-                        Status = "Synced";
+                        Logs.SelectLogsType("Info", 3, null);                       
                         break;
                     }
                 }
@@ -64,7 +64,7 @@ namespace Lantern
                 if (update != null)
                 {
                     Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                    Logs.PrintClientLogs(update);
+                    Logs.PrintClientLogs(update);                    
                     break;
                 }
             }            
@@ -89,7 +89,7 @@ namespace Lantern
                 {
                     update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
                 }
-                
+                Status = "Synced";
             }            
             if (update != null)
             {

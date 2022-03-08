@@ -40,12 +40,12 @@
 
                 <MudProgressLinear Rounded="true" Size="Size.Large" Max="130" Value="@Value" style="background: none; height: 10px; width: 30vw; top: 20px;  " Color="Color.Default"/>
             </div> 
-            <button style="margin-left: 21vw; top: -17vh; background-color:black; opacity: 0.4; color:white; font-family: 'Open Sans', sans-serif;color: white;font-size: 100%; height: 40px;width: 10vh; border-radius: 20px;  "@onclick="ShowProofs">Close Proof</button>
-            <div style="margin-top: -50px;">
-                <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 140%; overflow: scroll;">Offsets: @string.Join(", ", Proofs.Offsets) </p>
-           
-             <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 140%;overflow: scroll; width: 40vw;">Leaves:  </p>
-             <textarea style="background: none; color: white; font-family: 'Open Sans', sans-serif;border: none; width: 30vw; height: 100px; resize: both; z-index: 3;"> @string.Join(", ", Proofs.Leaves)</textarea></div>
+            <button style="margin-left: 21vw; top: -17vh; background-color:black; opacity: 0.4; color:white; font-family: 'Open Sans', sans-serif;color: white;font-size: 85%; height: 40px;width: 10vh; border-radius: 15px;  "@onclick="ShowProofs">Close Proof</button>
+            <div style="margin-top: -20px; ">
+                <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 120%;">Gindex: @Proofs.Gindex </p>
+                <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 120%; overflow: scroll;">Leaf: @Proofs.Leaf </p>
+                <p style="font-family: 'Open Sans', sans-serif;color: white; font-size: 120%;overflow: scroll;">Single proof:  </p>
+             <textarea style="background: none; color: white; font-size: 115%; font-family: 'Open Sans', sans-serif;border: none; width: 45vw; height: 100px; resize: both;">@string.Join(", ", @Proofs.Proof)</textarea></div>
             
              
         </div>
@@ -74,9 +74,29 @@
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
                    <input style="font-family: 'Open Sans', sans-serif; font-size: 90%; font-weight: normal;color: white; width: 12vmin; height: 2rem; background: black; opacity: 0.4; border-radius: 7px; border: none; padding: 20px;"@bind="validatorIndex" placeholder="(e.g. 34233)"/>
                    </p>
+                   
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip; position: relative;top: 3px;">Validator balance:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
-                   <button style="position: relative; top: 0px; background-color:black; opacity: 0.4; color:white; font-size: 90%; padding: 10px;right: -10px; width: 9.5vh; border-radius: 20px;  "@onclick="ShowProofs">View Proof</button>
+                    @try{
+                        <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
+                        if ((bool)verified)
+                        {
+                            <MudIcon Icon="@Icons.Filled.Verified"Color="Color.Success" />
+                        }
+                        else if (!(bool)verified)
+                        {
+                            <MudIcon Icon="@Icons.Filled.Cancel" Color="Color.Error"/>
+                        }
+                        else if(verified == null)
+                        {
+                            <MudIcon Icon="@Icons.Filled.Verified" Color="Color.Dark"/>
+                        }
+                   
+                   }
+                   catch(Exception e){
+                       <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;"></mark>
+                   
+                   }                   
+                   <button style="position: relative; top: 0px; background-color:black; opacity: 0.4; color:white; font-size: 80%; padding: 10px;right: -10px; width: 9.5vh; border-radius: 20px;  "@onclick="ShowProofs">View Proof</button>
                    </p>
                    
 
@@ -96,6 +116,7 @@
     public string validatorIndex { get; set; }
     public bool showDashboard = false;
     public bool showProofs = false;
+    public bool? verified { get; set; }
     private MudTheme Theme = new MudTheme();
     public LightClientUtility Utility = new LightClientUtility();
     public LightClientProofs Proofs = new LightClientProofs();
@@ -155,7 +176,9 @@
         {
             if (validatorIndex.All(char.IsDigit))
             {
-                Proofs = await Client.Server.FetchProofs(nodeAPIUrl, "head", validatorIndex);
+                Proofs = await Client.Server.FetchProofs(nodeAPIUrl, Client.Client.storage.OptimisticHeader.StateRoot.ToString(), validatorIndex);
+                verified = Client.Client.VerifyProofs(Proofs, Client.Client.storage.OptimisticHeader.StateRoot);
+                //verified = Client.Client.VerifyProofs(Proofs, Client.Client.utility.ConvertHexStringToRoot("0xd366c5d3b85d3e3743892d571155deb7f89fe8634e4ce76ca38ff2f855e25dae"));
             }    
         }
         else

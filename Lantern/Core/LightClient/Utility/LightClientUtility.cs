@@ -110,7 +110,6 @@ namespace Lantern
                 {
                     // Branch on right
                     value = Crypto.Hash(value, branch[testDepth]);
-                   
                 }
                 else
                 {
@@ -120,6 +119,27 @@ namespace Lantern
             }
             return value.Equals(root);
         }
+
+        //public Root[] ReorderLeaves(Root[] proof)
+        //{
+        //    Root[] branches = new Root[proof.Length - 1];
+        //    int index = 0;
+        //    for (int i = 3; i < proof.Length; i++)
+        //    {
+        //        if (index == 41)
+        //        {
+        //            branches[41] = proof[1];
+        //            branches[42] = proof[0];
+        //            branches[43] = proof[proof.Length - 1];
+        //        }
+        //        else
+        //        {
+        //            branches[index] = proof[i];
+        //            index++;
+        //        }
+        //    }
+        //    return branches;
+        //}
 
 
         public BlsPublicKey[] GetParticipantPubkeys(BlsPublicKey[] publicKeys, BitArray syncCommitteeBits)
