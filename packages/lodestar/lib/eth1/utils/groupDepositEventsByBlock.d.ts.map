@@ -1,0 +1,1 @@
+{"version":3,"file":"groupDepositEventsByBlock.d.ts","sourceRoot":"","sources":["../../../src/eth1/utils/groupDepositEventsByBlock.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,MAAM,EAAC,MAAM,2BAA2B,CAAC;AACjD,OAAO,EAAC,mBAAmB,EAAC,MAAM,cAAc,CAAC;AAEjD;;;;GAIG;AACH,wBAAgB,yBAAyB,CAAC,aAAa,EAAE,MAAM,CAAC,YAAY,EAAE,GAAG,mBAAmB,EAAE,CAUrG"}

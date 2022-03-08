@@ -1,0 +1,1 @@
+{"version":3,"file":"processBlockHeader.d.ts","sourceRoot":"","sources":["../../../src/allForks/block/processBlockHeader.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,QAAQ,EAAM,MAAM,2BAA2B,CAAC;AACxD,OAAO,EAAC,yBAAyB,EAAC,MAAM,aAAa,CAAC;AAGtD;;;;;GAKG;AACH,wBAAgB,kBAAkB,CAAC,KAAK,EAAE,yBAAyB,EAAE,KAAK,EAAE,QAAQ,CAAC,WAAW,GAAG,IAAI,CAwCtG"}

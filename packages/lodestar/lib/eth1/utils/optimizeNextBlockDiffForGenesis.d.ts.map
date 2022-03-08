@@ -1,0 +1,1 @@
+{"version":3,"file":"optimizeNextBlockDiffForGenesis.d.ts","sourceRoot":"","sources":["../../../src/eth1/utils/optimizeNextBlockDiffForGenesis.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,YAAY,EAAC,MAAM,4BAA4B,CAAC;AAExD;;;;GAIG;AACH,wBAAgB,+BAA+B,CAC7C,gBAAgB,EAAE;IAAC,SAAS,EAAE,MAAM,CAAA;CAAC,EACrC,MAAM,EAAE,IAAI,CAAC,YAAY,EAAE,kBAAkB,GAAG,eAAe,GAAG,wBAAwB,CAAC,GAC1F,MAAM,CAQR"}

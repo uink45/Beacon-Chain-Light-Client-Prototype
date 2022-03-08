@@ -1,0 +1,1 @@
+{"version":3,"file":"attesterSlashingError.js","sourceRoot":"","sources":["../../../src/chain/errors/attesterSlashingError.ts"],"names":[],"mappings":";;;AAAA,yDAAqD;AAErD,IAAY,yBAGX;AAHD,WAAY,yBAAyB;IACnC,yFAA4D,CAAA;IAC5D,2EAA8C,CAAA;AAChD,CAAC,EAHW,yBAAyB,GAAzB,iCAAyB,KAAzB,iCAAyB,QAGpC;AAKD,MAAa,qBAAsB,SAAQ,oCAA4C;CAAG;AAA1F,sDAA0F"}

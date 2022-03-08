@@ -1,0 +1,1 @@
+{"version":3,"file":"chainTarget.d.ts","sourceRoot":"","sources":["../../../../src/sync/range/utils/chainTarget.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,IAAI,EAAE,IAAI,EAAC,MAAM,2BAA2B,CAAC;AAGrD;;;GAGG;AACH,oBAAY,WAAW,GAAG;IACxB,IAAI,EAAE,IAAI,CAAC;IACX,IAAI,EAAE,IAAI,CAAC;CACZ,CAAC;AAEF,wBAAgB,uBAAuB,CAAC,OAAO,EAAE,WAAW,EAAE,GAAG,WAAW,CAqB3E"}

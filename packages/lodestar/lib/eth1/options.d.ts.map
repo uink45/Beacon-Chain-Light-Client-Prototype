@@ -1,0 +1,1 @@
+{"version":3,"file":"options.d.ts","sourceRoot":"","sources":["../../src/eth1/options.ts"],"names":[],"mappings":"AAAA,oBAAY,WAAW,GAAG;IACxB,OAAO,EAAE,OAAO,CAAC;IACjB,6BAA6B,CAAC,EAAE,OAAO,CAAC;IACxC,YAAY,EAAE,MAAM,EAAE,CAAC;IACvB,0BAA0B,CAAC,EAAE,MAAM,CAAC;IACpC,+BAA+B,EAAE,OAAO,CAAC;CAC1C,CAAC;AAEF,eAAO,MAAM,kBAAkB,EAAE,WAKhC,CAAC"}

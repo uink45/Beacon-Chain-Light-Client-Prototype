@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/cmds/dev/index.ts"],"names":[],"mappings":";;;AAEA,uCAA+C;AAC/C,uCAAqC;AAExB,QAAA,GAAG,GAAuC;IACrD,OAAO,EAAE,KAAK;IACd,QAAQ,EAAE,0FAA0F;IACpG,QAAQ,EAAE;QACR;YACE,OAAO,EAAE,mCAAmC;YAC5C,WAAW,EAAE,sDAAsD;SACpE;KACF;IACD,OAAO,EAAE,oBAA0C;IACnD,OAAO,EAAE,oBAAU;CACpB,CAAC"}

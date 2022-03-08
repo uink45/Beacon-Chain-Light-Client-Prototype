@@ -1,0 +1,1 @@
+{"version":3,"file":"client.d.ts","sourceRoot":"","sources":["../../../src/network/peers/client.ts"],"names":[],"mappings":"AAAA,oBAAY,UAAU;IACpB,UAAU,eAAe;IACzB,MAAM,WAAW;IACjB,IAAI,SAAS;IACb,KAAK,UAAU;IACf,QAAQ,aAAa;IACrB,OAAO,YAAY;CACpB;AAED,wBAAgB,sBAAsB,CAAC,YAAY,EAAE,MAAM,GAAG,UAAU,CAiBvE"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"protocolId.d.ts","sourceRoot":"","sources":["../../../../src/network/reqresp/utils/protocolId.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,MAAM,EAAE,OAAO,EAAE,QAAQ,EAAkB,QAAQ,EAAC,MAAM,UAAU,CAAC;AAM7E,yBAAyB;AACzB,wBAAgB,gBAAgB,CAAC,MAAM,EAAE,MAAM,EAAE,OAAO,EAAE,OAAO,EAAE,QAAQ,EAAE,QAAQ,GAAG,MAAM,CAE7F;AAED,wBAAgB,eAAe,CAAC,UAAU,EAAE,MAAM,GAAG,QAAQ,CAe5D"}

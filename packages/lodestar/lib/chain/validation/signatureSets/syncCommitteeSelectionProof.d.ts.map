@@ -1,0 +1,1 @@
+{"version":3,"file":"syncCommitteeSelectionProof.d.ts","sourceRoot":"","sources":["../../../../src/chain/validation/signatureSets/syncCommitteeSelectionProof.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,MAAM,EAAM,MAAM,2BAA2B,CAAC;AACtD,OAAO,EACL,yBAAyB,EAEzB,aAAa,EAEd,MAAM,6CAA6C,CAAC;AAErD,wBAAgB,0CAA0C,CACxD,KAAK,EAAE,yBAAyB,EAChC,oBAAoB,EAAE,MAAM,CAAC,oBAAoB,GAChD,aAAa,CAcf"}

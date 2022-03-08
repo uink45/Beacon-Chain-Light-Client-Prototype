@@ -1,0 +1,1 @@
+{"version":3,"file":"contributionAndProof.d.ts","sourceRoot":"","sources":["../../../../src/chain/validation/signatureSets/contributionAndProof.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,MAAM,EAAM,MAAM,2BAA2B,CAAC;AACtD,OAAO,EACL,yBAAyB,EAEzB,aAAa,EAEd,MAAM,6CAA6C,CAAC;AAErD,wBAAgB,mCAAmC,CACjD,KAAK,EAAE,yBAAyB,EAChC,0BAA0B,EAAE,MAAM,CAAC,0BAA0B,GAC5D,aAAa,CAaf"}

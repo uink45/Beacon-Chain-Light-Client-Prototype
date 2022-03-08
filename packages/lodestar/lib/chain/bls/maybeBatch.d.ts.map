@@ -1,0 +1,1 @@
+{"version":3,"file":"maybeBatch.d.ts","sourceRoot":"","sources":["../../../src/chain/bls/maybeBatch.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiB,SAAS,EAAC,MAAM,gBAAgB,CAAC;AAIzD,oBAAY,wBAAwB,GAAG;IACrC,SAAS,EAAE,SAAS,CAAC;IACrB,OAAO,EAAE,UAAU,CAAC;IACpB,SAAS,EAAE,UAAU,CAAC;CACvB,CAAC;AAEF;;;GAGG;AACH,wBAAgB,6BAA6B,CAAC,IAAI,EAAE,wBAAwB,EAAE,GAAG,OAAO,CAuBvF"}

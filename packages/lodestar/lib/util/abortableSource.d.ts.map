@@ -1,0 +1,1 @@
+{"version":3,"file":"abortableSource.d.ts","sourceRoot":"","sources":["../../src/util/abortableSource.ts"],"names":[],"mappings":"AAAA;;;;;;GAMG;AACH,wBAAgB,eAAe,CAAC,CAAC,EAC/B,SAAS,EAAE,aAAa,CAAC,CAAC,CAAC,EAC3B,OAAO,EAAE;IACP,MAAM,EAAE,WAAW,CAAC;IACpB,QAAQ,EAAE,MAAM,KAAK,CAAC;CACvB,EAAE,GACF,aAAa,CAAC,CAAC,CAAC,CAkElB"}
