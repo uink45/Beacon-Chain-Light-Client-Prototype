@@ -11,25 +11,21 @@ namespace Lantern
         public LightClientUtility utility;
         public Clock clock;
         public LightClientStore storage;
-        public Settings settings;
-        public DataManager data;
         public Constants constants;
         public TimeParameters time;
         public Logging logging;
 
-        public CoreSpec(Settings _settings)
+        public CoreSpec()
         {
             utility = new LightClientUtility();
-            settings = _settings;
             clock = new Clock();
             storage = new LightClientStore();
-            data = new DataManager();
             constants = new Constants();
             time = new TimeParameters();
             logging = new Logging();
         }
 
-        public void ValidateCheckpoint(LightClientSnapshot snapshot)
+        public bool ValidateCheckpoint(LightClientSnapshot snapshot)
         {
             // Verify the current sync committee branch
             var isValid = utility.IsValidMerkleBranch(
@@ -41,12 +37,12 @@ namespace Lantern
 
             if (!isValid)
             {
-                Console.WriteLine("Invalid Snapshot");
-                throw new Exception("Invalid current sync committee merkle branch");
+                logging.SelectLogsType("Error", 5, snapshot.FinalizedHeader.Slot.ToString());
+                return false;
             }
             storage.CurrentSyncCommittee = snapshot.CurrentSyncCommittee;
             storage.FinalizedHeader = snapshot.FinalizedHeader;
-            data.StoreData(storage.FinalizedHeader);
+            return true;
         }
 
         public bool VerifyProofs(LightClientProofs proofs, Root stateRoot)
@@ -68,7 +64,7 @@ namespace Lantern
             }
         }
 
-        public void ValidateLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
+        public bool ValidateLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
         {
             BeaconBlockHeader activeHeader = GetActiveHeader(update);
 
@@ -82,7 +78,8 @@ namespace Lantern
 
             if (updatePeriod != finalizedPeriod & updatePeriod != newPeriod)
             {
-                throw new ArgumentOutOfRangeException("Finalized Period", finalizedPeriod, $"Update skips a sync committee period.");
+                logging.SelectLogsType("Error", 0, updatePeriod.ToString());
+                return false;                
             }
             if(update.FinalizedHeader == BeaconBlockHeader.Zero)
             {
@@ -99,7 +96,8 @@ namespace Lantern
 
                 if (!isValid)
                 {
-                    throw new Exception("Invalid finality header merkle branch");
+                    logging.SelectLogsType("Error", 1, update.FinalizedHeader.Slot.ToString());
+                    return false;                    
                 }
             }
             
@@ -115,7 +113,8 @@ namespace Lantern
                     activeHeader.StateRoot);
                 if (!isValid)
                 {
-                    throw new Exception("Invalid next sync committee merkle branch");
+                    logging.SelectLogsType("Error", 2, activeHeader.Slot.ToString());
+                    return false;
                 }
             }
             else
@@ -136,7 +135,8 @@ namespace Lantern
                         activeHeader.StateRoot);
                     if (!isValid)
                     {
-                        throw new Exception("Invalid next sync committee merkle branch");
+                        logging.SelectLogsType("Error", 2, activeHeader.Slot.ToString());
+                        return false;
                     }
                 }
             }
@@ -146,7 +146,8 @@ namespace Lantern
             
             if(!(committeeParticipantsSum >= constants.MinSyncCommitteeParticipants))
             {
-                throw new Exception("Sync committee does not have sufficient participants");
+                logging.SelectLogsType("Error", 3, committeeParticipantsSum.ToString());
+                return false;
             }
 
             BlsPublicKey[] publicKeys = utility.GetParticipantPubkeys(syncCommittee.PublicKeys, syncAggregate.SyncCommitteeBits);
@@ -158,8 +159,10 @@ namespace Lantern
 
             if (!Valid)
             {
-                throw new Exception("\nInvalid aggregate signature");
-            }         
+                logging.SelectLogsType("Error", 4, activeHeader.Slot.ToString());
+                return false;
+            }
+            return true;
         }
 
         public void ApplyLightClientUpdate(LightClientStore store, LightClientUpdate update)
@@ -182,35 +185,35 @@ namespace Lantern
                 store.OptimisticHeader = store.FinalizedHeader;
             }
             storage = store;
-            data.StoreData(storage.FinalizedHeader);
         }
 
-        public void ProcessLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
+        public bool ProcessLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
         {
-
-            ValidateLightClientUpdate(store, update, currentSlot, genesisValidatorsRoot);
-            
-            int updateSyncCommitteeBits = update.SyncAggregate.SyncCommitteeBits.Cast<bool>().Count(l => l);
-            int bestSyncCommitteeBits = store.BestValidUpdate.SyncAggregate.SyncCommitteeBits.Cast<bool>().Count(l => l);
-            
-            if ((store.BestValidUpdate == new LightClientUpdate() || store.BestValidUpdate == null) || (updateSyncCommitteeBits > bestSyncCommitteeBits))
+            if (ValidateLightClientUpdate(store, update, currentSlot, genesisValidatorsRoot))
             {
-                store.BestValidUpdate = update;
+                int updateSyncCommitteeBits = update.SyncAggregate.SyncCommitteeBits.Cast<bool>().Count(l => l);
+                int bestSyncCommitteeBits = store.BestValidUpdate.SyncAggregate.SyncCommitteeBits.Cast<bool>().Count(l => l);
+
+                if ((store.BestValidUpdate == new LightClientUpdate() || store.BestValidUpdate == null) || (updateSyncCommitteeBits > bestSyncCommitteeBits))
+                {
+                    store.BestValidUpdate = update;
+                }
+
+                store.CurrentMaxActiveParticipants = Math.Max(store.CurrentMaxActiveParticipants, updateSyncCommitteeBits);
+
+                if (updateSyncCommitteeBits > GetSafetyThreshold(store) & update.AttestedHeader.Slot > store.OptimisticHeader.Slot)
+                {
+                    store.OptimisticHeader = update.AttestedHeader;
+                }
+
+                if (((updateSyncCommitteeBits * 3) >= update.SyncAggregate.SyncCommitteeBits.Length * 2) & (update.FinalizedHeader != new BeaconBlockHeader(Root.Zero) || update.FinalizedHeader != null))
+                {
+                    ApplyLightClientUpdate(store, update);
+                    store.BestValidUpdate = new LightClientUpdate();
+                }
+                return true;
             }
-
-            store.CurrentMaxActiveParticipants = Math.Max(store.CurrentMaxActiveParticipants, updateSyncCommitteeBits);
-
-            if(updateSyncCommitteeBits > GetSafetyThreshold(store) & update.AttestedHeader.Slot > store.OptimisticHeader.Slot)
-            {
-                store.OptimisticHeader = update.AttestedHeader;
-                data.StoreData(storage.OptimisticHeader);
-            }
-
-            if(((updateSyncCommitteeBits * 3) >= update.SyncAggregate.SyncCommitteeBits.Length * 2) & (update.FinalizedHeader != new BeaconBlockHeader(Root.Zero) || update.FinalizedHeader != null))
-            {
-                ApplyLightClientUpdate(store, update);
-                store.BestValidUpdate = new LightClientUpdate();
-            }         
+            return false;                                        
         }
 
         public int GetSafetyThreshold(LightClientStore store)

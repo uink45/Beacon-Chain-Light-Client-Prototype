@@ -15,13 +15,14 @@ namespace Lantern
         public void InitialiseObjects(string server)
         {
             Settings = new Settings(server);
-            Client = new CoreSpec(Settings); 
+            Client = new CoreSpec(); 
             Clock = new Clock();
             Status = "Started";
             Logs = new Logging();
             Server = new Server();
             NextSyncCommitteePeriod = Clock.CalculateSyncPeriod(Settings.Network) + 1;
         }
+
         public async Task Launch(string server)
         {            
             InitialiseObjects(server);
@@ -29,9 +30,7 @@ namespace Lantern
             await FetchNextSyncCommitteeUpdate();
             await FetchHeaderUpdate();
         }
-
  
-
         public async Task InitializeLightClient()
         {
             Logs.SelectLogsType("Info", 4, Settings.LightClientApiUrl);
@@ -42,14 +41,14 @@ namespace Lantern
                 if (checkpointRoot != null)
                 {
                     LightClientSnapshot snapshot = await Server.FetchFinalizedSnapshot(Settings.ServerUrl, checkpointRoot);
-                    if (snapshot != null)
-                    {
-                        Client.ValidateCheckpoint(snapshot);
+                    if (snapshot != null & Client.ValidateCheckpoint(snapshot))
+                    {                       
                         Logs.SelectLogsType("Info", 2, null);
                         Logs.PrintSnapshot(snapshot);
                         Logs.SelectLogsType("Info", 3, null);                       
                         break;
                     }
+                    await Task.Delay(3000);
                 }
             }
             
@@ -61,12 +60,12 @@ namespace Lantern
             LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
             while (true)
             {
-                if (update != null)
+                if (update != null & Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
                 {
-                    Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                    Logs.PrintClientLogs(update);                    
+                    Logs.PrintClientLogs(update);
                     break;
                 }
+                await Task.Delay(3000);
             }            
         }
 
@@ -88,13 +87,12 @@ namespace Lantern
                 else
                 {
                     update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
-                }
-                Status = "Synced";
+                }                
             }            
-            if (update != null)
+            if (update != null & Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
             {
-                Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]);
-                Logs.PrintClientLogs(update);
+                Status = "Synced";
+                Logs.PrintClientLogs(update);                             
             }                  
         }
 

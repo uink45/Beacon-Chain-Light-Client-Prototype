@@ -23,7 +23,7 @@ namespace Lantern
         public LightClientProofs InitializeProofs()
         {
             LightClientProofs proofs = new LightClientProofs();
-            proofs.Leaf = Utility.ConvertHexStringToRoot(Contents.stringLeaf);
+            proofs.Leaf = Utility.ToObject(Contents.stringLeaf, "Root");
             proofs.Proof = CreateLeaves(Contents.proof);
             proofs.Gindex = ulong.Parse(Contents.index);
             proofs.Balance = Contents.value;
@@ -36,7 +36,7 @@ namespace Lantern
             List<Root> result = new List<Root>();
             for(int i = 0; i < proof.Count; i++)
             {
-                result.Add(Utility.ConvertHexStringToRoot(proof[i]));
+                result.Add(Utility.ToObject(proof[i], "Root"));
             }
             return result;
         }

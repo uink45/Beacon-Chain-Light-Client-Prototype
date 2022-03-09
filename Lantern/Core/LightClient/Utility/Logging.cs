@@ -99,7 +99,22 @@ namespace Lantern
             switch (log)
             {
                 case 0:
-                    Console.WriteLine(message);
+                    Console.WriteLine("Update skips a sync committee period." + " Update Period: " + message);
+                    break;
+                case 1:
+                    Console.WriteLine("Invalid finality header merkle branch at slot: " + message);
+                    break;
+                case 2:
+                    Console.WriteLine("Invalid next sync committee merkle branch at slot: " + message);
+                    break;
+                case 3:
+                    Console.WriteLine("Sync committee does not have enough participants. Actual number of participants: " + message);
+                    break;
+                case 4:
+                    Console.WriteLine("Failed verification of sync committee signature at slot: " + message);
+                    break;
+                case 5:
+                    Console.WriteLine("Invalid current sync committee merkle branch at slot: " + message);
                     break;
             }
         }

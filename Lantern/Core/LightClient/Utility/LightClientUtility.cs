@@ -120,28 +120,6 @@ namespace Lantern
             return value.Equals(root);
         }
 
-        //public Root[] ReorderLeaves(Root[] proof)
-        //{
-        //    Root[] branches = new Root[proof.Length - 1];
-        //    int index = 0;
-        //    for (int i = 3; i < proof.Length; i++)
-        //    {
-        //        if (index == 41)
-        //        {
-        //            branches[41] = proof[1];
-        //            branches[42] = proof[0];
-        //            branches[43] = proof[proof.Length - 1];
-        //        }
-        //        else
-        //        {
-        //            branches[index] = proof[i];
-        //            index++;
-        //        }
-        //    }
-        //    return branches;
-        //}
-
-
         public BlsPublicKey[] GetParticipantPubkeys(BlsPublicKey[] publicKeys, BitArray syncCommitteeBits)
         {
             BlsPublicKey[] _publicKeys = new BlsPublicKey[syncCommitteeBits.Cast<bool>().Count(l => l)];
@@ -182,80 +160,48 @@ namespace Lantern
             return privateKeySpan.ToArray();
         }
 
-        public byte[] StringToByteArray(string hex)
+
+        public dynamic ToObject(string hex, string type)
+        {
+            switch (type) 
+            {
+                case "BlsSignature":
+                    return new BlsSignature(ToBytes(hex));
+                case "BlsPublicKey":
+                    return new BlsPublicKey(ToBytes(hex));
+                case "Hash32":
+                    return new Hash32(ToBytes(hex));
+                case "Root":
+                    return new Root(ToBytes(hex));
+                case "ForkVersion":
+                    return new ForkVersion(ToBytes(hex));
+                case "BitArray":
+                    return new BitArray(ToBits(hex));
+                case "DomainType":
+                    return new DomainType(ToBytes(hex));
+            }
+            return null;            
+        }
+
+        public byte[] ToBytes(string hex)
         {
             hex = hex.Remove(0, 2);
             return Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray();
-        }
-
-        public BlsSignature ConvertStringToBlsSignature(string hex)
-        {
-            hex = hex.Remove(0, 2);
-            return new BlsSignature(Enumerable.Range(0, hex.Length)
                      .Where(x => x % 2 == 0)
                      .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                     .ToArray());
+                     .ToArray();
         }
 
-        public BlsPublicKey ConvertStringToBlsPubKey(string hex)
-        {
-            hex = hex.Remove(0,2);
-            return new BlsPublicKey(Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray());
-        }
-        public Hash32 ConvertHexStringToHash(string hex)
-        {
-            hex = hex.Remove(0, 2);
-            Hash32 hash = new Hash32( Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray());
-            return hash;
-        }
-
-        public Bytes32 ConvertHexStringToBytes(string hex)
-        {
-            hex = hex.Remove(0, 2);
-            Bytes32 bytes32 = new Bytes32(Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray());
-            return bytes32;
-        }
-
-        public Root ConvertHexStringToRoot(string hex)
-        {
-            hex = hex.Remove(0, 2);
-            Root hash = new Root(Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray());
-            return hash;
-        }
-
-        public ForkVersion ConvertStringToForkVersion(string hex)
-        {
-            hex = hex.Remove(0, 2);
-            return new ForkVersion(Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray());
-        }
-
-        public BitArray StringToBitArray(string hex)
+        public byte[] ToBits(string hex)
         {
             hex = hex.Remove(0, 2);
             int NumberChars = hex.Length;
             byte[] bytes = new byte[NumberChars / 2];
             for (int i = 0; i < NumberChars; i += 2)
                 bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
-            return new BitArray(bytes);
+            return bytes;
         }
+
 
         public T[] InitializeArray<T>(int length) where T : new()
         {

@@ -35,15 +35,15 @@ namespace Lantern
             return new BeaconBlockHeader(
                 new Slot(ulong.Parse(header.slot)),
                 new ValidatorIndex(ulong.Parse(header.proposer_index)),
-                Utility.ConvertHexStringToRoot(header.parent_root),
-                Utility.ConvertHexStringToRoot(header.state_root),
-                Utility.ConvertHexStringToRoot(header.body_root)
+                Utility.ToObject(header.parent_root, "Root"),
+                Utility.ToObject(header.state_root, "Root"),
+                Utility.ToObject(header.body_root, "Root")
                 );
         }
 
         public SyncCommittee CreateNextSyncCommittee(Snapshot.CurrentSyncCommittee nextSync)
         {
-            return new SyncCommittee(CreateBlsPublicKeys(nextSync.pubkeys), Utility.ConvertStringToBlsPubKey(nextSync.aggregate_pubkey));
+            return new SyncCommittee(CreateBlsPublicKeys(nextSync.pubkeys), Utility.ToObject(nextSync.aggregate_pubkey, "BlsPublicKey"));
         }
 
         private BlsPublicKey[] CreateBlsPublicKeys(List<string> pubKeys)
@@ -51,7 +51,7 @@ namespace Lantern
             BlsPublicKey[] publicKeys = new BlsPublicKey[Utility.Constant.SyncCommitteeSize];
             for (int i = 0; i < pubKeys.Count; i++)
             {
-                publicKeys[i] = Utility.ConvertStringToBlsPubKey(pubKeys[i]);
+                publicKeys[i] = Utility.ToObject(pubKeys[i], "BlsPublicKey");
             }
 
             return publicKeys;
@@ -62,7 +62,7 @@ namespace Lantern
             Root[] branches = new Root[next_sync_committee_branch.Count];
             for (int i = 0; i < next_sync_committee_branch.Count; i++)
             {
-                branches[i] = Utility.ConvertHexStringToRoot(next_sync_committee_branch[i]);
+                branches[i] = Utility.ToObject(next_sync_committee_branch[i], "Root");
             }
             return branches;
         }

@@ -36,15 +36,15 @@ namespace Lantern
             return new BeaconBlockHeader(
                 new Slot(ulong.Parse(data.attested_header.slot)),
                 new ValidatorIndex(ulong.Parse(data.attested_header.proposer_index)),
-                Utility.ConvertHexStringToRoot(data.attested_header.parent_root),
-                Utility.ConvertHexStringToRoot(data.attested_header.state_root),
-                Utility.ConvertHexStringToRoot(data.attested_header.body_root)
+                Utility.ToObject(data.attested_header.parent_root, "Root"),
+                Utility.ToObject(data.attested_header.state_root, "Root"),
+                Utility.ToObject(data.attested_header.body_root, "Root")
                 );
         }
 
         public SyncAggregate CreateSyncAggregate(string syncBits, string syncCommitteeSignature)
         {
-            return new SyncAggregate(Utility.StringToBitArray(syncBits), Utility.ConvertStringToBlsSignature(syncCommitteeSignature));
+            return new SyncAggregate(Utility.ToObject(syncBits, "BitArray"), Utility.ToObject(syncCommitteeSignature, "BlsSignature"));
         }
     }
 }
