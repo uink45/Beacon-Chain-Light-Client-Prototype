@@ -72,34 +72,28 @@ namespace Lantern
         public async Task FetchHeaderUpdate()
         {            
             LightClientUpdate update;
-            try
+            if (CheckSyncPeriod())
             {
-                if (CheckSyncPeriod())
+                Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+                update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+            }
+            else
+            {
+                if (IsLatestOptimisticHeader())
                 {
-                    Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
-                    update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+                    int slotToRequest = (int)Client.storage.OptimisticHeader.Slot + 1;
+                    update = await Server.FetchHeaderAtSlot(Settings.ServerUrl, Settings.Network, slotToRequest.ToString());
                 }
                 else
                 {
-                    if (IsLatestOptimisticHeader())
-                    {
-                        int slotToRequest = (int)Client.storage.OptimisticHeader.Slot + 1;
-                        update = await Server.FetchHeaderAtSlot(Settings.ServerUrl, Settings.Network, slotToRequest.ToString());
-                    }
-                    else
-                    {
-                        update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
-                    }
-                }
-                if (update != null && Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
-                {
-                    Status = "Synced";
-                    Logs.PrintClientLogs(update);
+                    update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
                 }
             }
-            catch (Exception e)
+            if (update != null && Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
             {
-            }                       
+                Status = "Synced";
+                Logs.PrintClientLogs(update);
+            }               
         }
 
 
