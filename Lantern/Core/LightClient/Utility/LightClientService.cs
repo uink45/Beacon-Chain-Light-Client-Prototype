@@ -41,7 +41,7 @@ namespace Lantern
                 if (checkpointRoot != null)
                 {
                     LightClientSnapshot snapshot = await Server.FetchFinalizedSnapshot(Settings.ServerUrl, checkpointRoot);
-                    if (snapshot != null & Client.ValidateCheckpoint(snapshot))
+                    if (snapshot != null && Client.ValidateCheckpoint(snapshot))
                     {                       
                         Logs.SelectLogsType("Info", 2, null);
                         Logs.PrintSnapshot(snapshot);
@@ -60,7 +60,7 @@ namespace Lantern
             LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
             while (true)
             {
-                if (update != null & Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+                if (update != null && Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
                 {
                     Logs.PrintClientLogs(update);
                     break;
@@ -72,28 +72,34 @@ namespace Lantern
         public async Task FetchHeaderUpdate()
         {            
             LightClientUpdate update;
-            if (CheckSyncPeriod())
+            try
             {
-                Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
-                update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
-            }
-            else
-            {
-                if (IsLatestOptimisticHeader())
+                if (CheckSyncPeriod())
                 {
-                    int slotToRequest = (int)Client.storage.OptimisticHeader.Slot + 1;
-                    update = await Server.FetchHeaderAtSlot(Settings.ServerUrl, Settings.Network, slotToRequest.ToString());
+                    Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+                    update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
                 }
                 else
                 {
-                    update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
-                }                
-            }            
-            if (update != null & Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+                    if (IsLatestOptimisticHeader())
+                    {
+                        int slotToRequest = (int)Client.storage.OptimisticHeader.Slot + 1;
+                        update = await Server.FetchHeaderAtSlot(Settings.ServerUrl, Settings.Network, slotToRequest.ToString());
+                    }
+                    else
+                    {
+                        update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
+                    }
+                }
+                if (update != null && Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+                {
+                    Status = "Synced";
+                    Logs.PrintClientLogs(update);
+                }
+            }
+            catch (Exception e)
             {
-                Status = "Synced";
-                Logs.PrintClientLogs(update);                             
-            }                  
+            }                       
         }
 
 
