@@ -176,6 +176,7 @@
         {
             if (validatorIndex.All(char.IsDigit))
             {
+                Task.Delay(1000);
                 Proofs = await Client.Server.FetchProofs(nodeAPIUrl, Client.Client.storage.OptimisticHeader.StateRoot.ToString(), validatorIndex);
                 verified = Client.Client.VerifyProofs(Proofs, Client.Client.storage.OptimisticHeader.StateRoot);
                 //verified = Client.Client.VerifyProofs(Proofs, Client.Client.utility.ConvertHexStringToRoot("0xd366c5d3b85d3e3743892d571155deb7f89fe8634e4ce76ca38ff2f855e25dae"));
