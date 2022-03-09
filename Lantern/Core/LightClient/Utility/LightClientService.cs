@@ -89,11 +89,15 @@ namespace Lantern
                     update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
                 }
             }
-            if (update != null && Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+
+            if (update != null)                 
             {
-                Status = "Synced";
-                Logs.PrintClientLogs(update);
-            }               
+                if(Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+                {
+                    Status = "Synced";
+                    Logs.PrintClientLogs(update);
+                }                    
+            }                                
         }
 
 
