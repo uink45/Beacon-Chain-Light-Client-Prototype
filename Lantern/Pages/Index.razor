@@ -133,7 +133,7 @@
                 if(Value == 130)
                 {
                     Value = 0;
-                    FetchProofs();
+                    await FetchProofs();
                     await Client.FetchHeaderUpdate();
                 }            
             }
