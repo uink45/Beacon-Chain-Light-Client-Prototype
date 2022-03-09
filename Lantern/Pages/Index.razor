@@ -76,26 +76,15 @@
                    </p>
                    
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip; position: relative;top: 3px;">Validator balance:
-                    @try{
-                        <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
-                        if ((bool)verified)
-                        {
-                            <MudIcon Icon="@Icons.Filled.Verified"Color="Color.Success" />
-                        }
-                        else if (!(bool)verified)
-                        {
-                            <MudIcon Icon="@Icons.Filled.Cancel" Color="Color.Error"/>
-                        }
-                        else if(verified == null)
-                        {
-                            <MudIcon Icon="@Icons.Filled.Verified" Color="Color.Dark"/>
-                        }
-                   
-                   }
-                   catch(Exception e){
-                       <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;"></mark>
-                   
-                   }                   
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Proofs.Balance</mark>
+                    @if (verified)
+                    {
+                        <MudIcon Icon="@Icons.Filled.Verified"Color="Color.Success" />
+                    }
+                    else if (!verified)
+                    {
+                        <MudIcon Icon="@Icons.Filled.Cancel" Color="Color.Error"/>
+                    }        
                    <button style="position: relative; top: 0px; background-color:black; opacity: 0.4; color:white; font-size: 80%; padding: 10px;right: -10px; width: 9.5vh; border-radius: 20px;  "@onclick="ShowProofs">View Proof</button>
                    </p>
                    
@@ -116,7 +105,7 @@
     public string validatorIndex { get; set; }
     public bool showDashboard = false;
     public bool showProofs = false;
-    public bool? verified { get; set; }
+    public bool verified;
     private MudTheme Theme = new MudTheme();
     public LightClientUtility Utility = new LightClientUtility();
     public LightClientProofs Proofs = new LightClientProofs();
@@ -172,13 +161,20 @@
 
     public async Task FetchProofs()
     {
-        if (Client.Status == "Synced" & validatorIndex != null)
+        if (Client.Status == "Synced" && validatorIndex != null)
         {
             if (validatorIndex.All(char.IsDigit))
             {
-                Task.Delay(1000);
                 Proofs = await Client.Server.FetchProofs(nodeAPIUrl, Client.Client.storage.OptimisticHeader.StateRoot.ToString(), validatorIndex);
-                verified = Client.Client.VerifyProofs(Proofs, Client.Client.storage.OptimisticHeader.StateRoot);
+                if(Proofs != null)
+                {
+                    verified = Client.Client.VerifyProofs(Proofs, Client.Client.storage.OptimisticHeader.StateRoot);
+                }
+                else
+                {
+                    Proofs = new LightClientProofs();
+                }
+
                 //verified = Client.Client.VerifyProofs(Proofs, Client.Client.utility.ConvertHexStringToRoot("0xd366c5d3b85d3e3743892d571155deb7f89fe8634e4ce76ca38ff2f855e25dae"));
             }    
         }

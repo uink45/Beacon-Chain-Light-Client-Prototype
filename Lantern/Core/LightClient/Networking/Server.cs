@@ -113,7 +113,7 @@ namespace Lantern
             catch (Exception e)
             {
                 logs.SelectLogsType("Error", 0, e.Message);
-                await Task.Delay(5000);
+                await Task.Delay(1000);
             }
             return null;
         }
