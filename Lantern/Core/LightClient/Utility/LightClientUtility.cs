@@ -20,12 +20,12 @@ namespace Lantern
         }
 
         public Constants Constant;
-        public TimeParameters TimeParameterOptions;
+        public Constants.TimeParameters TimeParameterOptions;
         public BLSUtility Crypto;
         
         public LightClientUtility()
         {
-            TimeParameterOptions = new TimeParameters();
+            TimeParameterOptions = new Constants.TimeParameters();
             Crypto = new BLSUtility();
             Constant = new Constants();
         }

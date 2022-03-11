@@ -12,7 +12,7 @@ namespace Lantern
         public Clock clock;
         public LightClientStore storage;
         public Constants constants;
-        public TimeParameters time;
+        public Constants.TimeParameters time;
         public Logging logging;
 
         public CoreSpec()
@@ -21,7 +21,7 @@ namespace Lantern
             clock = new Clock();
             storage = new LightClientStore();
             constants = new Constants();
-            time = new TimeParameters();
+            time = new Constants.TimeParameters();
             logging = new Logging();
         }
 
