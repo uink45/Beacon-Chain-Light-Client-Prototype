@@ -48,7 +48,7 @@ namespace Lantern
 
         private BlsPublicKey[] CreateBlsPublicKeys(List<string> pubKeys)
         {
-            BlsPublicKey[] publicKeys = new BlsPublicKey[Utility.Constant.SyncCommitteeSize];
+            BlsPublicKey[] publicKeys = new BlsPublicKey[new Constants().SyncCommitteeSize];
             for (int i = 0; i < pubKeys.Count; i++)
             {
                 publicKeys[i] = Utility.ToObject(pubKeys[i], "BlsPublicKey");

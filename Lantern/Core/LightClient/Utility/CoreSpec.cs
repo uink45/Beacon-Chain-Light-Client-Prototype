@@ -8,22 +8,12 @@ namespace Lantern
 {
     public class CoreSpec
     {
-        public LightClientUtility utility;
-        public Clock clock;
-        public LightClientStore storage;
-        public Constants constants;
-        public Constants.TimeParameters time;
-        public Logging logging;
-
-        public CoreSpec()
-        {
-            utility = new LightClientUtility();
-            clock = new Clock();
-            storage = new LightClientStore();
-            constants = new Constants();
-            time = new Constants.TimeParameters();
-            logging = new Logging();
-        }
+        public LightClientUtility utility = new LightClientUtility();
+        public LightClientStore storage = new LightClientStore();
+        public Constants constants = new Constants();
+        public Logging logging = new Logging();
+        public Clock clock = new Clock();
+        public ulong nextSyncCommitteePeriod;
 
         public bool ValidateCheckpoint(LightClientSnapshot snapshot)
         {
@@ -47,48 +37,49 @@ namespace Lantern
 
         public bool VerifyProofs(LightClientProofs proofs, Root stateRoot)
         {
-            return utility.IsValidMerkleBranch(proofs.Leaf, proofs.Proof.ToArray(), (int)(Math.Floor((double)(Math.Log2(proofs.Gindex)))), proofs.Gindex, stateRoot);            
+            return utility.IsValidMerkleBranch(proofs.Leaf, proofs.Proof.ToArray(), (int)(Math.Floor((double)(Math.Log2(proofs.Gindex)))), proofs.Gindex, stateRoot);
         }
 
-        public void ProcessSlotForLightClientStore(LightClientStore store, Slot currentSlot)
+        public void ProcessSlotForLightClientStore(LightClientStore store, ulong currentSlot)
         {
-            if((currentSlot % time.UpdateTimeout) == 0)
+            if ((currentSlot % constants.UpdateTimeout) == 0)
             {
                 store.PreviousMaxActiveParticipants = store.CurrentMaxActiveParticipants;
                 store.CurrentMaxActiveParticipants = 0;
             }
-            if(currentSlot > (store.FinalizedHeader.Slot + time.UpdateTimeout) & (store.BestValidUpdate != null || store.BestValidUpdate != new LightClientUpdate()))
+            if (currentSlot > (store.FinalizedHeader.Slot + constants.UpdateTimeout) & (store.BestValidUpdate != null || store.BestValidUpdate != new LightClientUpdate()))
             {
                 ApplyLightClientUpdate(store, store.BestValidUpdate);
                 store.BestValidUpdate = new LightClientUpdate();
             }
         }
 
-        public bool ValidateLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
+        public bool ValidateLightClientUpdate(LightClientStore store, LightClientUpdate update, ulong currentSlot, Root genesisValidatorsRoot)
         {
             BeaconBlockHeader activeHeader = GetActiveHeader(update);
 
-            if(!(currentSlot >= activeHeader.Slot & currentSlot >= store.FinalizedHeader.Slot)){
+            if (!(currentSlot >= activeHeader.Slot & currentSlot >= store.FinalizedHeader.Slot))
+            {
                 logging.SelectLogsType("Warn", 0, $"The server sent a known block (at slot {activeHeader.Slot}). Retrying...");
             }
 
-            Epoch finalizedPeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(store.FinalizedHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
-            Epoch updatePeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(activeHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
-            Epoch newPeriod = finalizedPeriod + new Epoch(1);
+            ulong finalizedPeriod = clock.CalculateEpochAtSlot(store.FinalizedHeader.Slot) / constants.EpochsPerSyncCommitteePeriod;
+            ulong updatePeriod = clock.CalculateEpochAtSlot(activeHeader.Slot) / constants.EpochsPerSyncCommitteePeriod;
+            ulong newPeriod = finalizedPeriod + 1;
 
             if (updatePeriod != finalizedPeriod & updatePeriod != newPeriod)
             {
                 logging.SelectLogsType("Error", 0, updatePeriod.ToString());
-                return false;                
+                return false;
             }
-            if(update.FinalizedHeader == BeaconBlockHeader.Zero)
+            if (update.FinalizedHeader == BeaconBlockHeader.Zero)
             {
                 utility.assertZeroHashes(update.FinalityBranch, constants.FinalizedRootDepth, "finalityBranches");
             }
             else
             {
                 var isValid = utility.IsValidMerkleBranch(
-                    update.FinalizedHeader.HashTreeRoot(), 
+                    update.FinalizedHeader.HashTreeRoot(),
                     update.FinalityBranch,
                     constants.FinalizedRootDepth,
                     (ulong)constants.FinalizedRootIndex,
@@ -97,12 +88,12 @@ namespace Lantern
                 if (!isValid)
                 {
                     logging.SelectLogsType("Error", 1, update.FinalizedHeader.Slot.ToString());
-                    return false;                    
+                    return false;
                 }
             }
-            
+
             SyncCommittee syncCommittee;
-            if(store.NextSyncCommittee == null)
+            if (store.NextSyncCommittee == null)
             {
                 syncCommittee = store.CurrentSyncCommittee;
                 var isValid = utility.IsValidMerkleBranch(
@@ -140,22 +131,22 @@ namespace Lantern
                     }
                 }
             }
-       
+
             SyncAggregate syncAggregate = update.SyncAggregate;
             int committeeParticipantsSum = syncAggregate.SyncCommitteeBits.Cast<bool>().Count(l => l);
-            
-            if(!(committeeParticipantsSum >= constants.MinSyncCommitteeParticipants))
+
+            if (!(committeeParticipantsSum >= constants.MinSyncCommitteeParticipants))
             {
                 logging.SelectLogsType("Error", 3, committeeParticipantsSum.ToString());
                 return false;
             }
 
             BlsPublicKey[] publicKeys = utility.GetParticipantPubkeys(syncCommittee.PublicKeys, syncAggregate.SyncCommitteeBits);
-            BlsPublicKey aggregatePublicKey = utility.Crypto.BlsAggregatePublicKeys(publicKeys);
+            BlsPublicKey aggregatePublicKey = utility.crypto.BlsAggregatePublicKeys(publicKeys);
             Domain domain = utility.ComputeDomain(new SignatureDomains().DomainSyncCommittee, update.ForkVersion, genesisValidatorsRoot);
-            Root signingRoot = utility.ComputeSigningRoot(update.AttestedHeader.HashTreeRoot(), domain); 
-            
-            var Valid = utility.Crypto.BlsVerify(aggregatePublicKey, signingRoot, syncAggregate.SyncCommitteeSignature);
+            Root signingRoot = utility.ComputeSigningRoot(update.AttestedHeader.HashTreeRoot(), domain);
+
+            var Valid = utility.crypto.BlsVerify(aggregatePublicKey, signingRoot, syncAggregate.SyncCommitteeSignature);
 
             if (!Valid)
             {
@@ -168,13 +159,13 @@ namespace Lantern
         public void ApplyLightClientUpdate(LightClientStore store, LightClientUpdate update)
         {
             BeaconBlockHeader activeHeader = GetActiveHeader(update);
-            Epoch finalizedPeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(store.FinalizedHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
-            Epoch updatePeriod = new Epoch((ulong)Math.Floor((decimal)((ulong)utility.ComputeEpochAtSlot(activeHeader.Slot) / time.EpochsPerSyncCommitteePeriod)));
-            if(store.NextSyncCommittee == null)
+            ulong finalizedPeriod = clock.CalculateEpochAtSlot(store.FinalizedHeader.Slot) / constants.EpochsPerSyncCommitteePeriod;
+            ulong updatePeriod = clock.CalculateEpochAtSlot(activeHeader.Slot) / constants.EpochsPerSyncCommitteePeriod;
+            if (store.NextSyncCommittee == null)
             {
                 store.NextSyncCommittee = update.NextSyncCommittee;
             }
-            else if (updatePeriod == (finalizedPeriod + new Epoch(1)))
+            else if (updatePeriod == (finalizedPeriod + 1))
             {
                 store.CurrentSyncCommittee = store.NextSyncCommittee;
                 store.NextSyncCommittee = update.NextSyncCommittee;
@@ -187,7 +178,7 @@ namespace Lantern
             storage = store;
         }
 
-        public bool ProcessLightClientUpdate(LightClientStore store, LightClientUpdate update, Slot currentSlot, Root genesisValidatorsRoot)
+        public bool ProcessLightClientUpdate(LightClientStore store, LightClientUpdate update, ulong currentSlot, Root genesisValidatorsRoot)
         {
             if (ValidateLightClientUpdate(store, update, currentSlot, genesisValidatorsRoot))
             {
@@ -206,14 +197,14 @@ namespace Lantern
                     store.OptimisticHeader = update.AttestedHeader;
                 }
 
-                if (((updateSyncCommitteeBits * 3) >= update.SyncAggregate.SyncCommitteeBits.Length * 2) & (update.FinalizedHeader != new BeaconBlockHeader(Root.Zero) || update.FinalizedHeader != null))
+                if (((updateSyncCommitteeBits * 3) >= update.SyncAggregate.SyncCommitteeBits.Length * 2) & (update.FinalizedHeader != new BeaconBlockHeader() || update.FinalizedHeader != null))
                 {
                     ApplyLightClientUpdate(store, update);
                     store.BestValidUpdate = new LightClientUpdate();
                 }
                 return true;
             }
-            return false;                                        
+            return false;
         }
 
         public int GetSafetyThreshold(LightClientStore store)
@@ -223,7 +214,7 @@ namespace Lantern
 
         public BeaconBlockHeader GetActiveHeader(LightClientUpdate update)
         {
-            if(update.FinalizedHeader != BeaconBlockHeader.Zero)
+            if (update.FinalizedHeader != BeaconBlockHeader.Zero)
             {
                 return update.FinalizedHeader;
             }

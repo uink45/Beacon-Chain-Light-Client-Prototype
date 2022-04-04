@@ -13,36 +13,8 @@ namespace Lantern
     public class LightClientUtility 
     {
         private readonly static BigInteger s_curveOrder = BigInteger.Parse("52435875175126190479447740508185965837690552500527637822603658699938581184513");
-        public enum Networks
-        {
-            Beacon,
-            Prater
-        }
-
-        public Constants Constant;
-        public Constants.TimeParameters TimeParameterOptions;
-        public BLSUtility Crypto;
+        public BLSUtility crypto = new BLSUtility();
         
-        public LightClientUtility()
-        {
-            TimeParameterOptions = new Constants.TimeParameters();
-            Crypto = new BLSUtility();
-            Constant = new Constants();
-        }
-
-        /// <summary>
-        /// Return the epoch number of ``slot``.
-        /// </summary>
-        public Epoch ComputeEpochAtSlot(Slot slot)
-        {
-            return new Epoch(slot / TimeParameterOptions.SlotsPerEpoch);
-        }
-
-        /// <summary>
-        /// Return the signature domain of the 
-        /// domain type, fork version, and 
-        /// genesis validator's root.
-        /// </summary>
         public Domain ComputeDomain(DomainType domainType, ForkVersion forkVersion, Root genesisValidatorsRoot)
         {
             Root forkDataRoot = new ForkData(forkVersion, genesisValidatorsRoot).HashTreeRoot();
@@ -57,10 +29,6 @@ namespace Lantern
             return new Domain(array);
         }
 
-        /// <summary>
-        /// Return the signing root of an object by 
-        /// calculating the root of the object-domain tree.
-        /// </summary>
         public Root ComputeSigningRoot(Root blockRoot, Domain domain)
         {
             SigningRoot domainWrappedObject = new SigningRoot(blockRoot, domain);
@@ -69,7 +37,7 @@ namespace Lantern
 
         public bool isEmptyHeader(BeaconBlockHeader header)
         {
-            return header == new BeaconBlockHeader(null) ? true : false;
+            return header == new BeaconBlockHeader() ? true : false;
         }
 
         public void assertZeroHashes(Root[] rootArray, int expectedLength, string errorMessage)
@@ -109,12 +77,12 @@ namespace Lantern
                 if (indexAtDepth % 2 == 0)
                 {
                     // Branch on right
-                    value = Crypto.Hash(value, branch[testDepth]);
+                    value = crypto.Hash(value, branch[testDepth]);
                 }
                 else
                 {
                     // Branch on left
-                    value = Crypto.Hash(branch[testDepth], value);
+                    value = crypto.Hash(branch[testDepth], value);
                 }
             }
             return value.Equals(root);
@@ -146,7 +114,7 @@ namespace Lantern
                 throw new Exception("Error getting input for quick start private key generation.");
             }
 
-            var hash = Crypto.Hash(input).AsSpan();
+            var hash = crypto.Hash(input).AsSpan();
 
             var value = new BigInteger(hash.ToArray());
             var privateKey = value % s_curveOrder;

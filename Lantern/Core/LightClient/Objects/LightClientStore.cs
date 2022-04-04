@@ -17,12 +17,12 @@ namespace Lantern
 
         public LightClientStore()
         {
-            finalizedHeader = new BeaconBlockHeader(Root.Zero);
+            finalizedHeader = new BeaconBlockHeader();
             currentSyncCommittee = new SyncCommittee();
             nextSyncCommittee = null;
             bestValidUpdate = new LightClientUpdate();
             proofs = new LightClientProofs();
-            optimisticHeader = new BeaconBlockHeader(Root.Zero);
+            optimisticHeader = new BeaconBlockHeader();
             previousMaxActiveParticipants = 0;
             currentMaxActiveParticipants = 0;
         }

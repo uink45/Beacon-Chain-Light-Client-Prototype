@@ -39,8 +39,8 @@ namespace Nethermind.Core2.Containers
             BodyRoot = bodyRoot;
         }
 
-        public BeaconBlockHeader(Root bodyRoot)
-            : this(Slot.Zero, ValidatorIndex.Zero, Root.Zero, Root.Zero, bodyRoot)
+        public BeaconBlockHeader()
+            : this(Slot.Zero, ValidatorIndex.Zero, Root.Zero, Root.Zero, Root.Zero)
         {
         }
 
@@ -49,22 +49,6 @@ namespace Nethermind.Core2.Containers
         public Slot Slot { get; private set; }
         public ValidatorIndex ValidatorIndex { get; private set; }
         public Root StateRoot { get; private set; }
-
-        /// <summary>
-        /// Creates a deep copy of the object.
-        /// </summary>
-        public static BeaconBlockHeader Clone(BeaconBlockHeader other)
-        {
-            var clone = new BeaconBlockHeader(other.BodyRoot)
-            {
-                Slot = other.Slot,
-
-                ParentRoot = other.ParentRoot,
-                StateRoot = other.StateRoot,
-                BodyRoot = other.BodyRoot
-            };
-            return clone;
-        }
 
         public void SetStateRoot(Root stateRoot)
         {

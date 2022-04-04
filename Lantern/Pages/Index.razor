@@ -15,19 +15,19 @@
         <div style=" background: rgba(0, 0, 0, 0.3);width: 60vw; padding: 21vh; margin: 50px auto; display: block;border-radius: 7px; height: 700px;">
                 <div class="bar appear" style="position: absolute; left: 35%; top: 46%; filter: blur(15px);">  
                  <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip;" >Slot: 
-                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Client.Client.storage.OptimisticHeader.Slot</mark>
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Client.client.storage.OptimisticHeader.Slot</mark>
                    </p>
 
                 <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip; ">Epoch:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Client.Client.storage.OptimisticHeader.Slot)</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.client.clock.CalculateEpochAtSlot(Client.client.storage.OptimisticHeader.Slot)</mark>
                    </p> 
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">State root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Client.Client.storage.OptimisticHeader.StateRoot.ToString()</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Client.client.storage.OptimisticHeader.StateRoot.ToString()</mark>
                    </p>
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Body root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.Client.storage.OptimisticHeader.BodyRoot.ToString()</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.client.storage.OptimisticHeader.BodyRoot.ToString()</mark>
                    </p>
 
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
@@ -56,19 +56,19 @@
         <div style=" background: rgba(0, 0, 0, 0.3);width: 37vw; padding: 21vh; margin: 50px auto; display: block;border-radius: 7px; height: 450px; ">
                 <div class="bar appear" style="position: absolute; left: 35%; top: 46%;">  
                  <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip;" >Slot: 
-                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Client.Client.storage.OptimisticHeader.Slot</mark>
+                    <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;word-wrap: normal;">@Client.client.storage.OptimisticHeader.Slot</mark>
                    </p>
 
                 <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 20vw; overflow: clip; ">Epoch:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Utility.ComputeEpochAtSlot(Client.Client.storage.OptimisticHeader.Slot)</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.client.clock.CalculateEpochAtSlot(Client.client.storage.OptimisticHeader.Slot)</mark>
                    </p> 
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">State root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Client.Client.storage.OptimisticHeader.StateRoot.ToString()</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter; word-wrap: inherit;">@Client.client.storage.OptimisticHeader.StateRoot.ToString()</mark>
                    </p>
 
                <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Body root:
-                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.Client.storage.OptimisticHeader.BodyRoot.ToString()</mark>
+                   <mark style="font-family: 'Open Sans', sans-serif;color: white; background:none; font-weight: lighter;">@Client.client.storage.OptimisticHeader.BodyRoot.ToString()</mark>
                    </p>
 
                    <p style="font-family: 'Open Sans', sans-serif; font-size: 115%; font-weight: bold; width: 30vw; overflow: clip;">Enter validator index:
@@ -122,7 +122,7 @@
 
     public async void SimulateProgress()
     {
-        if(Client.Status == "Synced")
+        if(Client.status == "Synced")
         {
             Value = 0;
             while(Value < 130)
@@ -161,14 +161,14 @@
 
     public async Task FetchProofs()
     {
-        if (Client.Status == "Synced" && validatorIndex != null)
+        if (Client.status == "Synced" && validatorIndex != null)
         {
             if (validatorIndex.All(char.IsDigit))
             {
-                Proofs = await Client.Server.FetchProofs(nodeAPIUrl, Client.Client.storage.OptimisticHeader.StateRoot.ToString(), validatorIndex);
+                Proofs = await Client.server.FetchProofs(nodeAPIUrl, Client.client.storage.OptimisticHeader.StateRoot.ToString(), validatorIndex);
                 if(Proofs != null)
                 {
-                    verified = Client.Client.VerifyProofs(Proofs, Client.Client.storage.OptimisticHeader.StateRoot);
+                    verified = Client.client.VerifyProofs(Proofs, Client.client.storage.OptimisticHeader.StateRoot);
                 }
                 else
                 {

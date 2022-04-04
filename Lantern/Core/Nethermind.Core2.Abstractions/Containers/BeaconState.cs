@@ -206,32 +206,6 @@ namespace Nethermind.Core2.Containers
         /// <summary>
         /// Creates a deep copy of the object.
         /// </summary>
-        public static BeaconState Clone(BeaconState other)
-        {
-            var clone = new BeaconState(
-                other.GenesisTime,
-                other.Slot,
-                other.Fork,
-                BeaconBlockHeader.Clone(other.LatestBlockHeader),
-                other.BlockRoots.ToArray(),
-                other.StateRoots.ToArray(),
-                other.HistoricalRoots.ToArray(),
-                Eth1Data.Clone(other.Eth1Data),
-                other.Eth1DataVotes.Select(x => Eth1Data.Clone(x)).ToList(),
-                other.Eth1DepositIndex,
-                other.Validators.Select(x => Validator.Clone(x)).ToList(),
-                other.Balances.Select(x => x).ToList(),
-                other.RandaoMixes.Select(x => x).ToArray(),
-                other.Slashings.Select(x => x).ToArray(),
-                other.PreviousEpochAttestations.Select(x => PendingAttestation.Clone(x)).ToList(),
-                other.CurrentEpochAttestations.Select(x => PendingAttestation.Clone(x)).ToList(),
-                new BitArray(other.JustificationBits),
-                Checkpoint.Clone(other.PreviousJustifiedCheckpoint),
-                Checkpoint.Clone(other.CurrentJustifiedCheckpoint),
-                Checkpoint.Clone(other.FinalizedCheckpoint)
-            );
-            return clone;
-        }
 
         public void IncreaseEth1DepositIndex() => Eth1DepositIndex++;
 

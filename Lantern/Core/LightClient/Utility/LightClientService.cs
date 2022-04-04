@@ -4,23 +4,16 @@ namespace Lantern
 {
     public class LightClientService
     {
-        public CoreSpec Client;
-        private Settings Settings;
-        public ulong NextSyncCommitteePeriod;
-        public string Status;
-        public Server Server;
-        private Logging Logs;
-        private Clock Clock;
+        public CoreSpec client = new CoreSpec();
+        public Server server = new Server();
+        private Settings settings;
+        public string status;        
 
         public void InitialiseObjects(string server)
         {
-            Settings = new Settings(server);
-            Client = new CoreSpec(); 
-            Clock = new Clock();
-            Status = "Started";
-            Logs = new Logging();
-            Server = new Server();
-            NextSyncCommitteePeriod = Clock.CalculateSyncPeriod(Settings.Network) + 1;
+            settings = new Settings(server);
+            client.nextSyncCommitteePeriod = client.clock.CalculateSyncPeriod(settings.Network) + 1;
+            status = "Started";
         }
 
         public async Task Launch(string server)
@@ -33,36 +26,35 @@ namespace Lantern
  
         public async Task InitializeLightClient()
         {
-            Logs.SelectLogsType("Info", 4, Settings.LightClientApiUrl);
-            Status = "Syncing";
+            client.logging.SelectLogsType("Info", 4, settings.LightClientApiUrl);
+            status = "Syncing";
             while (true)
             {
-                string checkpointRoot = await Server.FetchCheckpointRoot(Settings.ServerUrl);
+                string checkpointRoot = await server.FetchCheckpointRoot(settings.ServerUrl);
                 if (checkpointRoot != null)
                 {
-                    LightClientSnapshot snapshot = await Server.FetchFinalizedSnapshot(Settings.ServerUrl, checkpointRoot);
-                    if (snapshot != null && Client.ValidateCheckpoint(snapshot))
-                    {                       
-                        Logs.SelectLogsType("Info", 2, null);
-                        Logs.PrintSnapshot(snapshot);
-                        Logs.SelectLogsType("Info", 3, null);                       
+                    LightClientSnapshot snapshot = await server.FetchFinalizedSnapshot(settings.ServerUrl, checkpointRoot);
+                    if (snapshot != null && client.ValidateCheckpoint(snapshot))
+                    {
+                        client.logging.SelectLogsType("Info", 2, null);
+                        client.logging.PrintSnapshot(snapshot);
+                        client.logging.SelectLogsType("Info", 3, null);                       
                         break;
                     }
                     await Task.Delay(3000);
                 }
             }
-            
         }
 
         public async Task FetchNextSyncCommitteeUpdate()
         {
-            Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
-            LightClientUpdate update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+            client.logging.SelectLogsType("Info", 6, client.logging.Clock.CalculateSyncPeriod(settings.Network).ToString());
+            LightClientUpdate update = await server.FetchLightClientUpdate(settings.ServerUrl, client.logging.Clock.CalculateSyncPeriod(settings.Network).ToString());
             while (true)
             {
-                if (update != null && Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+                if (update != null && client.ProcessLightClientUpdate(client.storage, update, client.logging.Clock.CalculateSlot(settings.Network), new Networks().GenesisRoots[settings.Network]))
                 {
-                    Logs.PrintClientLogs(update);
+                    client.logging.PrintClientLogs(update);
                     break;
                 }
                 await Task.Delay(3000);
@@ -74,39 +66,37 @@ namespace Lantern
             LightClientUpdate update;
             if (CheckSyncPeriod())
             {
-                Logs.SelectLogsType("Info", 6, Clock.CalculateSyncPeriod(Settings.Network).ToString());
-                update = await Server.FetchLightClientUpdate(Settings.ServerUrl, Clock.CalculateSyncPeriod(Settings.Network).ToString());
+                client.logging.SelectLogsType("Info", 6, client.clock.CalculateSyncPeriod(settings.Network).ToString());
+                update = await server.FetchLightClientUpdate(settings.ServerUrl, client.clock.CalculateSyncPeriod(settings.Network).ToString());
             }
             else
             {
                 if (IsLatestOptimisticHeader())
                 {
-                    int slotToRequest = (int)Client.storage.OptimisticHeader.Slot + 1;
-                    update = await Server.FetchHeaderAtSlot(Settings.ServerUrl, Settings.Network, slotToRequest.ToString());
+                    int slotToRequest = (int)client.storage.OptimisticHeader.Slot + 1;
+                    update = await server.FetchHeaderAtSlot(settings.ServerUrl, settings.Network, slotToRequest.ToString());
                 }
                 else
                 {
-                    update = await Server.FetchHeader(Settings.ServerUrl, Settings.Network);
+                    update = await server.FetchHeader(settings.ServerUrl, settings.Network);
                 }
             }
 
             if (update != null)
             {
-                if (Client.ProcessLightClientUpdate(Client.storage, update, Clock.CalculateSlot(Settings.Network), new Networks().GenesisRoots[Settings.Network]))
+                if (client.ProcessLightClientUpdate(client.storage, update, client.clock.CalculateSlot(settings.Network), new Networks().GenesisRoots[settings.Network]))
                 {
-                    Status = "Synced";
-                    Logs.PrintClientLogs(update);
+                    status = "Synced";
+                    client.logging.PrintClientLogs(update);
                 }
-            }
-            
+            }            
         }
-
 
         public bool CheckSyncPeriod()
         {
-            if(Clock.CalculateSyncPeriod(Settings.Network) == NextSyncCommitteePeriod)
+            if(client.clock.CalculateSyncPeriod(settings.Network) == client.nextSyncCommitteePeriod)
             {
-                NextSyncCommitteePeriod = NextSyncCommitteePeriod + 1;
+                client.nextSyncCommitteePeriod = client.nextSyncCommitteePeriod + 1;
                 return true;
             }
             return false;
@@ -115,8 +105,8 @@ namespace Lantern
 
         public bool IsLatestOptimisticHeader()
         {
-            int slot = (int)Clock.CalculateSlot(Settings.Network);
-            int expectedSlot = (int)Client.storage.OptimisticHeader.Slot + 1;
+            int slot = (int)client.clock.CalculateSlot(settings.Network);
+            int expectedSlot = (int)client.storage.OptimisticHeader.Slot + 1;
 
             if(slot != expectedSlot)
             {

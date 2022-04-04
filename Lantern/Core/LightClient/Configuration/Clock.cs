@@ -3,44 +3,33 @@ using Nethermind.Core2.Types;
 
 namespace Lantern
 {
-    /// <summary>
-    /// Local clock for the consensus layer.
-    /// </summary>
     public class Clock
     {
-        /// <summary>
-        /// Calculates the number of slots
-        /// since genesis time.
-        /// </summary>
-        public Slot CalculateSlot(int network)
+        public ulong CalculateSlot(int network)
         {
-            ulong timePassed = (ulong)DateTime.UtcNow.Subtract(DateTime.MinValue.AddYears(1969)).TotalMilliseconds;
-            ulong diffInSeconds = (timePassed / 1000) - new Constants.TimeParameters().GenesisTime[network];
-            return new Slot(((ulong)Math.Floor((decimal)(diffInSeconds / 12))));
+            ulong timePassed = (ulong)DateTime.UtcNow.Subtract(DateTime.MinValue.AddYears(1969)).TotalSeconds;
+            ulong diffInSeconds = timePassed - new Constants().GenesisTime[network];
+            return (ulong)Math.Floor((decimal)(diffInSeconds / 12));
         }
 
-        /// <summary>
-        /// Calculates the number of epochs
-        /// since genesis time.
-        /// </summary>
-        public Epoch CalculateEpoch(int network)
+        public ulong CalculateEpoch(int network)
         {
-            return new Epoch(CalculateSlot(network) / new Constants.TimeParameters().SlotsPerEpoch);
+            return CalculateSlot(network) / new Constants().SlotsPerEpoch;
         }
 
-        public Epoch CalculateEpochAtSlot(ulong slot, int network)
+        public ulong CalculateEpochAtSlot(ulong slot)
         {
-            return new Epoch(slot / new Constants.TimeParameters().SlotsPerEpoch);
+            return slot / new Constants().SlotsPerEpoch;
         }
 
         public ulong CalculateSyncPeriodAtEpoch(ulong epoch)
         {
-            return epoch / new Constants.TimeParameters().EpochsPerSyncCommitteePeriod;
+            return epoch / new Constants().EpochsPerSyncCommitteePeriod;
         }
 
         public ulong CalculateSyncPeriod(int network)
         {
-            return CalculateEpoch(network) / (ulong)new Constants.TimeParameters().EpochsPerSyncCommitteePeriod;
+            return CalculateEpoch(network) / new Constants().EpochsPerSyncCommitteePeriod;
         }
 
     }
